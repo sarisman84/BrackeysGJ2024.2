@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://duj4fulbycx3j"]
+
+[ext_resource type="PackedScene" uid="uid://clmojr6n6jc32" path="res://Player/p_player.tscn" id="1_vw2pc"]
+[ext_resource type="PackedScene" uid="uid://bumssll3hub0p" path="res://Powerups/Scenes/powerup_template.tscn" id="2_coef3"]
+
+[node name="PlayerTest" type="Node"]
+
+[node name="player" parent="." instance=ExtResource("1_vw2pc")]
+movement_speed = 10.0
+
+[node name="enviroment" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="floor" type="CSGBox3D" parent="enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+size = Vector3(34.9648, 1, 38.4065)
+
+[node name="wall" type="CSGBox3D" parent="enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 17.7032)
+size = Vector3(34.9648, 9, 3)
+
+[node name="directional_light" type="DirectionalLight3D" parent="enviroment"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+shadow_enabled = true
+
+[node name="powerup_template" parent="." instance=ExtResource("2_coef3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)

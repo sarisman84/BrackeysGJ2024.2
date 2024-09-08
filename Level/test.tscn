@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb80tiwqe8hpc"]
+
+[ext_resource type="PackedScene" uid="uid://dxcxm2wvtq7fp" path="res://Enemies/Scenes/basic_enemy.tscn" id="1_p65gp"]
+[ext_resource type="PackedScene" uid="uid://dbhpk13ktqxn5" path="res://Enemies/Scenes/flying_enemy.tscn" id="2_8wkjo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdtes"]
+albedo_color = Color(1, 0.184314, 0.180392, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0tss1"]
+material = SubResource("StandardMaterial3D_fdtes")
+
+[node name="test" type="Node3D"]
+
+[node name="floor" type="CSGBox3D" parent="."]
+use_collision = true
+collision_mask = 0
+size = Vector3(100, 1, 100)
+
+[node name="temp_origin" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CylinderMesh_0tss1")
+
+[node name="camera_pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -5.96046e-08, -1, 0, 1, -5.96046e-08, 0, 1, 0)
+
+[node name="camera" type="Camera3D" parent="camera_pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 27, -4.02332e-07)
+
+[node name="enemies" type="Node3D" parent="."]
+
+[node name="enemy" parent="enemies" instance=ExtResource("1_p65gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 4, 27)
+
+[node name="enemy2" parent="enemies" instance=ExtResource("1_p65gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 2, 27)
+
+[node name="flying_enemy" parent="enemies" instance=ExtResource("2_8wkjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 10, -11)
+
+[node name="flying_enemy2" parent="enemies" instance=ExtResource("2_8wkjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 16, 22)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 45, 0)

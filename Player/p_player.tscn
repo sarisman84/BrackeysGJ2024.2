@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://clmojr6n6jc32"]
+
+[ext_resource type="Script" path="res://Player/Scripts/avatar_controller.gd" id="1_f0er1"]
+[ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
+[ext_resource type="PackedScene" uid="uid://6klxf7f7gsbv" path="res://Weapons/p_weapon_manager.tscn" id="3_h2gkg"]
+[ext_resource type="PackedScene" uid="uid://bo5hm4bfndpx7" path="res://Weapons/p_machine_gun.tscn" id="4_stvfv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55xom"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6bpmn"]
+
+[node name="player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_f0er1")
+movement_speed = 25.0
+
+[node name="col_box" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_55xom")
+
+[node name="camera_anchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77218, 0)
+script = ExtResource("2_4jt2a")
+
+[node name="pitch_pivot" type="SpringArm3D" parent="camera_anchor"]
+shape = SubResource("SphereShape3D_6bpmn")
+spring_length = 5.0
+
+[node name="camera" type="Camera3D" parent="camera_anchor/pitch_pivot"]
+unique_name_in_owner = true
+
+[node name="model" type="CSGBox3D" parent="."]
+size = Vector3(0.6, 1.5, 0.6)
+
+[node name="eyes" type="CSGBox3D" parent="model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519177, -0.124023)
+size = Vector3(0.540039, 0.147461, 0.751953)
+
+[node name="weapon_manager" parent="model" instance=ExtResource("3_h2gkg")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.345628, 0, -0.292966)
+
+[node name="machine_gun" parent="model/weapon_manager" instance=ExtResource("4_stvfv")]
