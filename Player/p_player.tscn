@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://clmojr6n6jc32"]
+[gd_scene load_steps=10 format=3 uid="uid://clmojr6n6jc32"]
 
 [ext_resource type="Script" path="res://Player/Scripts/avatar_controller.gd" id="1_f0er1"]
 [ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
 [ext_resource type="PackedScene" uid="uid://6klxf7f7gsbv" path="res://Weapons/p_weapon_manager.tscn" id="3_h2gkg"]
 [ext_resource type="PackedScene" uid="uid://bo5hm4bfndpx7" path="res://Weapons/p_machine_gun.tscn" id="4_stvfv"]
+[ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="5_y2spw"]
+[ext_resource type="Script" path="res://Player/Scripts/weapon_select.gd" id="6_ivl8j"]
+[ext_resource type="PackedScene" uid="uid://bqkqv0h1qxo78" path="res://Player/UI/Weapon_Select/ui_weapon_button.tscn" id="7_8oa7h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55xom"]
 
@@ -40,3 +43,62 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.345628, 0, -0.292966)
 
 [node name="machine_gun" parent="model/weapon_manager" instance=ExtResource("4_stvfv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00572276, 0, 0)
+
+[node name="health_manager" parent="." instance=ExtResource("5_y2spw")]
+collision_layer = 4
+collision_mask = 0
+
+[node name="weapon_select" type="CanvasLayer" parent="."]
+script = ExtResource("6_ivl8j")
+
+[node name="weapon_button" parent="weapon_select" instance=ExtResource("7_8oa7h")]
+offset_left = -189.0
+offset_right = -61.0
+
+[node name="weapon_button2" parent="weapon_select" instance=ExtResource("7_8oa7h")]
+offset_left = -119.0
+offset_top = 43.0
+offset_right = 9.0
+offset_bottom = 171.0
+
+[node name="weapon_button3" parent="weapon_select" instance=ExtResource("7_8oa7h")]
+offset_left = 3.0
+offset_top = 44.0
+offset_right = 131.0
+offset_bottom = 172.0
+
+[node name="weapon_button4" parent="weapon_select" instance=ExtResource("7_8oa7h")]
+offset_left = 69.0
+offset_top = -61.0
+offset_right = 197.0
+offset_bottom = 67.0
+
+[node name="weapon_button5" parent="weapon_select" instance=ExtResource("7_8oa7h")]
+offset_left = 4.0
+offset_top = -168.0
+offset_right = 132.0
+offset_bottom = -40.0
+
+[node name="weapon_button6" parent="weapon_select" instance=ExtResource("7_8oa7h")]
+offset_left = -120.0
+offset_top = -168.0
+offset_right = 8.0
+offset_bottom = -40.0
+
+[node name="weapon_label" type="RichTextLabel" parent="weapon_select"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -11.0
+offset_right = 62.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Test Weapon[/center]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false

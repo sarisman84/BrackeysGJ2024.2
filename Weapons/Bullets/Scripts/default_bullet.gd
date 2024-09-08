@@ -18,5 +18,5 @@ func _process(_delta : float) -> void:
 		return
 	position += m_direction
 
-func _on_hurtbox_body_entered(body : Variant) -> void:
+func _on_hurtbox_body_entered(_body : Variant) -> void:
 	queue_free()

@@ -1,9 +1,9 @@
 class_name WeaponManager
 extends Node3D
 
-var m_weapon_inventory : Array[BaseWeapon]
-
 var m_internal_clock : float
+
+var m_weapon_inventory : Array[BaseWeapon]
 
 var selected_weapon : BaseWeapon :
 	get():
@@ -24,6 +24,16 @@ func refill_ammo_for(weapon_type : String, refill_amount : int) -> bool:
 		if w.name.to_lower() == weapon_type.to_lower():
 			return w.refill_ammo(refill_amount)
 	return false
+
+func add_weapon(new_weapon: PackedScene) -> void:
+	var weapon = new_weapon.instantiate() as BaseWeapon
+	assert(weapon)
+	add_child(weapon)
+
+	var last_indx = m_weapon_inventory.size() - 1
+	m_weapon_inventory.append(weapon)
+	selected_weapon_index = last_indx
+
 
 func _ready() -> void:
 	for child in get_children():
