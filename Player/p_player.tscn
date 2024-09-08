@@ -39,3 +39,4 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.345628, 0, -0.292966)
 
 [node name="machine_gun" parent="model/weapon_manager" instance=ExtResource("4_stvfv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00572276, 0, 0)

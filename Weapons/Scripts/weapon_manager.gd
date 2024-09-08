@@ -1,3 +1,4 @@
+class_name WeaponManager
 extends Node3D
 
 var m_weapon_inventory : Array[BaseWeapon]
@@ -18,6 +19,12 @@ var selected_weapon_index : int :
 		m_internal_clock = 0
 		m_weapon_inventory[selected_weapon_index].visible = true
 
+func refill_ammo_for(weapon_type : String, refill_amount : int) -> bool:
+	for w in m_weapon_inventory:
+		if w.name.to_lower() == weapon_type.to_lower():
+			return w.refill_ammo(refill_amount)
+	return false
+
 func _ready() -> void:
 	for child in get_children():
 		if child is BaseWeapon:
@@ -28,9 +35,10 @@ func _ready() -> void:
 func _process(_delta : float) -> void:
 	m_internal_clock -= _delta
 	m_internal_clock = max(m_internal_clock, 0)
+	assert(not m_weapon_inventory.is_empty())
+	var weapon = m_weapon_inventory[selected_weapon_index]
 
-	if m_internal_clock == 0 and fire_input:
-		assert(not m_weapon_inventory.is_empty())
-		var weapon = m_weapon_inventory[selected_weapon_index]
+	if m_internal_clock == 0 and fire_input and weapon.has_ammo():
 		weapon.fire()
+		weapon.use_ammo()
 		m_internal_clock = weapon.fire_rate
