@@ -12,6 +12,7 @@ extends CharacterBody3D
 
 @onready var camera = %camera
 @onready var model = $model
+@onready var weapon_manager = %weapon_manager
 
 
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -54,7 +55,8 @@ func _process(delta : float) -> void:
 	var cam_dir = camera.global_basis.z
 	const ROTATION_SMOOTHING := 25
 	model.rotation.y = lerp(model.rotation.y, atan2(cam_dir.x, cam_dir.z), ROTATION_SMOOTHING * delta)
-	pass
+
+	weapon_manager.fire_input = Input.is_action_pressed("weapon_fire")
 
 func m_calculate_input_direction() -> Vector3:
 	var local_dir = Vector3(Input.get_axis("move_left", "move_right"), 0, Input.get_axis("move_forward", "move_backward"))
