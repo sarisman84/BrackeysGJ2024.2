@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbhpk13ktqxn5"]
+[gd_scene load_steps=7 format=3 uid="uid://dbhpk13ktqxn5"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/flying_enemy.gd" id="1_7tov3"]
+[ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="2_0duqf"]
+[ext_resource type="PackedScene" uid="uid://d3sqxq4mixlx0" path="res://Enemies/Scenes/meele_attack.tscn" id="3_54dyb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2aftr"]
 height = 1.0
@@ -22,3 +24,8 @@ shape = SubResource("CapsuleShape3D_2aftr")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_k1ryd")
+
+[node name="health_manager" parent="." instance=ExtResource("2_0duqf")]
+
+[node name="meele_attack" parent="." instance=ExtResource("3_54dyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.988145)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjhnfiv3kdyek"]
+[gd_scene load_steps=6 format=3 uid="uid://cjhnfiv3kdyek"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/shooting_enemy.gd" id="1_2ecym"]
+[ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="2_b4uvf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5f3dy"]
 
@@ -20,3 +21,5 @@ shape = SubResource("CapsuleShape3D_5f3dy")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ob6p4")
+
+[node name="health_manager" parent="." instance=ExtResource("2_b4uvf")]

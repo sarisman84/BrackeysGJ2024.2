@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3sqxq4mixlx0"]
+
+[ext_resource type="Script" path="res://Enemies/Scripts/meele_attack.gd" id="1_yjuh3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1agxi"]
+
+[node name="meele_attack" type="Area3D"]
+script = ExtResource("1_yjuh3")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1agxi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
