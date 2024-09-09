@@ -12,6 +12,6 @@ fire_rate = 0.8
 clip_size = 10
 model = "res://Weapons/Models/p_machine_gun.tscn"
 icon = ExtResource("1_rkfo3")
-display_name = "Nova Launcher"
+display_name = "Machine Gun"
 weapon_cost = 10000
 ammo_cost = 500

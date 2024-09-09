@@ -14,7 +14,6 @@ func _ready():
 	m_get_weapons_from_registry()
 	m_update_visuals()
 	hide_shop()
-	#show_shop()
 
 func show_shop() -> void:
 	show()

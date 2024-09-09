@@ -1,4 +1,5 @@
 extends StaticBody3D
+class_name HealthManager
 
 @export var max_health : int
 var m_current_health : int
