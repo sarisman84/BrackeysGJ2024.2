@@ -54,6 +54,7 @@ func _physics_process(delta : float) -> void:
 
 
 	move_and_slide()
+	Global.player_coords = position
 
 
 func _process(delta : float) -> void:
