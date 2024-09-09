@@ -12,7 +12,6 @@ signal buy_weapon(item: BaseWeapon)
 func _ready():
 	update_visuals()
 	hide_shop()
-	show_shop()
 
 func show_shop() -> void:
 	show()

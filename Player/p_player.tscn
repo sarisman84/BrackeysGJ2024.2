@@ -103,6 +103,7 @@ rotation = 0.0
 scale = Vector2(1, 1)
 
 [node name="player" type="CharacterBody3D" groups=["Player"]]
+collision_layer = 4
 script = ExtResource("1_f0er1")
 movement_speed = 25.0
 
@@ -192,6 +193,7 @@ scroll_active = false
 shortcut_keys_enabled = false
 
 [node name="shop" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("7_eni7t")
 shop_items = Array[ExtResource("8_5wt5w")]([ExtResource("9_gvarx")])
 
