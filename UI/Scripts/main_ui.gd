@@ -13,16 +13,7 @@ func m_update_visual_health_bar(health: int) -> void:
 func m_update_visual_coins(coins: int) -> void:
 	m_coin_label.text = str(coins)
 
-
-
 func update_ui() -> void:
 	var minutes = int(Global.time_elapsed) / 60
 	var seconds = int(Global.time_elapsed) % 60
 	m_timer_label.text = "%d:%02d" % [minutes, seconds]
-
-func pause_timer() -> void:
-	m_timer.paused = true
-
-func resume_timer() -> void:
-	m_timer.paused = false
- 

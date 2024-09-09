@@ -14,10 +14,16 @@ extends CharacterBody3D
 @onready var model = $model
 @onready var weapon_manager = %weapon_manager
 @onready var weapon_select = $weapon_select
+@onready var shop = $shop
+
+var shop_open = false
 
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _physics_process(delta : float) -> void:
+	if shop_open:
+		return
+	
 	if not is_on_floor():
 		velocity.y -= m_gravity * delta
 
@@ -63,14 +69,20 @@ func _process(delta : float) -> void:
 	elif not weapon_select.visible:
 		weapon_manager.fire_input = Input.is_action_pressed("weapon_fire")
 
-
-
 func m_calculate_input_direction() -> Vector3:
 	var local_dir = Vector3(Input.get_axis("move_left", "move_right"), 0, Input.get_axis("move_forward", "move_backward"))
 	var result = camera.global_basis.x * local_dir.x + camera.global_basis.z * local_dir.z
 	result.y = 0
 	return result
 
-
 func m_calculate_jump_velocity() -> float:
 	return sqrt(2 * jump_height / m_gravity) * m_gravity
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") and Global.player_at_shop:
+		if shop_open:
+			shop.hide_shop()
+			shop_open = false
+		else:
+			shop.show_shop()
+			shop_open = true

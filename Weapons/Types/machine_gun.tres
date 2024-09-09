@@ -11,6 +11,6 @@ fire_rate = 0.15
 clip_size = 100
 model = "res://Weapons/Models/p_machine_gun.tscn"
 icon = ExtResource("1_rkfo3")
-display_name = "Machine GUn"
+display_name = "Machine Gun"
 weapon_cost = 10000
 ammo_cost = 500
