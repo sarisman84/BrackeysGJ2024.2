@@ -20,7 +20,7 @@ func refill_ammo_for(weapon_name_or_uuid : Variant, refill_amount : int) -> bool
 
 		match typeof(weapon_name_or_uuid):
 			TYPE_STRING:
-				if w.display_name.to_lower() == weapon_name_or_uuid.to_lower():
+				if w.resource_path.to_lower().contains(weapon_name_or_uuid.to_lower()):
 					return w.refill_ammo(refill_amount)
 			TYPE_INT:
 				if w.UUID == weapon_name_or_uuid:
@@ -44,7 +44,7 @@ func add_weapon(new_weapon: Variant) -> void:
 
 func m_set_all_weapon_visibility(new_visibility : bool) -> void:
 	for model in m_internal_weapon_models:
-		m_internal_weapon_models[model].visible = new_visibility
+		model.visible = new_visibility
 
 #func add_weapon(new_weapon: PackedScene) -> void:
 	#var weapon = new_weapon.instantiate() as BaseWeapon
@@ -57,6 +57,7 @@ func m_set_all_weapon_visibility(new_visibility : bool) -> void:
 
 
 func _ready() -> void:
+	WeaponBehaviours.init()
 	add_weapon("machine_gun")
 	pass
 

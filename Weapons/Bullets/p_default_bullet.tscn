@@ -6,7 +6,6 @@
 
 [node name="default_bullet" type="Node3D"]
 script = ExtResource("1_wc2mv")
-lifetime = 3.0
 
 [node name="hurtbox" type="Area3D" parent="."]
 

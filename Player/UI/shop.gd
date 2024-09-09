@@ -5,7 +5,7 @@ var m_shop_bought_flags : Array[bool]
 var m_weapon_manager : WeaponManager
 var m_counter=0
 
-@onready var m_icon = $VBoxContainer/HBoxContainer/icon
+@onready var m_icon = $VBoxContainer/icon
 @onready var m_title = $VBoxContainer/title
 @onready var m_cost = $VBoxContainer/cost
 
@@ -14,7 +14,7 @@ func _ready():
 	m_get_weapons_from_registry()
 	m_update_visuals()
 	hide_shop()
-	show_shop()
+	#show_shop()
 
 func show_shop() -> void:
 	show()
@@ -29,6 +29,8 @@ func init(weapon_manager : WeaponManager) -> void:
 	m_weapon_manager = weapon_manager
 
 func m_update() -> void:
+	if not m_weapon_manager:
+		return
 	var weapon_col = m_weapon_manager.m_weapon_inventory
 
 	for i in range(m_shop_items.size()):

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=3 format=3 uid="uid://dk3csf75j3e2x"]
+
+[ext_resource type="Texture2D" uid="uid://0k37q6nr1aoi" path="res://Weapons/Icons/rifle.png" id="1_hem0a"]
+[ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="2_2dqry"]
+
+[resource]
+script = ExtResource("2_2dqry")
+fire_behaviour = "fire_projectile"
+damage = 1
+bullet_ins = "res://Weapons/Bullets/p_default_bullet.tscn"
+fire_rate = 0.5
+clip_size = 10
+model = "res://Weapons/Models/p_machine_gun.tscn"
+icon = ExtResource("1_hem0a")
+display_name = "Machine Gun"
+weapon_cost = 10000
+ammo_cost = 500

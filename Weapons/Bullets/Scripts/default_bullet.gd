@@ -1,7 +1,8 @@
 extends Node3D
 
+var m_owner : Node3D
 var m_direction : Vector3
-@export var lifetime : float
+@export var lifetime : float = 3.0
 
 var m_internal_clock : float = 3.0
 

@@ -5,7 +5,7 @@ extends Area3D
 @export var refill_amount : int = 10
 
 func m_on_ammo_pickup(weapon_manager: WeaponManager) -> bool:
-	return weapon_manager.refill_ammo_for(ammo_type, refill_amount)
+	return weapon_manager.refill_ammo_for(ItemRegistry.get_item(ammo_type).UUID, refill_amount)
 
 
 func _on_body_entered(body : Variant) -> void:

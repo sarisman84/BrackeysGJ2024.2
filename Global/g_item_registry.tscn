@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmd01lp68f7ki"]
 
 [ext_resource type="Script" path="res://Global/Scripts/item_registry.gd" id="1_kocur"]
-[ext_resource type="Resource" uid="uid://bt6ssj3ejtk4a" path="res://Weapons/Types/machine_gun.tres" id="2_n51hm"]
+[ext_resource type="Resource" uid="uid://d2bh2x4uyeain" path="res://Weapons/Types/machine_gun.tres" id="2_n51hm"]
 [ext_resource type="Script" path="res://Global/Scripts/baseresource.gd" id="2_xehv7"]
 
 [node name="item_registry" type="Node"]
