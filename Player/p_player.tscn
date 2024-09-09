@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://clmojr6n6jc32"]
+[gd_scene load_steps=22 format=3 uid="uid://clmojr6n6jc32"]
 
 [ext_resource type="Script" path="res://Player/Scripts/avatar_controller.gd" id="1_f0er1"]
 [ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
@@ -11,13 +11,70 @@
 [ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="8_5wt5w"]
 [ext_resource type="Script" path="res://addons/shape_texture_2d/drawable_rectangle.gd" id="8_r6yrd"]
 [ext_resource type="Resource" uid="uid://bt6ssj3ejtk4a" path="res://Weapons/Types/machine_gun.tres" id="9_gvarx"]
+[ext_resource type="Script" path="res://addons/shape_texture_2d/drawable_polygon.gd" id="11_734yf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55xom"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6bpmn"]
 
+[sub_resource type="Resource" id="Resource_md6mu"]
+script = ExtResource("11_734yf")
+points = 3
+is_star = false
+star_inset = 0.5
+
+[sub_resource type="Texture2D" id="Texture2D_6ts6l"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_wgioa")
+size = Vector2i(128, 128)
+shape = SubResource("Resource_md6mu")
+fill_type = 0
+fill_color = Color(1, 1, 1, 1)
+fill_from = Vector2(0, 0)
+fill_to = Vector2(1, 0)
+fill_repeat = "pad"
+stroke_type = 0
+stroke_width = 0.0
+stroke_color = Color(0, 0, 0, 1)
+stroke_from = Vector2(0, 0)
+stroke_to = Vector2(1, 0)
+stroke_repeat = "pad"
+stroke_joint = "round"
+offset = Vector2(10, 0)
+rotation = -90.0
+scale = Vector2(1, 1)
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ieh1s"]
 size = Vector2(50, 300)
+
+[sub_resource type="Resource" id="Resource_y6tj3"]
+script = ExtResource("11_734yf")
+points = 3
+is_star = false
+star_inset = 0.5
+
+[sub_resource type="Texture2D" id="Texture2D_v7dmw"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_wgioa")
+size = Vector2i(128, 128)
+shape = SubResource("Resource_y6tj3")
+fill_type = 0
+fill_color = Color(1, 1, 1, 1)
+fill_from = Vector2(0, 0)
+fill_to = Vector2(1, 0)
+fill_repeat = "pad"
+stroke_type = 0
+stroke_width = 0.0
+stroke_color = Color(0, 0, 0, 1)
+stroke_from = Vector2(0, 0)
+stroke_to = Vector2(1, 0)
+stroke_repeat = "pad"
+stroke_joint = "round"
+offset = Vector2(-10, 0)
+rotation = 90.0
+scale = Vector2(1, 1)
 
 [sub_resource type="Resource" id="Resource_r58bi"]
 script = ExtResource("8_r6yrd")
@@ -154,9 +211,25 @@ layout_mode = 2
 text = "Shop"
 horizontal_alignment = 1
 
-[node name="icon" type="TextureRect" parent="shop/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="shop/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="left_button" type="TextureButton" parent="shop/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = SubResource("Texture2D_6ts6l")
+
+[node name="icon" type="TextureRect" parent="shop/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_ieh1s")
+
+[node name="right_button" type="TextureButton" parent="shop/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = SubResource("Texture2D_v7dmw")
 
 [node name="title" type="Label" parent="shop/VBoxContainer"]
 layout_mode = 2
@@ -189,3 +262,6 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Buy"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="shop/VBoxContainer/HBoxContainer/left_button" to="shop" method="_on_left_button_pressed"]
+[connection signal="pressed" from="shop/VBoxContainer/HBoxContainer/right_button" to="shop" method="_on_right_button_pressed"]

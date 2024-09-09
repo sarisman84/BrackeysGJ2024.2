@@ -12,6 +12,7 @@ class_name BaseWeapon
 @export var weapon_cost : int = 10000
 @export var ammo_cost : int = 500
 
+
 var m_current_clip_size : int
 var m_barrel : Node3D
 
