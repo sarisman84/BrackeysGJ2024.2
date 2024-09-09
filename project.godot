@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Global/global.gd"
+ItemRegistry="*res://Global/g_item_registry.tscn"
 
 [global_group]
 

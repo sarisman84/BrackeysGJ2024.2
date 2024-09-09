@@ -1,5 +1,5 @@
-extends Resource
-class_name Powerup
+extends BaseResource
+class_name BasePowerup
 
 @export var name : String
 @export var model : Mesh

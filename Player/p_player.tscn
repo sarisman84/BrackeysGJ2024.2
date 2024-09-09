@@ -1,16 +1,43 @@
-[gd_scene load_steps=10 format=3 uid="uid://clmojr6n6jc32"]
+[gd_scene load_steps=13 format=3 uid="uid://clmojr6n6jc32"]
 
 [ext_resource type="Script" path="res://Player/Scripts/avatar_controller.gd" id="1_f0er1"]
 [ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
 [ext_resource type="PackedScene" uid="uid://6klxf7f7gsbv" path="res://Weapons/p_weapon_manager.tscn" id="3_h2gkg"]
-[ext_resource type="PackedScene" uid="uid://bo5hm4bfndpx7" path="res://Weapons/p_machine_gun.tscn" id="4_stvfv"]
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="5_y2spw"]
 [ext_resource type="Script" path="res://Player/Scripts/weapon_select.gd" id="6_ivl8j"]
 [ext_resource type="PackedScene" uid="uid://bqkqv0h1qxo78" path="res://Player/UI/Weapon_Select/ui_weapon_button.tscn" id="7_8oa7h"]
+[ext_resource type="Script" path="res://addons/shape_texture_2d/shape_texture_2d.gd" id="7_wgioa"]
+[ext_resource type="Script" path="res://addons/shape_texture_2d/drawable_rectangle.gd" id="8_r6yrd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55xom"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6bpmn"]
+
+[sub_resource type="Resource" id="Resource_r58bi"]
+script = ExtResource("8_r6yrd")
+corner_rounding = 12.5
+
+[sub_resource type="Texture2D" id="Texture2D_wnb1d"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_wgioa")
+size = Vector2i(350, 50)
+shape = SubResource("Resource_r58bi")
+fill_type = 0
+fill_color = Color(1, 1, 1, 1)
+fill_from = Vector2(0, 0)
+fill_to = Vector2(1, 0)
+fill_repeat = "pad"
+stroke_type = 0
+stroke_width = 0.0
+stroke_color = Color(0, 0, 0, 1)
+stroke_from = Vector2(0, 0)
+stroke_to = Vector2(1, 0)
+stroke_repeat = "pad"
+stroke_joint = "round"
+offset = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
 
 [node name="player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_f0er1")
@@ -41,14 +68,12 @@ size = Vector3(0.540039, 0.147461, 0.751953)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.345628, 0, -0.292966)
 
-[node name="machine_gun" parent="model/weapon_manager" instance=ExtResource("4_stvfv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00572276, 0, 0)
-
 [node name="health_manager" parent="." instance=ExtResource("5_y2spw")]
 collision_layer = 4
 collision_mask = 0
 
 [node name="weapon_select" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("6_ivl8j")
 
 [node name="weapon_button" parent="weapon_select" instance=ExtResource("7_8oa7h")]
@@ -102,3 +127,56 @@ text = "[center]Test Weapon[/center]"
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
+
+[node name="shop" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="shop"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 211.0
+offset_top = 52.0
+offset_right = -211.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shop_title" type="Label" parent="shop/VBoxContainer"]
+layout_mode = 2
+text = "Shop"
+horizontal_alignment = 1
+
+[node name="icon" type="TextureRect" parent="shop/VBoxContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="shop/VBoxContainer"]
+layout_mode = 2
+text = "Template Weapon"
+horizontal_alignment = 1
+
+[node name="cost" type="Label" parent="shop/VBoxContainer"]
+layout_mode = 2
+text = "Cost"
+horizontal_alignment = 1
+
+[node name="Buy" type="TextureButton" parent="shop/VBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("Texture2D_wnb1d")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="shop/VBoxContainer/Buy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Buy"
+horizontal_alignment = 1

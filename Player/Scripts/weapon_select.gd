@@ -34,10 +34,13 @@ func enable_weapon_select(weapon_manager : WeaponManager) -> void:
 	on_weapon_select_start.emit()
 	visible = true
 
-	for i in range(weapon_manager.m_weapon_inventory.size()):
+	var weapon_inv = weapon_manager.m_weapon_inventory
+	var key_reg = weapon_inv.keys()
+	for i in range(weapon_inv.size()):
 		var b := m_weapon_buttons[i]
-		var weapon := weapon_manager.m_weapon_inventory[i]
+		var weapon : BaseWeapon = weapon_inv[key_reg[i]]
 		var icon_holder = b.get_child(0) as TextureRect
+
 		icon_holder.texture = weapon.icon
 		b.button_down.connect(m_on_weapon_select.bind(weapon_manager, i))
 		m_weapon_labels[i] = weapon.display_name
