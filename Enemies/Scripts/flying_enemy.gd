@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var m_speed : int = 12
+@export var m_speed : int = 6
 
 func _physics_process(_delta: float) -> void:
 	var m_position_diff = Global.player_coords - position 
