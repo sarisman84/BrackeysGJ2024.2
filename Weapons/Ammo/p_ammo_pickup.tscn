@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://djq2jxg8ly7e1"]
+
+[ext_resource type="Script" path="res://Weapons/Ammo/Scripts/ammo_pickup.gd" id="1_4tmor"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_da2ev"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6jpxd"]
+
+[node name="ammo_pickup" type="Area3D"]
+script = ExtResource("1_4tmor")
+ammo_type = "machine_gun"
+
+[node name="shape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_da2ev")
+
+[node name="model" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_6jpxd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

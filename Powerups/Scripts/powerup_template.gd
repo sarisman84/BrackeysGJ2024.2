@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export var powerup_name : Powerup
+@export var powerup_name : BasePowerup
 
 signal powerup_obtained(name)
 

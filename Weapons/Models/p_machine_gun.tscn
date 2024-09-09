@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo5hm4bfndpx7"]
+[gd_scene format=3 uid="uid://bo5hm4bfndpx7"]
 
-[ext_resource type="Script" path="res://Weapons/Scripts/machine_gun.gd" id="1_lsh8r"]
-[ext_resource type="PackedScene" uid="uid://cbkeumql2bbb0" path="res://Weapons/Bullets/p_default_bullet.tscn" id="2_qgu1u"]
-
-[node name="machine_gun" type="Node3D" node_paths=PackedStringArray("barrel_node")]
-script = ExtResource("1_lsh8r")
-bullet_instance = ExtResource("2_qgu1u")
-barrel_node = NodePath("barrel")
+[node name="machine_gun" type="Node3D"]
 
 [node name="model" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0259553, 0)
