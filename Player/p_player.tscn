@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://clmojr6n6jc32"]
+[gd_scene load_steps=17 format=3 uid="uid://clmojr6n6jc32"]
 
 [ext_resource type="Script" path="res://Player/Scripts/avatar_controller.gd" id="1_f0er1"]
 [ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
@@ -6,12 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="5_y2spw"]
 [ext_resource type="Script" path="res://Player/Scripts/weapon_select.gd" id="6_ivl8j"]
 [ext_resource type="PackedScene" uid="uid://bqkqv0h1qxo78" path="res://Player/UI/Weapon_Select/ui_weapon_button.tscn" id="7_8oa7h"]
+[ext_resource type="Script" path="res://Player/UI/shop.gd" id="7_eni7t"]
 [ext_resource type="Script" path="res://addons/shape_texture_2d/shape_texture_2d.gd" id="7_wgioa"]
+[ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="8_5wt5w"]
 [ext_resource type="Script" path="res://addons/shape_texture_2d/drawable_rectangle.gd" id="8_r6yrd"]
+[ext_resource type="Resource" uid="uid://bt6ssj3ejtk4a" path="res://Weapons/Types/machine_gun.tres" id="9_gvarx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55xom"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6bpmn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ieh1s"]
+size = Vector2(50, 300)
 
 [sub_resource type="Resource" id="Resource_r58bi"]
 script = ExtResource("8_r6yrd")
@@ -129,6 +135,8 @@ scroll_active = false
 shortcut_keys_enabled = false
 
 [node name="shop" type="CanvasLayer" parent="."]
+script = ExtResource("7_eni7t")
+shop_items = Array[ExtResource("8_5wt5w")]([ExtResource("9_gvarx")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="shop"]
 anchors_preset = 15
@@ -148,6 +156,7 @@ horizontal_alignment = 1
 
 [node name="icon" type="TextureRect" parent="shop/VBoxContainer"]
 layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_ieh1s")
 
 [node name="title" type="Label" parent="shop/VBoxContainer"]
 layout_mode = 2

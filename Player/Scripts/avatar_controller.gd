@@ -18,7 +18,6 @@ extends CharacterBody3D
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _physics_process(delta : float) -> void:
-
 	if not is_on_floor():
 		velocity.y -= m_gravity * delta
 
