@@ -59,7 +59,7 @@ func disable_weapon_select(emit_event : bool = true) -> void:
 	visible = false
 
 func m_on_weapon_select(weapon_manager : WeaponManager, index : int) -> void:
-	weapon_manager.selected_weapon_index = index
+	weapon_manager.selected_weapon = index
 	on_weapon_selected.emit()
 	disable_weapon_select(false)
 	pass

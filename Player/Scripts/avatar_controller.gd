@@ -14,8 +14,12 @@ extends CharacterBody3D
 @onready var model = $model
 @onready var weapon_manager = %weapon_manager
 @onready var weapon_select = $weapon_select
+@onready var shop = $shop
 
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _ready() -> void:
+	shop.init(weapon_manager)
 
 func _physics_process(delta : float) -> void:
 	if not is_on_floor():

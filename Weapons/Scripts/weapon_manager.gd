@@ -2,11 +2,11 @@ class_name WeaponManager
 extends Node3D
 
 var m_internal_clock : float
-var m_weapon_inventory : Dictionary
-var m_internal_weapon_models : Dictionary
+var m_weapon_inventory : Array[BaseWeapon]
+var m_internal_weapon_models : Array[Node3D]
 
 var fire_input : bool
-var selected_weapon : String :
+var selected_weapon : int :
 	set(value):
 		m_set_all_weapon_visibility(false)
 		selected_weapon = value
@@ -14,16 +14,32 @@ var selected_weapon : String :
 		m_internal_weapon_models[value].visible = true
 
 
-func refill_ammo_for(weapon_type : String, refill_amount : int) -> bool:
-	return m_weapon_inventory[weapon_type].refill_ammo(refill_amount)
+func refill_ammo_for(weapon_name_or_uuid : Variant, refill_amount : int) -> bool:
+	for i in range(m_weapon_inventory.size()):
+		var w = m_weapon_inventory[i]
 
-func add_weapon(new_weapon: String) -> void:
+		match typeof(weapon_name_or_uuid):
+			TYPE_STRING:
+				if w.display_name.to_lower() == weapon_name_or_uuid.to_lower():
+					return w.refill_ammo(refill_amount)
+			TYPE_INT:
+				if w.UUID == weapon_name_or_uuid:
+					return w.refill_ammo(refill_amount)
+
+
+
+	return false
+
+func add_weapon(new_weapon: Variant) -> void:
 	var weapon = ItemRegistry.get_item(new_weapon) as BaseWeapon
 	assert(weapon)
 	weapon.refill_ammo(weapon.clip_size)
-	m_internal_weapon_models[new_weapon] = weapon.instantiate_weapon_model(self)
-	m_weapon_inventory[new_weapon] = weapon
-	selected_weapon = new_weapon
+
+	var last_indx = m_weapon_inventory.size()
+
+	m_internal_weapon_models.append(weapon.instantiate_weapon_model(self))
+	m_weapon_inventory.append(weapon)
+	selected_weapon = last_indx
 
 
 func m_set_all_weapon_visibility(new_visibility : bool) -> void:
