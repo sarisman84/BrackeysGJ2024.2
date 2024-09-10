@@ -11,6 +11,7 @@ signal on_weapon_refill
 
 var fire_input_override : bool
 var fire_input : bool
+var player : AvatarController
 
 var selected_weapon : int :
 	set(value):
@@ -54,6 +55,17 @@ func add_weapon(new_weapon: Variant) -> void:
 	m_weapon_inventory.append(weapon)
 	selected_weapon = last_indx
 
+func get_weapon(weapon_name_or_uuid: Variant) -> BaseWeapon:
+	for i in range(m_weapon_inventory.size()):
+		var w = m_weapon_inventory[i]
+		match typeof(weapon_name_or_uuid):
+			TYPE_STRING:
+				if w.resource_path.to_lower().contains(weapon_name_or_uuid.to_lower()):
+					return w
+			TYPE_INT:
+				if w.UUID == weapon_name_or_uuid:
+					return w
+	return null
 
 func m_set_all_weapon_visibility(new_visibility : bool) -> void:
 	for model in m_internal_weapon_models:

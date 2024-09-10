@@ -8,8 +8,20 @@ extends OnHitBehaviour
 @export var explosion_detection_duration_in_seconds : float
 
 func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body : Variant) -> void:
-	if bullet.get_instance_id() == incoming_body.get_instance_id() or weapon_manager.owner.get_instance_id() == incoming_body.get_instance_id():
+	var is_itself = bullet.get_instance_id() == incoming_body.get_instance_id()
+	var is_owner = weapon_manager.owner.get_instance_id() == incoming_body.get_instance_id()
+
+
+	if is_itself or is_owner :
 		return
+
+	if incoming_body is HealthManager:
+		var hm = incoming_body as HealthManager
+		var is_owner_hitbox = hm.get_instance_id() == incoming_body.get_instance_id()
+		if is_owner_hitbox:
+			return
+
+	print("[ApplyExplosionOnHit]: collison: %s" % incoming_body.name)
 
 	var hit_pos = bullet.global_position
 	if delete_bullet_on_hit:
@@ -31,7 +43,7 @@ func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body
 	var timer = Timer.new()
 	scene_tree.root.add_child(timer)
 	timer.start(explosion_detection_duration_in_seconds)
-	timer.timeout.connect(on_explosion_expire.bind(explosion_hitbox))
+	timer.timeout.connect(on_explosion_expire.bind(explosion_hitbox, timer))
 
 func on_explosion(weapon_manager: WeaponManager, incoming_body : Variant) -> void:
 	if weapon_manager.owner.get_instance_id() == incoming_body.get_instance_id():
@@ -42,5 +54,6 @@ func on_explosion(weapon_manager: WeaponManager, incoming_body : Variant) -> voi
 
 	health_manager.take_damage(damage)
 
-func on_explosion_expire(explosion_hitbox : Area3D) -> void:
+func on_explosion_expire(explosion_hitbox : Area3D, timer : Timer) -> void:
 	explosion_hitbox.queue_free()
+	timer.queue_free()

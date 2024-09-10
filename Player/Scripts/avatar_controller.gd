@@ -25,13 +25,14 @@ var shop_open = false
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
+	weapon_manager.player = self
 	weapon_select.init(weapon_manager)
 	shop.init(weapon_manager)
 	main_ui.init(health_manager, weapon_manager)
 	Global.player_ref = self
 
 	#DEBUG
-	Global.current_currency = 1000000000
+	Global.current_currency = 100000000
 
 func _physics_process(delta : float) -> void:
 	if shop_open:

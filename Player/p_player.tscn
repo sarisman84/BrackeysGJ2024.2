@@ -102,7 +102,7 @@ scale = Vector2(1, 1)
 
 [node name="player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 0
 script = ExtResource("1_f0er1")
 movement_speed = 25.0
 
@@ -247,7 +247,7 @@ layout_mode = 2
 texture_normal = SubResource("Texture2D_wnb1d")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="shop/shop_group/buy"]
+[node name="label" type="Label" parent="shop/shop_group/buy"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
