@@ -5,6 +5,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qeuvy"]
 
 [node name="health_manager" type="StaticBody3D"]
+collision_layer = 32
+collision_mask = 0
 script = ExtResource("1_dxcja")
 
 [node name="shape" type="CollisionShape3D" parent="."]
