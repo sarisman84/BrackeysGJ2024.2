@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://x36d33lrst47"]
+
+[ext_resource type="Script" path="res://UI/Scripts/options.gd" id="1_d0uf0"]
+[ext_resource type="PackedScene" uid="uid://dfp0ohd6ivh0w" path="res://UI/Scenes/volume_slider.tscn" id="2_ku2tp"]
+
+[node name="options" type="CanvasLayer"]
+script = ExtResource("1_d0uf0")
+
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="header" type="Label" parent="background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = 16.0
+offset_right = 110.0
+offset_bottom = 85.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="sliders" type="VBoxContainer" parent="background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -74.5
+offset_right = 20.0
+offset_bottom = 74.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="master_vbox" type="VBoxContainer" parent="background/sliders"]
+layout_mode = 2
+
+[node name="master" type="Label" parent="background/sliders/master_vbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "MASTER VOLUME"
+horizontal_alignment = 1
+
+[node name="master_volume" parent="background/sliders/master_vbox" instance=ExtResource("2_ku2tp")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="music_vbox" type="VBoxContainer" parent="background/sliders"]
+layout_mode = 2
+
+[node name="music" type="Label" parent="background/sliders/music_vbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "MUSIC VOLUME"
+horizontal_alignment = 1
+
+[node name="music_volume" parent="background/sliders/music_vbox" instance=ExtResource("2_ku2tp")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="sfx_vbox" type="VBoxContainer" parent="background/sliders"]
+layout_mode = 2
+
+[node name="sfx" type="Label" parent="background/sliders/sfx_vbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SFX VOLUME"
+horizontal_alignment = 1
+
+[node name="sfx volume" parent="background/sliders/sfx_vbox" instance=ExtResource("2_ku2tp")]
+layout_mode = 2
+bus_name = "SFX"
+
+[node name="back_button" type="Button" parent="background/sliders"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "BACK"
+
+[connection signal="pressed" from="background/sliders/back_button" to="." method="_on_back_button_pressed"]

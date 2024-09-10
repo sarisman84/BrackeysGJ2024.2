@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqda2pddionm4"]
+
+[ext_resource type="Script" path="res://UI/Scripts/main_menu.gd" id="1_ro81h"]
+[ext_resource type="PackedScene" uid="uid://x36d33lrst47" path="res://UI/Scenes/options.tscn" id="2_jb264"]
+[ext_resource type="PackedScene" uid="uid://duj4fulbycx3j" path="res://Level/s_player_test.tscn" id="2_mtcpa"]
+
+[node name="main_menu" type="CanvasLayer"]
+script = ExtResource("1_ro81h")
+game_scene = ExtResource("2_mtcpa")
+
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vbox" type="VBoxContainer" parent="background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -75.5
+offset_right = 126.0
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="start_button" type="Button" parent="background/vbox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "START GAME"
+
+[node name="options_button" type="Button" parent="background/vbox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "OPTIONS
+"
+
+[node name="options" parent="." instance=ExtResource("2_jb264")]
+visible = false
+
+[connection signal="pressed" from="background/vbox/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="background/vbox/options_button" to="." method="_on_options_button_pressed"]
