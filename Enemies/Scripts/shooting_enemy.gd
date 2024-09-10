@@ -8,7 +8,7 @@ var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var money_value : int 
 
 func _physics_process(delta: float) -> void:
-	var m_position_diff = Global.player_coords - position 
+	var m_position_diff = Global.player_ref.global_position - global_position
 	m_position_diff.y = 0
 	if m_position_diff.length() > m_shooting_distance:
 		m_position_diff = m_position_diff.normalized() * m_speed
@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		velocity.z = 0
 		#TODO: Shoot function
-	
+
 	if not is_on_floor():
 		velocity.y -= m_gravity * delta
 	

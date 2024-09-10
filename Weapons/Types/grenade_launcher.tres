@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=11 format=3 uid="uid://dk3csf75j3e2x"]
+
+[ext_resource type="Texture2D" uid="uid://kjlwgtc8tt00" path="res://Weapons/Icons/sonic-boom.png" id="1_hnpn8"]
+[ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="2_2dqry"]
+[ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/base_behaviour.gd" id="3_8yd8p"]
+[ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/fire_projectile.gd" id="4_iktmo"]
+[ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/apply_explosion.gd" id="5_7mg6t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uloda"]
+radius = 0.25
+
+[sub_resource type="Resource" id="Resource_mth3u"]
+script = ExtResource("4_iktmo")
+bullet_ins = "res://Weapons/Bullets/p_grenade_bullet.tscn"
+bullet_amount = 1
+delay_between_bullets_shot_in_seconds = 0.0
+bullet_spread_in_degrees = 0.0
+bullet_direction_offset = Vector3(0, 1, 0)
+bullet_velocity = 14.0
+bullet_collision_shape = SubResource("SphereShape3D_uloda")
+UUID = -1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6plbv"]
+radius = 5.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2og7x"]
+
+[sub_resource type="Resource" id="Resource_gche0"]
+script = ExtResource("5_7mg6t")
+damage = 1
+explosion_shape = SubResource("SphereShape3D_6plbv")
+explosion_detection_mask = 32
+explosion_detection_duration_in_seconds = 0.1
+hurtbox_shape = SubResource("SphereShape3D_2og7x")
+hurtbox_detection_mask = 33
+delete_bullet_on_hit = true
+UUID = -1
+
+[resource]
+script = ExtResource("2_2dqry")
+weapon_behaviours = Array[ExtResource("3_8yd8p")]([SubResource("Resource_mth3u"), SubResource("Resource_gche0")])
+fire_rate = 0.5
+clip_size = 10
+model = "res://Weapons/Models/p_grenade_launcher.tscn"
+icon = ExtResource("1_hnpn8")
+display_name = "Nova Launcher"
+weapon_cost = 10000
+ammo_cost = 500
+UUID = -1

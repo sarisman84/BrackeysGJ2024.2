@@ -1,3 +1,4 @@
+class_name AvatarController
 extends CharacterBody3D
 
 
@@ -15,15 +16,28 @@ extends CharacterBody3D
 @onready var weapon_manager = %weapon_manager
 @onready var weapon_select = $weapon_select
 @onready var shop = $shop
+#@onready var interaction_manager = %interaction_manager
+@onready var main_ui = $main_ui
+@onready var health_manager = $health_manager
 
 var shop_open = false
 
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready() -> void:
+	weapon_manager.player = self
+	weapon_select.init(weapon_manager)
+	shop.init(weapon_manager)
+	main_ui.init(health_manager, weapon_manager)
+	Global.player_ref = self
+
+	#DEBUG
+	Global.current_currency = 100000000
+
 func _physics_process(delta : float) -> void:
 	if shop_open:
 		return
-	
+
 	if not is_on_floor():
 		velocity.y -= m_gravity * delta
 
@@ -54,7 +68,7 @@ func _physics_process(delta : float) -> void:
 
 
 	move_and_slide()
-	Global.player_coords = position
+	#Global.player_coords = position
 
 
 func _process(delta : float) -> void:
@@ -63,13 +77,8 @@ func _process(delta : float) -> void:
 	model.rotation.y = atan2(cam_dir.x, cam_dir.z)
 	#model.rotation.y = lerp(model.rotation.y, atan2(cam_dir.x, cam_dir.z), ROTATION_SMOOTHING * delta)
 
-	if Input.is_action_just_pressed("weapon_select"):
-		if not weapon_select.visible:
-			weapon_select.enable_weapon_select(weapon_manager)
-		else:
-			weapon_select.disable_weapon_select()
-	elif not weapon_select.visible:
-		weapon_manager.fire_input = Input.is_action_pressed("weapon_fire")
+	#Handle Weapon Fire
+	weapon_manager.fire_input = Input.is_action_pressed("weapon_fire")
 
 func m_calculate_input_direction() -> Vector3:
 	var local_dir = Vector3(Input.get_axis("move_left", "move_right"), 0, Input.get_axis("move_forward", "move_backward"))
@@ -80,11 +89,11 @@ func m_calculate_input_direction() -> Vector3:
 func m_calculate_jump_velocity() -> float:
 	return sqrt(2 * jump_height / m_gravity) * m_gravity
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and Global.player_at_shop:
-		if shop_open:
-			shop.hide_shop()
-			shop_open = false
-		else:
-			shop.show_shop()
-			shop_open = true
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("interact") and Global.player_at_shop:
+		#if shop_open:
+			#shop.hide_shop()
+			#shop_open = false
+		#else:
+			#shop.show_shop()
+			#shop_open = true

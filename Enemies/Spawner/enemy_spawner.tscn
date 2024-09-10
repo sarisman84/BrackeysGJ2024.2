@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://db38rpsv7kars"]
+[gd_scene load_steps=2 format=3 uid="uid://db38rpsv7kars"]
 
 [ext_resource type="Script" path="res://Enemies/Spawner/enemy_spawner.gd" id="1_ye8ye"]
-[ext_resource type="PackedScene" uid="uid://dxcxm2wvtq7fp" path="res://Enemies/Scenes/basic_enemy.tscn" id="2_3i6q0"]
-[ext_resource type="PackedScene" uid="uid://dbhpk13ktqxn5" path="res://Enemies/Scenes/flying_enemy.tscn" id="3_5b1w4"]
-[ext_resource type="PackedScene" uid="uid://cjhnfiv3kdyek" path="res://Enemies/Scenes/shooting_enemy.tscn" id="4_2tyy7"]
 
 [node name="enemy_spawner" type="Node3D"]
 script = ExtResource("1_ye8ye")
-enemies = Array[PackedScene]([ExtResource("2_3i6q0"), ExtResource("3_5b1w4"), ExtResource("4_2tyy7")])
 
 [node name="group_timer" type="Timer" parent="."]
 wait_time = 2.0

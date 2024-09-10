@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s22fwhjfhy6"
-path="res://.godot/imported/rifle (1).png-f44fe03284dd7bba6860b6ebc33f6445.ctex"
+uid="uid://kjlwgtc8tt00"
+path="res://.godot/imported/sonic-boom.png-2edc31e3aeac988e310e79e65eaeb094.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Icons/rifle (1).png"
-dest_files=["res://.godot/imported/rifle (1).png-f44fe03284dd7bba6860b6ebc33f6445.ctex"]
+source_file="res://Weapons/Icons/sonic-boom.png"
+dest_files=["res://.godot/imported/sonic-boom.png-2edc31e3aeac988e310e79e65eaeb094.ctex"]
 
 [params]
 

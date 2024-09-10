@@ -3,10 +3,6 @@ extends Node3D
 @onready var m_group_timer = $group_timer
 @onready var m_downtime_timer = $downtime_timer
 
-@export var enemies : Array[PackedScene]
-@export var spawn_distance = 15
-@export var flying_distance = 10
-
 #Wave Manager
 @export var wave_info_array : Array[WaveInfo]
 var cur_wave = 0
@@ -23,7 +19,7 @@ func start_wave_countdown():
 
 func position_randomize() -> Vector3:
 	var output = Vector3(randf_range(-1,1), 0, randf_range(-1,1))
-	output = (output.normalized() * spawn_distance) + Global.player_coords
+	output = (output.normalized() * wave_info_array[cur_wave].spawn_distance) + Global.player_ref.global_position
 	return output
 
 func _on_timer_timeout() -> void:
@@ -37,9 +33,10 @@ func _on_timer_timeout() -> void:
 
 func spawn_group() -> void:
 	for i in randi_range(1, cur_wave + 2):
-		var chosen_enemy = randi_range(0, cur_wave)
+		var enemies = wave_info_array[cur_wave].enemies
+		var chosen_enemy = randi_range(0, enemies.size() - 1)
 		var instance = enemies[chosen_enemy].instantiate()
 		instance.position = position_randomize()
 		if chosen_enemy == 1:
-			instance.position.y += flying_distance
+			instance.position.y += wave_info_array[cur_wave].flying_distance
 		add_child(instance)
