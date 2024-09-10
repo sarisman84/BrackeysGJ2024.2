@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqjis4gwh32fn"]
+[gd_scene load_steps=6 format=3 uid="uid://bqjis4gwh32fn"]
 
-[ext_resource type="Script" path="res://UI/Scripts/main_ui.gd" id="1_r4d4i"]
+[ext_resource type="Script" path="res://Player/UI/HUD/Scripts/main_ui.gd" id="1_r4d4i"]
+[ext_resource type="Texture2D" uid="uid://0k37q6nr1aoi" path="res://Weapons/Icons/rifle.png" id="2_1aw08"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6l7ef"]
 bg_color = Color(0, 0, 0, 1)
@@ -30,6 +31,9 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_rcrtg"]
+font_size = 32
+
 [node name="main_ui" type="CanvasLayer"]
 script = ExtResource("1_r4d4i")
 
@@ -49,10 +53,14 @@ value = 100.0
 show_percentage = false
 
 [node name="coin_tab" type="ColorRect" parent="."]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 160.0
-offset_bottom = 88.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -163.0
+offset_top = 14.0
+offset_right = -19.0
+offset_bottom = 86.0
+grow_horizontal = 0
 color = Color(0.60933, 0.60933, 0.60933, 1)
 metadata/_edit_group_ = true
 
@@ -68,15 +76,49 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ammo_tab" type="ColorRect" parent="."]
+offset_left = 13.0
+offset_top = 18.0
+offset_right = 212.0
+offset_bottom = 90.0
+color = Color(0.60933, 0.60933, 0.60933, 1)
+metadata/_edit_group_ = true
+
+[node name="container" type="HBoxContainer" parent="ammo_tab"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -32.0
+offset_right = 190.0
+offset_bottom = 32.0
+grow_vertical = 2
+
+[node name="weapon_icon" type="TextureRect" parent="ammo_tab/container"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_1aw08")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="ammo_label" type="Label" parent="ammo_tab/container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "100/100"
+label_settings = SubResource("LabelSettings_rcrtg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="timer_tab" type="ColorRect" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -160.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 88.0
-grow_horizontal = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_top = 73.0
+offset_right = 72.0
+offset_bottom = 145.0
+grow_horizontal = 2
 color = Color(0.60933, 0.60933, 0.60933, 1)
 metadata/_edit_group_ = true
 

@@ -5,9 +5,14 @@
 
 [resource]
 script = ExtResource("1_yg3oh")
-fire_behaviour = "fire_projectile"
+fire_behaviour = "bullet = weapon.instantiate_scene(weapon.bullet_ins)
+owner.get_tree().root.add_child(bullet)
+
+bullet.global_position = weapon.get_barrel().global_position
+bullet.look_at(bullet.transform.origin + weapon.get_barrel().global_basis.z, Vector3.UP)
+bullet.init(owner.get_parent())"
 damage = 1
-bullet_ins = "res://Weapons/Bullets/p_grenade_bullet.tscn"
+bullet_ins = "res://Weapons/Bullets/p_default_bullet.tscn"
 fire_rate = 0.8
 clip_size = 10
 model = "res://Weapons/Models/p_machine_gun.tscn"
@@ -15,3 +20,4 @@ icon = ExtResource("1_rkfo3")
 display_name = "Machine Gun"
 weapon_cost = 10000
 ammo_cost = 500
+UUID = -1

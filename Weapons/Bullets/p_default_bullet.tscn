@@ -1,11 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbkeumql2bbb0"]
-
-[ext_resource type="Script" path="res://Weapons/Bullets/Scripts/default_bullet.gd" id="1_wc2mv"]
+[gd_scene load_steps=2 format=3 uid="uid://cbkeumql2bbb0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g3eww"]
 
 [node name="default_bullet" type="Node3D"]
-script = ExtResource("1_wc2mv")
 
 [node name="hurtbox" type="Area3D" parent="."]
 

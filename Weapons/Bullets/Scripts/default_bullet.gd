@@ -9,8 +9,9 @@ var m_internal_clock : float = 3.0
 func _ready() -> void:
 	m_internal_clock = lifetime
 
-func init() -> void:
+func init(owner : Node3D) -> void:
 	m_direction = global_basis.z
+	m_owner = owner
 
 func _process(_delta : float) -> void:
 	m_internal_clock -= _delta
@@ -20,4 +21,6 @@ func _process(_delta : float) -> void:
 	position += m_direction
 
 func _on_hurtbox_body_entered(_body : Variant) -> void:
+	if m_owner.get_instance_id() == _body.get_instance_id():
+		return
 	queue_free()

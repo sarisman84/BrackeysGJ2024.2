@@ -5,6 +5,11 @@ var m_internal_clock : float
 var m_weapon_inventory : Array[BaseWeapon]
 var m_internal_weapon_models : Array[Node3D]
 
+signal on_weapon_switch
+signal on_weapon_fire
+signal on_weapon_refill
+
+var fire_input_override : bool
 var fire_input : bool
 var selected_weapon : int :
 	set(value):
@@ -12,6 +17,7 @@ var selected_weapon : int :
 		selected_weapon = value
 		m_internal_clock = 0
 		m_internal_weapon_models[value].visible = true
+		on_weapon_switch.emit()
 
 
 func refill_ammo_for(weapon_name_or_uuid : Variant, refill_amount : int) -> bool:
@@ -21,10 +27,16 @@ func refill_ammo_for(weapon_name_or_uuid : Variant, refill_amount : int) -> bool
 		match typeof(weapon_name_or_uuid):
 			TYPE_STRING:
 				if w.resource_path.to_lower().contains(weapon_name_or_uuid.to_lower()):
-					return w.refill_ammo(refill_amount)
+					var result = w.refill_ammo(refill_amount)
+					if result:
+						on_weapon_refill.emit()
+					return result
 			TYPE_INT:
 				if w.UUID == weapon_name_or_uuid:
-					return w.refill_ammo(refill_amount)
+					var result = w.refill_ammo(refill_amount)
+					if result:
+						on_weapon_refill.emit()
+					return result
 
 
 
@@ -57,7 +69,7 @@ func m_set_all_weapon_visibility(new_visibility : bool) -> void:
 
 
 func _ready() -> void:
-	WeaponBehaviours.init()
+	#WeaponBehaviours.init()
 	add_weapon("machine_gun")
 	pass
 
@@ -67,7 +79,8 @@ func _process(_delta : float) -> void:
 	assert(not m_weapon_inventory.is_empty())
 	var weapon = m_weapon_inventory[selected_weapon]
 
-	if m_internal_clock == 0 and fire_input and weapon.has_ammo():
+	if not fire_input_override and m_internal_clock == 0 and fire_input and weapon.has_ammo():
 		weapon.fire(self)
 		weapon.use_ammo()
 		m_internal_clock = weapon.fire_rate
+		on_weapon_fire.emit()

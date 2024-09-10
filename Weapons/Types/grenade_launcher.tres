@@ -1,17 +1,23 @@
 [gd_resource type="Resource" script_class="BaseWeapon" load_steps=3 format=3 uid="uid://dk3csf75j3e2x"]
 
-[ext_resource type="Texture2D" uid="uid://0k37q6nr1aoi" path="res://Weapons/Icons/rifle.png" id="1_hem0a"]
+[ext_resource type="Texture2D" uid="uid://kjlwgtc8tt00" path="res://Weapons/Icons/sonic-boom.png" id="1_hnpn8"]
 [ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="2_2dqry"]
 
 [resource]
 script = ExtResource("2_2dqry")
-fire_behaviour = "fire_projectile"
+fire_behaviour = "bullet = weapon.instantiate_scene(weapon.bullet_ins)
+owner.get_tree().root.add_child(bullet)
+
+bullet.global_position = weapon.get_barrel().global_position
+bullet.look_at(bullet.transform.origin + weapon.get_barrel().global_basis.z, Vector3.UP)
+bullet.init(owner.get_parent())"
 damage = 1
-bullet_ins = "res://Weapons/Bullets/p_default_bullet.tscn"
+bullet_ins = "res://Weapons/Bullets/p_grenade_bullet.tscn"
 fire_rate = 0.5
 clip_size = 10
-model = "res://Weapons/Models/p_machine_gun.tscn"
-icon = ExtResource("1_hem0a")
-display_name = "Machine Gun"
+model = "res://Weapons/Models/p_grenade_launcher.tscn"
+icon = ExtResource("1_hnpn8")
+display_name = "Nova Launcher"
 weapon_cost = 10000
 ammo_cost = 500
+UUID = -1

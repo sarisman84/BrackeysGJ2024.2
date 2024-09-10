@@ -1,4 +1,4 @@
 class_name BaseResource
 extends Resource
 
-var UUID : int = -1
+@export_storage var UUID : int = -1

@@ -97,27 +97,27 @@ func _update() -> void:
 	svg += _svg_gradient("StrokeGradient", stroke_type, stroke_gradient, stroke_from, stroke_to, stroke_repeat)
 	svg += "</defs><g stroke-width='%f' " %  stroke_width
 	svg += "stroke-linejoin='%s' " % stroke_joint
-	
+
 	if fill_type == FillType.SOLID:
 		svg += _svg_color("fill", fill_color)
 	elif fill_type == FillType.LINEAR_GRADIENT or fill_type == FillType.RADIAL_GRADIENT:
 		svg += "fill='url(#FillGradient)'"
 	elif fill_type == FillType.NONE:
 		svg += "fill='none'"
-	
+
 	if stroke_type == FillType.SOLID:
 		svg += _svg_color("stroke", stroke_color)
 	elif stroke_type == FillType.LINEAR_GRADIENT or stroke_type == FillType.RADIAL_GRADIENT:
 		svg += "stroke='url(#StrokeGradient)'"
-	
+
 	svg += " transform='translate(%f, %f) rotate(%f)'>" % [ actual_offset.x, actual_offset.y, rotation ]
 	svg += shape.get_svg(actual_size)
 	svg += "</g></svg>"
-	
+
 	var img = Image.new()
 	img.load_svg_from_string(svg)
 	img.fix_alpha_edges()
-	
+
 	var new_texture = ImageTexture.create_from_image(img)
 	if _texture:
 		RenderingServer.texture_replace(_texture.get_rid(), new_texture.get_rid())

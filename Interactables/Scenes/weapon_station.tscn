@@ -2,26 +2,28 @@
 
 [ext_resource type="Script" path="res://Interactables/Scripts/weapon_station.gd" id="1_253o4"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_sw3he"]
+size = Vector3(3.5, 2.64197, 2.5)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrbu0"]
 albedo_color = Color(0.572549, 0, 0.921569, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sw3he"]
-size = Vector3(3.5, 1.2, 2.5)
-
-[node name="weapon_station" type="Node3D"]
+[node name="weapon_station" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_253o4")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.835385, 0)
+shape = SubResource("BoxShape3D_sw3he")
 
 [node name="model" type="CSGBox3D" parent="."]
 use_collision = true
-size = Vector3(2, 1, 1)
+size = Vector3(0.986328, 1, 1)
 material = SubResource("StandardMaterial3D_wrbu0")
 
-[node name="area" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 4
+[node name="sphere" type="CSGSphere3D" parent="model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05359, 0)
 
-[node name="collision" type="CollisionShape3D" parent="area"]
-shape = SubResource("BoxShape3D_sw3he")
-
-[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
-[connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

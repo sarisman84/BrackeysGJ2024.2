@@ -22,7 +22,7 @@ var waves_spawned = 0:
 			enemy_picker_limit = 2
 			start_downtime()
 			return
-		
+
 		if m_wave_timer.wait_time > timer_limit:
 			m_wave_timer.start(m_wave_timer.wait_time - timer_decrease)
 		else:
@@ -31,7 +31,7 @@ var enemy_picker_limit = 0
 
 func position_randomize() -> Vector3:
 	var output = Vector3(randf_range(-1,1), 0, randf_range(-1,1))
-	output = (output.normalized() * spawn_distance) + Global.player_coords
+	output = (output.normalized() * spawn_distance) + Global.player_ref.global_position
 	return output
 
 func _on_timer_timeout() -> void:

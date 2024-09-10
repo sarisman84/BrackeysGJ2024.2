@@ -3,7 +3,7 @@ class_name BaseWeapon
 
 #@export_custom(PROPERTY_HINT_EXPRESSION,"") var fire_behaviour : String
 @export_group("Functional")
-@export var fire_behaviour : String
+@export_custom(PROPERTY_HINT_EXPRESSION, "") var fire_behaviour : String
 @export var damage : int = 1.0
 @export_file("*tscn") var bullet_ins : String
 @export var fire_rate : float = 0.5
@@ -39,7 +39,7 @@ func refill_ammo(amount: int) -> bool:
 		return false
 
 	m_current_clip_size += amount
-	m_current_clip_size = max(m_current_clip_size, clip_size)
+	m_current_clip_size = min(m_current_clip_size, clip_size)
 	return true
 
 func instantiate_scene(scene_path : String) -> Node3D:
@@ -63,7 +63,9 @@ func get_barrel() -> Node3D:
 
 # Virtual function
 func fire(owner : Node3D) -> void:
-	WeaponBehaviours.m_weapon_behaviours[fire_behaviour].call(self, owner)
+	var bullet
+	WeaponBehaviours.evaluate_expression(fire_behaviour,self, {"owner" : owner,"weapon":self, "bullet" : bullet})
+	#WeaponBehaviours.m_weapon_behaviours[fire_behaviour].call(self, owner)
 	#var expression : Expression = Expression.new()
 	#var error = expression.parse(fire_behaviour, ["owner"])
 	#if error != OK:

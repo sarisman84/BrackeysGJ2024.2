@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmd01lp68f7ki"]
+[gd_scene load_steps=5 format=3 uid="uid://bmd01lp68f7ki"]
 
 [ext_resource type="Script" path="res://Global/Scripts/item_registry.gd" id="1_kocur"]
 [ext_resource type="Resource" uid="uid://d2bh2x4uyeain" path="res://Weapons/Types/machine_gun.tres" id="2_n51hm"]
 [ext_resource type="Script" path="res://Global/Scripts/baseresource.gd" id="2_xehv7"]
+[ext_resource type="Resource" uid="uid://dk3csf75j3e2x" path="res://Weapons/Types/grenade_launcher.tres" id="4_cp7c7"]
 
 [node name="item_registry" type="Node"]
 script = ExtResource("1_kocur")
-item_registry = Array[ExtResource("2_xehv7")]([ExtResource("2_n51hm")])
+item_registry = Array[ExtResource("2_xehv7")]([ExtResource("2_n51hm"), ExtResource("4_cp7c7")])
