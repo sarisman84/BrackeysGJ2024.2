@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_7ea1m")
 
 [node name="basic_enemy" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_1th7j")
 money_amount = 3
 money_value = 10
@@ -26,11 +26,10 @@ shape = SubResource("CapsuleShape3D_t180b")
 mesh = SubResource("CapsuleMesh_g6tmt")
 
 [node name="health_manager" parent="." instance=ExtResource("2_ufrkp")]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 32
 max_health = 10
 
 [node name="meele_attack" parent="." instance=ExtResource("3_knfvv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.988145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.011855)
 
 [connection signal="on_death" from="health_manager" to="." method="_on_health_manager_on_death"]

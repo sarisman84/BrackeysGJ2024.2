@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var m_coin_label = $coin_tab/coin_label
 @onready var m_timer_label = $timer_tab/timer_label
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_ui()
 
 func m_update_visual_health_bar(health: int) -> void:

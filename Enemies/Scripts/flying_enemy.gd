@@ -10,6 +10,7 @@ func _physics_process(_delta: float) -> void:
 	m_position_diff = m_position_diff.normalized() * m_speed
 	velocity = m_position_diff
 	
+	rotation.y = - Vector2(m_position_diff.x, m_position_diff.z).angle()
 	move_and_slide()
 
 func _on_health_manager_on_death() -> void:

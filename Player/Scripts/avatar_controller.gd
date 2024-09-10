@@ -60,7 +60,8 @@ func _physics_process(delta : float) -> void:
 func _process(delta : float) -> void:
 	var cam_dir = camera.global_basis.z
 	const ROTATION_SMOOTHING := 25
-	model.rotation.y = lerp(model.rotation.y, atan2(cam_dir.x, cam_dir.z), ROTATION_SMOOTHING * delta)
+	model.rotation.y = atan2(cam_dir.x, cam_dir.z)
+	#model.rotation.y = lerp(model.rotation.y, atan2(cam_dir.x, cam_dir.z), ROTATION_SMOOTHING * delta)
 
 	if Input.is_action_just_pressed("weapon_select"):
 		if not weapon_select.visible:

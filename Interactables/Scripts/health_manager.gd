@@ -8,6 +8,9 @@ signal on_take_damage
 signal on_heal
 signal on_death
 
+func _ready() -> void:
+	reset_health()
+
 func reset_health() -> void:
 	m_current_health = max_health
 
