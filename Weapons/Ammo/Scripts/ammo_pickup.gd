@@ -9,5 +9,7 @@ func m_on_ammo_pickup(weapon_manager: WeaponManager) -> bool:
 
 
 func _on_body_entered(body : Variant) -> void:
+	if body is not AvatarController:
+		return
 	if m_on_ammo_pickup(body.weapon_manager):
 		queue_free()

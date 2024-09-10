@@ -1,11 +1,11 @@
 extends BaseResource
 class_name BaseWeapon
 
-#@export_custom(PROPERTY_HINT_EXPRESSION,"") var fire_behaviour : String
+
 @export_group("Functional")
-@export_custom(PROPERTY_HINT_EXPRESSION, "") var fire_behaviour : String
-@export var damage : int = 1.0
-@export_file("*tscn") var bullet_ins : String
+#@export_custom(PROPERTY_HINT_EXPRESSION, "") var fire_behaviour : String
+#@export var fire_behaviour : WeaponBehaviours.Type
+@export var weapon_behaviours : Array[BaseBehaviour]
 @export var fire_rate : float = 0.5
 @export var clip_size : int = 10
 @export_group("Visual")
@@ -63,8 +63,11 @@ func get_barrel() -> Node3D:
 
 # Virtual function
 func fire(owner : Node3D) -> void:
-	var bullet
-	WeaponBehaviours.evaluate_expression(fire_behaviour,self, {"owner" : owner,"weapon":self, "bullet" : bullet})
+	var input = {"weapon": self, "owner": owner}
+	for behaviour in weapon_behaviours:
+		input = behaviour.apply_behaviour(input)
+	#var bullet
+	#WeaponBehaviours.evaluate_expression(fire_behaviour,self, {"owner" : owner,"weapon":self, "bullet" : bullet})
 	#WeaponBehaviours.m_weapon_behaviours[fire_behaviour].call(self, owner)
 	#var expression : Expression = Expression.new()
 	#var error = expression.parse(fire_behaviour, ["owner"])

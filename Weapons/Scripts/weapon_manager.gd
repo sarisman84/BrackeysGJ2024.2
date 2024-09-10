@@ -11,6 +11,7 @@ signal on_weapon_refill
 
 var fire_input_override : bool
 var fire_input : bool
+
 var selected_weapon : int :
 	set(value):
 		m_set_all_weapon_visibility(false)

@@ -1,23 +1,49 @@
-[gd_resource type="Resource" script_class="BaseWeapon" load_steps=3 format=3 uid="uid://d2bh2x4uyeain"]
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=11 format=3 uid="uid://d2bh2x4uyeain"]
 
 [ext_resource type="Texture2D" uid="uid://0k37q6nr1aoi" path="res://Weapons/Icons/rifle.png" id="1_rkfo3"]
 [ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="1_yg3oh"]
+[ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/base_behaviour.gd" id="3_5ahxb"]
+[ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/fire_projectile.gd" id="4_p4y7f"]
+[ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/apply_explosion.gd" id="5_e660x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2holm"]
+radius = 0.15
+
+[sub_resource type="Resource" id="Resource_efavv"]
+script = ExtResource("4_p4y7f")
+bullet_ins = "res://Weapons/Bullets/p_default_bullet.tscn"
+bullet_amount = 1
+delay_between_bullets_shot_in_seconds = 0.0
+bullet_spread_in_degrees = 0.0
+bullet_direction_offset = Vector3(0, 0, 0)
+bullet_velocity = 100.0
+bullet_collision_shape = SubResource("SphereShape3D_2holm")
+UUID = -1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e88pd"]
+radius = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kyqxb"]
+
+[sub_resource type="Resource" id="Resource_varnv"]
+script = ExtResource("5_e660x")
+damage = 1
+explosion_shape = SubResource("SphereShape3D_e88pd")
+explosion_detection_mask = 32
+explosion_detection_duration_in_seconds = 0.1
+hurtbox_shape = SubResource("SphereShape3D_kyqxb")
+hurtbox_detection_mask = 33
+delete_bullet_on_hit = true
+UUID = -1
 
 [resource]
 script = ExtResource("1_yg3oh")
-fire_behaviour = "bullet = weapon.instantiate_scene(weapon.bullet_ins)
-owner.get_tree().root.add_child(bullet)
-
-bullet.global_position = weapon.get_barrel().global_position
-bullet.look_at(bullet.transform.origin + weapon.get_barrel().global_basis.z, Vector3.UP)
-bullet.init(owner.get_parent())"
-damage = 1
-bullet_ins = "res://Weapons/Bullets/p_default_bullet.tscn"
-fire_rate = 0.8
-clip_size = 10
+weapon_behaviours = Array[ExtResource("3_5ahxb")]([SubResource("Resource_efavv"), SubResource("Resource_varnv")])
+fire_rate = 0.15
+clip_size = 100
 model = "res://Weapons/Models/p_machine_gun.tscn"
 icon = ExtResource("1_rkfo3")
 display_name = "Machine Gun"
 weapon_cost = 10000
-ammo_cost = 500
+ammo_cost = 100
 UUID = -1
