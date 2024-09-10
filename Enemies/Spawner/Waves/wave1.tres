@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WaveInfo" load_steps=2 format=3 uid="uid://3fjug1vja3cp"]
+
+[ext_resource type="Script" path="res://Enemies/Spawner/Waves/wave_info.gd" id="1_cvj7k"]
+
+[resource]
+script = ExtResource("1_cvj7k")
+wave_start_time = 15.0
+group_amount = 10
+init_spawn_time_delay = 5.0
+spawn_time_delay_decrease = 0.2

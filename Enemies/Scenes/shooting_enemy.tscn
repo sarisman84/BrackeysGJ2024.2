@@ -25,7 +25,6 @@ shape = SubResource("CapsuleShape3D_5f3dy")
 mesh = SubResource("CapsuleMesh_ob6p4")
 
 [node name="health_manager" parent="." instance=ExtResource("2_b4uvf")]
-collision_layer = 32
 max_health = 15
 
 [connection signal="on_death" from="health_manager" to="." method="_on_health_manager_on_death"]
