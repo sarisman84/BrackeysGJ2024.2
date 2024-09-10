@@ -17,3 +17,5 @@ func update_ui() -> void:
 	var minutes = int(Global.time_elapsed) / 60
 	var seconds = int(Global.time_elapsed) % 60
 	m_timer_label.text = "%d:%02d" % [minutes, seconds]
+	
+	m_coin_label.text = str(Global.player_money)
