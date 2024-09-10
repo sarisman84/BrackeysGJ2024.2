@@ -26,7 +26,6 @@ shape = SubResource("CapsuleShape3D_t180b")
 mesh = SubResource("CapsuleMesh_g6tmt")
 
 [node name="health_manager" parent="." instance=ExtResource("2_ufrkp")]
-collision_layer = 32
 max_health = 10
 
 [node name="meele_attack" parent="." instance=ExtResource("3_knfvv")]
