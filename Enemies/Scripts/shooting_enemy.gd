@@ -4,6 +4,9 @@ extends CharacterBody3D
 @export var m_shooting_distance : int = 8
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@export var money_amount : int
+@export var money_value : int 
+
 func _physics_process(delta: float) -> void:
 	var m_position_diff = Global.player_coords - position 
 	m_position_diff.y = 0
@@ -20,3 +23,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= m_gravity * delta
 	
 	move_and_slide()
+
+func _on_health_manager_on_death() -> void:
+	Global.spawn_money(position, money_amount, money_value)
+	queue_free()

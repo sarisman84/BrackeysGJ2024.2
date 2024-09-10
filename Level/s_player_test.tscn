@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://duj4fulbycx3j"]
+[gd_scene load_steps=9 format=3 uid="uid://duj4fulbycx3j"]
 
 [ext_resource type="PackedScene" uid="uid://clmojr6n6jc32" path="res://Player/p_player.tscn" id="1_vw2pc"]
 [ext_resource type="PackedScene" uid="uid://dbqqjaey7p3cl" path="res://Interactables/Scenes/weapon_station.tscn" id="2_qf88q"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxcxm2wvtq7fp" path="res://Enemies/Scenes/basic_enemy.tscn" id="5_jxkdm"]
 [ext_resource type="PackedScene" uid="uid://dbhpk13ktqxn5" path="res://Enemies/Scenes/flying_enemy.tscn" id="6_seycy"]
 [ext_resource type="PackedScene" uid="uid://cjhnfiv3kdyek" path="res://Enemies/Scenes/shooting_enemy.tscn" id="7_o4a2m"]
+[ext_resource type="PackedScene" uid="uid://bqjis4gwh32fn" path="res://UI/Scenes/main_ui.tscn" id="8_3st87"]
 
 [node name="PlayerTest" type="Node"]
 
@@ -64,6 +65,8 @@ autostart = true
 [node name="downtime_timer" type="Timer" parent="enemy_spawner"]
 wait_time = 10.0
 one_shot = true
+
+[node name="main_ui" parent="." instance=ExtResource("8_3st87")]
 
 [connection signal="timeout" from="enemy_spawner/wave_timer" to="enemy_spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="enemy_spawner/downtime_timer" to="enemy_spawner" method="_on_timer_timeout"]
