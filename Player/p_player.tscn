@@ -102,6 +102,7 @@ scale = Vector2(1, 1)
 
 [node name="player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_f0er1")
 movement_speed = 25.0
 
@@ -131,8 +132,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.345628, 0, -0.292966)
 
 [node name="health_manager" parent="." instance=ExtResource("5_y2spw")]
-collision_layer = 4
-collision_mask = 0
 
 [node name="weapon_select" type="CanvasLayer" parent="."]
 process_mode = 3

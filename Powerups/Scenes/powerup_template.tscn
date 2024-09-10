@@ -15,6 +15,7 @@ height = 1.0
 
 [node name="powerup_template" type="RigidBody3D"]
 collision_layer = 8
+collision_mask = 5
 script = ExtResource("1_5x52h")
 
 [node name="area" type="Area3D" parent="."]

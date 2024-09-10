@@ -7,6 +7,8 @@
 [sub_resource type="BoxMesh" id="BoxMesh_6jpxd"]
 
 [node name="ammo_pickup" type="Area3D"]
+collision_layer = 8
+collision_mask = 5
 script = ExtResource("1_4tmor")
 ammo_type = "machine_gun"
 

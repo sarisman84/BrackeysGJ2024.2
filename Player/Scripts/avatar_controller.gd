@@ -73,7 +73,8 @@ func _physics_process(delta : float) -> void:
 func _process(delta : float) -> void:
 	var cam_dir = camera.global_basis.z
 	const ROTATION_SMOOTHING := 25
-	model.rotation.y = lerp(model.rotation.y, atan2(cam_dir.x, cam_dir.z), ROTATION_SMOOTHING * delta)
+	model.rotation.y = atan2(cam_dir.x, cam_dir.z)
+	#model.rotation.y = lerp(model.rotation.y, atan2(cam_dir.x, cam_dir.z), ROTATION_SMOOTHING * delta)
 
 	#Handle Weapon Fire
 	weapon_manager.fire_input = Input.is_action_pressed("weapon_fire")

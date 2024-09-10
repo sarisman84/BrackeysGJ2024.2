@@ -18,6 +18,8 @@ height = 1.0
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_7tov3")
+money_amount = 2
+money_value = 14
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_2aftr")
@@ -26,6 +28,9 @@ shape = SubResource("CapsuleShape3D_2aftr")
 mesh = SubResource("CapsuleMesh_k1ryd")
 
 [node name="health_manager" parent="." instance=ExtResource("2_0duqf")]
+max_health = 12
 
 [node name="meele_attack" parent="." instance=ExtResource("3_54dyb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.988145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.011855)
+
+[connection signal="on_death" from="health_manager" to="." method="_on_health_manager_on_death"]
