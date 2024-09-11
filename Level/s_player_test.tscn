@@ -13,6 +13,7 @@
 process_mode = 1
 
 [node name="player" parent="." instance=ExtResource("1_vw2pc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 18)
 collision_mask = 1
 movement_speed = 10.0
 
