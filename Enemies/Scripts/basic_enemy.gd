@@ -4,7 +4,7 @@ extends CharacterBody3D
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @export var money_amount : int
-@export var money_value : int 
+@export var money_value : int
 
 func _physics_process(delta: float) -> void:
 	var m_position_diff = Global.player_ref.global_position - global_position
@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 
 	if not is_on_floor():
 		velocity.y -= m_gravity * delta
-	
+
 	rotation.y = - Vector2(m_position_diff.x, m_position_diff.z).angle()
 	move_and_slide()
 
