@@ -6,15 +6,13 @@ var player_ref : Node3D
 var time_elapsed = 0.0
 var player_at_shop = false
 var current_currency : int = 0 :
-	get:
-		return current_currency
 	set(value):
+		current_currency = value
 		var earned = value > current_currency
 		if earned:
 			on_currency_earned.emit()
 		else:
 			on_currency_lost.emit()
-		current_currency = value
 
 var current_paused_state : PausedStates = PausedStates.NONE
 

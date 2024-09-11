@@ -32,7 +32,7 @@ func _ready() -> void:
 	Global.player_ref = self
 
 	#DEBUG
-	Global.current_currency = 100000000
+	Global.current_currency = 100000
 
 func _physics_process(delta : float) -> void:
 	if shop_open:

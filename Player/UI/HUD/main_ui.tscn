@@ -56,10 +56,10 @@ show_percentage = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -163.0
-offset_top = 14.0
-offset_right = -19.0
-offset_bottom = 86.0
+offset_left = -216.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 90.0
 grow_horizontal = 0
 color = Color(0.60933, 0.60933, 0.60933, 1)
 metadata/_edit_group_ = true
@@ -78,10 +78,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ammo_tab" type="ColorRect" parent="."]
-offset_left = 13.0
-offset_top = 18.0
-offset_right = 212.0
-offset_bottom = 90.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 216.0
+offset_bottom = 88.0
 color = Color(0.60933, 0.60933, 0.60933, 1)
 metadata/_edit_group_ = true
 
