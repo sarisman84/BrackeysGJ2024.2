@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://x36d33lrst47"]
 
-[ext_resource type="Script" path="res://UI/Scripts/options.gd" id="1_d0uf0"]
-[ext_resource type="PackedScene" uid="uid://dfp0ohd6ivh0w" path="res://UI/Scenes/volume_slider.tscn" id="2_ku2tp"]
+[ext_resource type="Script" path="res://Menus/Scripts/options.gd" id="1_d0uf0"]
+[ext_resource type="PackedScene" uid="uid://dfp0ohd6ivh0w" path="res://Menus/Scenes/volume_slider.tscn" id="2_ku2tp"]
 
 [node name="options" type="CanvasLayer"]
 script = ExtResource("1_d0uf0")

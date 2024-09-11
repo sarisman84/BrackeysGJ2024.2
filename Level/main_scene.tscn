@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg12mkur7y1qe"]
+
+[ext_resource type="PackedScene" uid="uid://duj4fulbycx3j" path="res://Level/s_player_test.tscn" id="1_lulec"]
+[ext_resource type="PackedScene" uid="uid://drbn3wjb4djbq" path="res://Menus/Scenes/pause_menu.tscn" id="3_4t7g8"]
+
+[node name="main_scene" type="Node3D"]
+
+[node name="pause_menu" parent="." instance=ExtResource("3_4t7g8")]
+visible = false
+
+[node name="PlayerTest" parent="." instance=ExtResource("1_lulec")]

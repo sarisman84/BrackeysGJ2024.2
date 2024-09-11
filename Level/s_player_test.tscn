@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://c68arqvoqpeo3" path="res://Enemies/Spawner/Waves/wave3.tres" id="8_x6dtt"]
 
 [node name="PlayerTest" type="Node"]
+process_mode = 1
 
 [node name="player" parent="." instance=ExtResource("1_vw2pc")]
 collision_mask = 1
