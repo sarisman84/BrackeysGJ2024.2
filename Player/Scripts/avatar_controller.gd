@@ -32,7 +32,8 @@ func _ready() -> void:
 	shop.init(weapon_manager)
 	main_ui.init(health_manager, weapon_manager)
 	Global.player_ref = self
-
+	main_ui.m_update_visual_max_health(health_manager)
+	main_ui.m_update_visual_health_bar(health_manager)
 	#DEBUG
 	Global.current_currency = 100000
 

@@ -29,7 +29,8 @@ func m_disable() -> void:
 
 func m_on_play() -> void:
 	m_disable()
-	get_tree().reload_current_scene()
+	owner.get_tree().reload_current_scene()
+	Global.time_elapsed = 0.0
 
 
 func m_on_quit() -> void:

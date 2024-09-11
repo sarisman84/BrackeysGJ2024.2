@@ -26,6 +26,8 @@ func heal(amount : int) -> bool:
 	return true
 
 func take_damage(amount : int) -> void:
+	print(get_parent().name)
+	print(amount)
 	m_current_health -= amount
 	m_current_health = max(m_current_health, 0)
 	if m_current_health == 0:
