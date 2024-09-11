@@ -8,6 +8,7 @@ extends Node3D
 var cur_wave = 0
 var groups_spawned = 0
 var minimum_spawn_time = 1.0
+@export var enemy_limit = 50
 
 var spawn_margin = 15
 var raycast_result
@@ -15,7 +16,7 @@ var raycast_result
 func _ready() -> void:
 	start_wave_countdown()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var space_state = get_world_3d().direct_space_state
 	var position = position_randomize()
 	var start = position + Vector3(0, spawn_margin, 0)
@@ -46,14 +47,14 @@ func _on_timer_timeout() -> void:
 		start_wave_countdown()
 
 func spawn_group() -> void:
-	for i in randi_range(1, cur_wave + 2):
-		var enemies = wave_info_array[cur_wave].enemies
-		var chosen_enemy = randi_range(0, enemies.size() - 1)
-		var instance = enemies[chosen_enemy].instantiate()
-		print(raycast_result.position)
-		instance.position = raycast_result.position
-		instance.position.y += 1.5
-		if chosen_enemy == 1:
-			instance.position.y += wave_info_array[cur_wave].flying_distance
-		add_child(instance)
-		await get_tree().create_timer(0.375).timeout
+	if get_child_count() < 30:
+		for i in randi_range(1, cur_wave + 2):
+			var enemies = wave_info_array[cur_wave].enemies
+			var chosen_enemy = randi_range(0, enemies.size() - 1)
+			var instance = enemies[chosen_enemy].instantiate()
+			instance.position = raycast_result.position
+			instance.position.y += 1.5
+			if chosen_enemy == 1:
+				instance.position.y += wave_info_array[cur_wave].flying_distance
+			add_child(instance)
+			await get_tree().create_timer(0.375).timeout

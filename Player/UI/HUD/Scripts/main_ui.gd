@@ -9,8 +9,8 @@ extends CanvasLayer
 
 func init(health_manager : HealthManager, weapon_manager : WeaponManager) -> void:
 	#Connect health events to health ui
-	health_manager.on_take_damage.connect(m_update_visual_health_bar.bind(health_manager.m_current_health))
-	health_manager.on_heal.connect(m_update_visual_health_bar.bind(health_manager.m_current_health))
+	health_manager.on_take_damage.connect(m_update_visual_health_bar.bind(health_manager))
+	health_manager.on_heal.connect(m_update_visual_health_bar.bind(health_manager))
 
 	#Connect currency events to currency ui
 	Global.on_currency_earned.connect(m_update_visual_coins)
@@ -25,9 +25,12 @@ func _process(_delta: float) -> void:
 	m_update_time()
 	visible = Global.current_paused_state == Global.PausedStates.NONE
 
+func m_update_visual_max_health(health_manager: HealthManager) -> void:
+	m_health_bar.max_value = health_manager.max_health
 
-func m_update_visual_health_bar(health: int) -> void:
-	m_health_bar.value = health
+func m_update_visual_health_bar(health_manager: HealthManager) -> void:
+	print(health_manager.m_current_health)
+	m_health_bar.value = health_manager.m_current_health
 
 func m_update_visual_coins() -> void:
 	m_coin_label.text = str(Global.current_currency)
