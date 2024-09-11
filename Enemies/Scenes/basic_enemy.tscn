@@ -30,5 +30,7 @@ max_health = 10
 
 [node name="meele_attack" parent="." instance=ExtResource("3_knfvv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.011855)
+collision_layer = 0
+collision_mask = 32
 
 [connection signal="on_death" from="health_manager" to="." method="_on_health_manager_on_death"]

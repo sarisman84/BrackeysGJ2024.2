@@ -1,6 +1,6 @@
 extends Node
 
-enum PausedStates {NONE, WEAPON_SELECT, SHOP, PAUSE_MENU, MAX}
+enum PausedStates {NONE, WEAPON_SELECT, SHOP, PAUSE_MENU, GAME_OVER, MAX}
 
 var player_ref : Node3D
 var time_elapsed = 0.0
