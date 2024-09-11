@@ -27,4 +27,6 @@ mesh = SubResource("CapsuleMesh_ob6p4")
 [node name="health_manager" parent="." instance=ExtResource("2_b4uvf")]
 max_health = 15
 
+[node name="navigation" type="NavigationAgent3D" parent="."]
+
 [connection signal="on_death" from="health_manager" to="." method="_on_health_manager_on_death"]

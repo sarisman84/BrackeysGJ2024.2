@@ -6,6 +6,9 @@ extends CharacterBody3D
 @export var money_value : int 
 
 func _physics_process(_delta: float) -> void:
+	if !Global.player_ref:
+		return
+	
 	var m_position_diff = Global.player_ref.global_position - global_position
 	m_position_diff = m_position_diff.normalized() * m_speed
 	velocity = m_position_diff
