@@ -34,7 +34,7 @@ func m_update_visual_coins(coins: int) -> void:
 
 func m_update_visual_ammo_counter(weapon_manager : WeaponManager) -> void:
 	var weapon = weapon_manager.m_weapon_inventory[weapon_manager.selected_weapon]
-	m_ammo_label.text = "%d/%d" % [weapon.clip_size, weapon.m_current_clip_size]
+	m_ammo_label.text = "%d/%d" % [weapon.m_current_clip_size, weapon.clip_size]
 	weapon_icon.texture = weapon.icon
 	pass
 
