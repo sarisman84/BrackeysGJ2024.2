@@ -19,12 +19,14 @@ extends CharacterBody3D
 #@onready var interaction_manager = %interaction_manager
 @onready var main_ui = $main_ui
 @onready var health_manager = $health_manager
+@onready var game_over = $game_over
 
 var shop_open = false
 
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
+	health_manager.on_death.connect(m_on_death)
 	weapon_manager.player = self
 	weapon_select.init(weapon_manager)
 	shop.init(weapon_manager)
@@ -89,6 +91,9 @@ func m_calculate_input_direction() -> Vector3:
 func m_calculate_jump_velocity() -> float:
 	return sqrt(2 * jump_height / m_gravity) * m_gravity
 
+func m_on_death() -> void:
+	game_over.transition(self)
+	pass
 #func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("interact") and Global.player_at_shop:
 		#if shop_open:
