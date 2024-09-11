@@ -133,6 +133,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.345628, 0, -0.292966)
 
 [node name="health_manager" parent="." instance=ExtResource("5_y2spw")]
+max_health = 15
 
 [node name="weapon_select" type="CanvasLayer" parent="."]
 process_mode = 3

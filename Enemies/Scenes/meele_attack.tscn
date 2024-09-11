@@ -10,4 +10,9 @@ script = ExtResource("1_yjuh3")
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_1agxi")
 
+[node name="timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

@@ -47,7 +47,6 @@ func _on_timer_timeout() -> void:
 		start_wave_countdown()
 
 func spawn_group() -> void:
-	print(get_child_count())
 	if get_child_count() < 30:
 		for i in randi_range(1, cur_wave + 2):
 			var enemies = wave_info_array[cur_wave].enemies

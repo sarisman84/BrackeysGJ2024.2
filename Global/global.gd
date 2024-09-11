@@ -30,7 +30,7 @@ func spawn_money(position, money_number, money_value):
 		instance.value = money_value
 		instance.position = position
 		instance.linear_velocity = velocity_randomize()
-		get_tree().root.add_child(instance)
+		player_ref.get_parent().add_child(instance)
 
 func velocity_randomize() -> Vector3:
 	var output = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1))
