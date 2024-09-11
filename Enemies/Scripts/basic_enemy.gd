@@ -9,6 +9,9 @@ var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var money_value : int 
 
 func _physics_process(delta: float) -> void:
+	if !Global.player_ref:
+		return
+	
 	var direction = Vector3()
 	
 	m_nav.target_position = Global.player_ref.global_position
