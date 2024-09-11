@@ -9,8 +9,22 @@ var cur_wave = 0
 var groups_spawned = 0
 var minimum_spawn_time = 1.0
 
+var spawn_margin = 15
+var raycast_result
+
 func _ready() -> void:
 	start_wave_countdown()
+
+func _physics_process(delta: float) -> void:
+	var space_state = get_world_3d().direct_space_state
+	var position = position_randomize()
+	var start = position + Vector3(0, spawn_margin, 0)
+	var end = position - Vector3(0, spawn_margin, 0)
+	var query = PhysicsRayQueryParameters3D.create(start, end)
+	
+	var result = space_state.intersect_ray(query)
+	if result != {}:
+		raycast_result = result
 
 func start_wave_countdown():
 	m_downtime_timer.start(wave_info_array[cur_wave].wave_start_time - Global.time_elapsed)
@@ -36,7 +50,10 @@ func spawn_group() -> void:
 		var enemies = wave_info_array[cur_wave].enemies
 		var chosen_enemy = randi_range(0, enemies.size() - 1)
 		var instance = enemies[chosen_enemy].instantiate()
-		instance.position = position_randomize()
+		print(raycast_result.position)
+		instance.position = raycast_result.position
+		instance.position.y += 1.5
 		if chosen_enemy == 1:
 			instance.position.y += wave_info_array[cur_wave].flying_distance
 		add_child(instance)
+		await get_tree().create_timer(0.375).timeout
