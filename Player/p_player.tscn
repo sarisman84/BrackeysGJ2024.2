@@ -103,7 +103,6 @@ scale = Vector2(1, 1)
 
 [node name="player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 4
-collision_mask = 0
 script = ExtResource("1_f0er1")
 movement_speed = 25.0
 

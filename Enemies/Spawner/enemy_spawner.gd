@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	var start = position + Vector3(0, spawn_margin, 0)
 	var end = position - Vector3(0, spawn_margin, 0)
 	var query = PhysicsRayQueryParameters3D.create(start, end)
-	
+
 	var result = space_state.intersect_ray(query)
 	if result != {}:
 		raycast_result = result

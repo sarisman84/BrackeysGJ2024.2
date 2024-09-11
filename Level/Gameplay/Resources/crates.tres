@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpawnSetting" load_steps=2 format=3 uid="uid://dew8a50ncs82e"]
+
+[ext_resource type="Script" path="res://Level/Gameplay/Scripts/spawn_setting.gd" id="1_dfmqr"]
+
+[resource]
+script = ExtResource("1_dfmqr")
+object_to_spawn = "res://Level/Gameplay/Elements/le_breakable_crates.tscn"
+chance_to_spawn = 0.55
+min_objects_to_spawn = 4
+max_objects_to_spawn = 18
+object_placement_area_size = Vector3i(3, 3, 3)
