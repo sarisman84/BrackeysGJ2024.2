@@ -13,8 +13,8 @@ func init(health_manager : HealthManager, weapon_manager : WeaponManager) -> voi
 	health_manager.on_heal.connect(m_update_visual_health_bar.bind(health_manager.m_current_health))
 
 	#Connect currency events to currency ui
-	Global.on_currency_earned.connect(m_update_visual_coins.bind(Global.current_currency))
-	Global.on_currency_lost.connect(m_update_visual_coins.bind(Global.current_currency))
+	Global.on_currency_earned.connect(m_update_visual_coins)
+	Global.on_currency_lost.connect(m_update_visual_coins)
 
 	#Connect weapon events to weapon ui
 	weapon_manager.on_weapon_switch.connect(m_update_visual_ammo_counter.bind(weapon_manager))
@@ -29,8 +29,8 @@ func _process(_delta: float) -> void:
 func m_update_visual_health_bar(health: int) -> void:
 	m_health_bar.value = health
 
-func m_update_visual_coins(coins: int) -> void:
-	m_coin_label.text = str(coins)
+func m_update_visual_coins() -> void:
+	m_coin_label.text = str(Global.current_currency)
 
 func m_update_visual_ammo_counter(weapon_manager : WeaponManager) -> void:
 	var weapon = weapon_manager.m_weapon_inventory[weapon_manager.selected_weapon]

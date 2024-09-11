@@ -21,5 +21,5 @@ func jump_once() -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		Global.current_currency += value
+		Global.current_currency = Global.current_currency + value
 		queue_free()
