@@ -6,6 +6,6 @@
 script = ExtResource("1_c2kla")
 object_to_spawn = "res://Interactables/Scenes/money.tscn"
 chance_to_spawn = 1.0
-min_objects_to_spawn = 10
-max_objects_to_spawn = 50
+min_objects_to_spawn = 3
+max_objects_to_spawn = 8
 object_placement_area_size = Vector3i(1, 1, 1)
