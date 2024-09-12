@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://clmojr6n6jc32"]
+[gd_scene load_steps=23 format=3 uid="uid://clmojr6n6jc32"]
 
 [ext_resource type="Script" path="res://Player/Scripts/avatar_controller.gd" id="1_f0er1"]
 [ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://addons/shape_texture_2d/drawable_polygon.gd" id="9_nkv0j"]
 [ext_resource type="PackedScene" uid="uid://bqjis4gwh32fn" path="res://Player/UI/HUD/main_ui.tscn" id="11_nb6t7"]
 [ext_resource type="PackedScene" uid="uid://d54s30o2xav" path="res://Player/UI/Game_Over/ui_game_over.tscn" id="12_bs0lg"]
+[ext_resource type="PackedScene" uid="uid://drbn3wjb4djbq" path="res://Menus/Scenes/pause_menu.tscn" id="13_fggtj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_55xom"]
 
@@ -119,6 +120,7 @@ spring_length = 5.0
 
 [node name="camera" type="Camera3D" parent="camera_anchor/pitch_pivot"]
 unique_name_in_owner = true
+near = 0.001
 
 [node name="model" type="CSGBox3D" parent="."]
 size = Vector3(0.6, 1.5, 0.6)
@@ -272,6 +274,9 @@ process_mode = 3
 [node name="game_over" parent="." instance=ExtResource("12_bs0lg")]
 visible = false
 quit_scene = "res://Menus/Scenes/main_menu.tscn"
+
+[node name="pause_menu" parent="." instance=ExtResource("13_fggtj")]
+visible = false
 
 [connection signal="pressed" from="shop/shop_group/main_group/left_button" to="shop" method="_on_left_button_pressed"]
 [connection signal="pressed" from="shop/shop_group/main_group/right_button" to="shop" method="_on_right_button_pressed"]
