@@ -7,11 +7,10 @@ extends Resource
 @export var max_objects_to_spawn : int = 1
 @export var object_placement_area_size : Vector3i = Vector3i.ONE
 
+const SPAWN_OK = 0
+const SPAWN_ERR = -1
 
 func spawn_object(owner : Node3D, location :Node3D) -> int:
-	const EXIT := 0
-
-
 	assert(not object_to_spawn.is_empty(), "[%s] Object to Spawn path is empty!" % resource_name)
 	assert(min_objects_to_spawn > 0, "[%s] Spawn Amount must be atleast a minimum of 1" % resource_name)
 	assert(max_objects_to_spawn >= min_objects_to_spawn, "[%s] Maximum Spawn Amount must be atleast equal of greater than the minimum amount!" % resource_name)
@@ -22,6 +21,12 @@ func spawn_object(owner : Node3D, location :Node3D) -> int:
 
 	var half_extends = object_placement_area_size / 2
 	var spawn_counter : int = 0
+	print("[Spawn Setting]: object_placement_area_size.length() is %f" %  object_placement_area_size.length())
+	if object_placement_area_size.length() < 2:
+		for i in spawn_amm:
+			var obj := m_spawn_object(owner,object_to_spawn)
+			obj.global_position = spawn_pos
+		return SPAWN_OK
 
 	for y in object_placement_area_size.y:
 		for z in object_placement_area_size.z:
@@ -31,8 +36,9 @@ func spawn_object(owner : Node3D, location :Node3D) -> int:
 				obj.global_position = pos
 				spawn_counter += 1
 				if spawn_counter >= spawn_amm:
-					return EXIT
-	return EXIT
+					return SPAWN_OK
+
+	return SPAWN_ERR
 
 
 func m_spawn_object(owner : Node3D, object_to_spawn : String) -> Node3D:

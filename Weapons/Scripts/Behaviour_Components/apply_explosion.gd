@@ -9,17 +9,10 @@ extends OnHitBehaviour
 
 func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body : Variant) -> void:
 	var is_itself = bullet.get_instance_id() == incoming_body.get_instance_id()
-	var is_owner = weapon_manager.owner.get_instance_id() == incoming_body.get_instance_id()
 
 
-	if is_itself or is_owner :
+	if is_itself :
 		return
-
-	if incoming_body is HealthManager:
-		var hm = incoming_body as HealthManager
-		var is_owner_hitbox = hm.get_instance_id() == incoming_body.get_instance_id()
-		if is_owner_hitbox:
-			return
 
 	print("[ApplyExplosionOnHit]: collison: %s" % incoming_body.name)
 
@@ -52,7 +45,7 @@ func on_explosion(weapon_manager: WeaponManager, incoming_body : Variant) -> voi
 	if health_manager.owner.get_instance_id() == incoming_body.get_instance_id():
 		return
 
-	health_manager.take_damage(damage)
+	health_manager.take_damage(damage, weapon_manager.weapon_owner)
 
 func on_explosion_expire(explosion_hitbox : Area3D, timer : Timer) -> void:
 	explosion_hitbox.queue_free()

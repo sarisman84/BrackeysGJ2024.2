@@ -28,7 +28,7 @@ func apply_behaviour(args : Dictionary = {}) -> Dictionary:
 	for bullet in bullets:
 		var hurtbox = m_create_hurtbox(bullet)
 		hurtbox.body_entered.connect(func(incoming_body : Variant): on_bullet_hit(bullet, weapon_manager, incoming_body))
-
+		hurtbox.area_entered.connect(func(incoming_body : Variant): on_bullet_hit(bullet, weapon_manager, incoming_body))
 	return args
 
 func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body : Variant) -> void:

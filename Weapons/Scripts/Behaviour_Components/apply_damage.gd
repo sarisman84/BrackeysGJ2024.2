@@ -7,10 +7,8 @@ extends OnHitBehaviour
 
 func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body : Variant) -> void:
 	var is_itself = bullet.get_instance_id() == incoming_body.get_instance_id()
-	var is_owner = weapon_manager.owner.get_instance_id() == incoming_body.get_instance_id()
 
-
-	if is_itself or is_owner:
+	if is_itself:
 		return
 
 	if incoming_body is not HealthManager:
@@ -19,10 +17,6 @@ func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body
 		return
 
 	var health_manager = incoming_body as HealthManager
-	var is_owner_hitbox = health_manager.owner.get_instance_id() == incoming_body.get_instance_id()
-	if is_owner_hitbox:
-		return
-
-	health_manager.take_damage(damage)
-	if delete_bullet_on_hit:
+	var result = health_manager.take_damage(damage, weapon_manager.weapon_owner)
+	if delete_bullet_on_hit and result == HealthManager.DAMAGE_SUCCESS:
 		bullet.queue_free()

@@ -18,7 +18,7 @@ func m_create_projectile(owner : WeaponManager) -> RigidBody3D:
 	hitbox.shape = bullet_collision_shape
 
 	proj.add_child(hitbox)
-	owner.get_parent().get_parent().add_child(proj)
+	owner.weapon_owner.get_parent().add_child(proj)
 	return proj
 
 func apply_behaviour(args : Dictionary = {}) -> Dictionary:

@@ -1,15 +1,27 @@
 extends RigidBody3D
 
-var value = 0
+var value = 10
 var fly_distance = 6
 var jump_triggered = false
 
-var fly_speed = 15
+var fly_speed = 20
 var jump_speed = 300
 
+var m_picked_up_flag : bool = false
+var m_internal_clock : float
+
+func _ready() -> void:
+	const SPAWN_VELOCITY = 2.5
+	apply_central_impulse(Vector3(randf_range(-1, 1) , 1,randf_range(-1, 1)).normalized() * SPAWN_VELOCITY)
+
 func _physics_process(_delta: float) -> void:
-	if (Global.player_ref.position - position).length() < fly_distance:
-		apply_central_force((Global.player_ref.position - position).normalized() * fly_speed)
+	if (Global.player_ref.position - position).length() < fly_distance and not m_picked_up_flag:
+		m_picked_up_flag = true
+		m_internal_clock = fly_speed
+
+	if m_picked_up_flag:
+		m_internal_clock += _delta * 10.0
+		apply_central_force((Global.player_ref.position - position).normalized() * m_internal_clock)
 		jump_once()
 
 func jump_once() -> void:
