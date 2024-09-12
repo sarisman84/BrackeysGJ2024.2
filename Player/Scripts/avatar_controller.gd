@@ -26,12 +26,17 @@ var shop_open = false
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
+	health_manager.health_owner = self
+	weapon_manager.weapon_owner = self
+	Global.player_ref = self
+
 	health_manager.on_death.connect(m_on_death)
-	weapon_manager.player = self
+
 	weapon_select.init(weapon_manager)
 	shop.init(weapon_manager)
 	main_ui.init(health_manager, weapon_manager)
-	Global.player_ref = self
+
+
 	main_ui.m_update_visual_max_health(health_manager)
 	main_ui.m_update_visual_health_bar(health_manager)
 	#DEBUG

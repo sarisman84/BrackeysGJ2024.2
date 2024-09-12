@@ -1,0 +1,8 @@
+[gd_resource type="ORMMaterial3D" load_steps=2 format=3 uid="uid://bbdcyr1gfoyh3"]
+
+[ext_resource type="Texture2D" uid="uid://b3jer3i4dpwur" path="res://addons/kenney_prototype_textures/green/texture_07.png" id="1_tkv70"]
+
+[resource]
+albedo_texture = ExtResource("1_tkv70")
+uv1_triplanar = true
+uv1_world_triplanar = true

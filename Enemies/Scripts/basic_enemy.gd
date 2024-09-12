@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var m_nav = $navigation
+@onready var m_health_manager = $health_manager
 
 @export var m_speed : int = 4
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -8,18 +9,21 @@ var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var money_amount : int
 @export var money_value : int
 
+func _ready() -> void:
+	m_health_manager.health_owner = self
+
 func _physics_process(delta: float) -> void:
 	if !Global.player_ref:
 		return
-	
+
 	var direction = Vector3()
-	
+
 	m_nav.target_position = Global.player_ref.global_position
-	
+
 	direction = m_nav.get_next_path_position() - global_position
 	direction.y = 0
 	direction = direction.normalized() * m_speed
-	
+
 	velocity.x = direction.x
 	velocity.z = direction.z
 
@@ -28,7 +32,7 @@ func _physics_process(delta: float) -> void:
 
 	rotation.y = - Vector2(direction.x, direction.z).angle()
 	move_and_slide()
-	
+
 
 #func _physics_process(delta: float) -> void:
 	#var m_position_diff = Global.player_ref.global_position - global_position

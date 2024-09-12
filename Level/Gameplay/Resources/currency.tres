@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpawnSetting" load_steps=2 format=3 uid="uid://cs0hu3403koad"]
+
+[ext_resource type="Script" path="res://Level/Gameplay/Scripts/spawn_setting.gd" id="1_c2kla"]
+
+[resource]
+script = ExtResource("1_c2kla")
+object_to_spawn = "res://Interactables/Scenes/money.tscn"
+chance_to_spawn = 1.0
+min_objects_to_spawn = 10
+max_objects_to_spawn = 50
+object_placement_area_size = Vector3i(1, 1, 1)
