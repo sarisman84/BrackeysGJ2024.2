@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+@onready var m_gear_mesh = $gear_mesh
+
 var value = 10
 var fly_distance = 6
 var jump_triggered = false
@@ -23,6 +25,7 @@ func _physics_process(_delta: float) -> void:
 		m_internal_clock += _delta * 10.0
 		apply_central_force((Global.player_ref.position - position).normalized() * m_internal_clock)
 		jump_once()
+	m_gear_mesh.rotate_y(0.05)
 
 func jump_once() -> void:
 	if jump_triggered:

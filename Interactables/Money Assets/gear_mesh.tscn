@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://e55twe8ochng"]
+
+[ext_resource type="PackedScene" uid="uid://bg6ohcwcm7d3u" path="res://Interactables/Money Assets/scene.gltf" id="1_nub5y"]
+
+[sub_resource type="Gradient" id="Gradient_txhtl"]
+offsets = PackedFloat32Array(0, 0.503817, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.324427, 0.324427, 0.324427, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kg8fl"]
+noise_type = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2wamp"]
+color_ramp = SubResource("Gradient_txhtl")
+noise = SubResource("FastNoiseLite_kg8fl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r4u6"]
+albedo_color = Color(0.870588, 0.678431, 0, 1)
+metallic = 0.35
+roughness_texture = SubResource("NoiseTexture2D_2wamp")
+
+[node name="gear_mesh" instance=ExtResource("1_nub5y")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, -9.68699, 0, 0)
+
+[node name="Object_2" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="0"]
+visible = false
+
+[node name="Object_3" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="1"]
+visible = false
+
+[node name="Object_4" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="2"]
+visible = false
+
+[node name="Object_5" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="3"]
+visible = false
+
+[node name="Object_6" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0875902, 0, 0)
+material_override = SubResource("StandardMaterial3D_2r4u6")
+material_overlay = SubResource("StandardMaterial3D_2r4u6")
+
+[node name="Object_7" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="5"]
+visible = false
+
+[node name="Object_8" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="6"]
+visible = false
+
+[node name="Object_9" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="7"]
+visible = false
+
+[node name="Object_10" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="8"]
+visible = false
+
+[node name="Object_11" parent="Sketchfab_model/GEAR ASSET_obj_cleaner_materialmerger_gles" index="9"]
+visible = false

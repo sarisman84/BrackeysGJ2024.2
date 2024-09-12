@@ -1,0 +1,11 @@
+Model Information:
+* title:	GEAR ASSET
+* source:	https://sketchfab.com/3d-models/gear-asset-9e9267c2b0b241fdb95044527a6d02ab
+* author:	Ret.ouchs (https://sketchfab.com/ret.ouchs)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "GEAR ASSET" (https://sketchfab.com/3d-models/gear-asset-9e9267c2b0b241fdb95044527a6d02ab) by Ret.ouchs (https://sketchfab.com/ret.ouchs) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
