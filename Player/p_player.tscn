@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://clmojr6n6jc32"]
+[gd_scene load_steps=24 format=3 uid="uid://clmojr6n6jc32"]
 
 [ext_resource type="Script" path="res://Player/Scripts/avatar_controller.gd" id="1_f0er1"]
 [ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
+[ext_resource type="PackedScene" uid="uid://c0fscew8ib3m" path="res://Player/Model/FBX/Robot.fbx" id="3_1ujbd"]
 [ext_resource type="PackedScene" uid="uid://6klxf7f7gsbv" path="res://Weapons/p_weapon_manager.tscn" id="3_h2gkg"]
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="5_y2spw"]
 [ext_resource type="Script" path="res://Player/Scripts/weapon_select.gd" id="6_ivl8j"]
@@ -122,16 +123,22 @@ spring_length = 5.0
 unique_name_in_owner = true
 near = 0.001
 
-[node name="model" type="CSGBox3D" parent="."]
-size = Vector3(0.6, 1.5, 0.6)
+[node name="model" type="Node3D" parent="."]
 
-[node name="eyes" type="CSGBox3D" parent="model"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519177, -0.124023)
-size = Vector3(0.540039, 0.147461, 0.751953)
+[node name="robot" parent="model" instance=ExtResource("3_1ujbd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.560254, 0)
 
 [node name="weapon_manager" parent="model" instance=ExtResource("3_h2gkg")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.345628, 0, -0.292966)
+transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0.408816, 0, -0.274058)
+
+[node name="old_model" type="CSGBox3D" parent="."]
+visible = false
+size = Vector3(0.6, 1.5, 0.6)
+
+[node name="eyes" type="CSGBox3D" parent="old_model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519177, -0.124023)
+size = Vector3(0.540039, 0.147461, 0.751953)
 
 [node name="health_manager" parent="." instance=ExtResource("5_y2spw")]
 max_health = 15
