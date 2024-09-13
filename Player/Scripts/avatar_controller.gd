@@ -23,7 +23,6 @@ extends CharacterBody3D
 @onready var game_over = $game_over
 
 var shop_open = false
-var jump_count = 1
 
 var m_jump_count : int = 0
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

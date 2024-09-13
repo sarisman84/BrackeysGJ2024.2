@@ -1,5 +1,5 @@
-extends CanvasLayer
 class_name MainUI
+extends CanvasLayer
 
 @onready var m_health_bar = $health_bar
 @onready var m_coin_label = $coin_tab/coin_label
