@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqjis4gwh32fn"]
+[gd_scene load_steps=15 format=3 uid="uid://bqjis4gwh32fn"]
 
 [ext_resource type="Script" path="res://Player/UI/HUD/Scripts/main_ui.gd" id="1_r4d4i"]
 [ext_resource type="Texture2D" uid="uid://0k37q6nr1aoi" path="res://Weapons/Icons/rifle.png" id="2_1aw08"]
@@ -14,6 +14,50 @@
 font = ExtResource("7_xuewp")
 font_size = 32
 font_color = Color(1, 0.847059, 0.560784, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwl8y"]
+font = ExtResource("7_xuewp")
+font_size = 36
+font_color = Color(1, 0.847059, 0.560784, 1)
+outline_size = 20
+outline_color = Color(0.490196, 0.419608, 0.286275, 1)
+
+[sub_resource type="Animation" id="Animation_r63fn"]
+resource_name = "fade_out_popup"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("popup_label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_83fap"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("popup_label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wt8cs"]
+_data = {
+"RESET": SubResource("Animation_83fap"),
+"fade_out_popup": SubResource("Animation_r63fn")
+}
 
 [node name="main_ui" type="CanvasLayer"]
 script = ExtResource("1_r4d4i")
@@ -156,3 +200,20 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_m4yw8")
 expand_mode = 1
+
+[node name="popup_label" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = -56.0
+offset_right = 622.0
+offset_bottom = -8.0
+grow_vertical = 0
+text = "You picked up a powerup!"
+label_settings = SubResource("LabelSettings_nwl8y")
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wt8cs")
+}

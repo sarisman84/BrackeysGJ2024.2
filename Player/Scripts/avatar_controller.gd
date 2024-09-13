@@ -18,11 +18,12 @@ extends CharacterBody3D
 @onready var weapon_select = $weapon_select
 @onready var shop = $shop
 #@onready var interaction_manager = %interaction_manager
-@onready var main_ui = $main_ui
-@onready var health_manager = $health_manager
+@onready var main_ui : MainUI = $main_ui
+@onready var health_manager : HealthManager = $health_manager
 @onready var game_over = $game_over
 
 var shop_open = false
+var jump_count = 1
 
 var m_jump_count : int = 0
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
