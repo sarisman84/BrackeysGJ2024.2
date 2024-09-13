@@ -18,6 +18,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_y06cb"]
 size = Vector3(1000, 1, 1000)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_y06cb"]
+size = Vector3(1000, 1, 1000)
+
 [node name="core_level" type="Node"]
 
 [node name="blockout_enviroment" type="Node3D" parent="."]
