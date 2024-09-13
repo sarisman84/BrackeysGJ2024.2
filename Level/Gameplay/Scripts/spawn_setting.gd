@@ -10,39 +10,87 @@ extends Resource
 const SPAWN_OK = 0
 const SPAWN_ERR = -1
 
-func spawn_object(owner : Node3D, location :Node3D) -> int:
-	assert(not object_to_spawn.is_empty(), "[%s] Object to Spawn path is empty!" % resource_name)
-	assert(min_objects_to_spawn > 0, "[%s] Spawn Amount must be atleast a minimum of 1" % resource_name)
-	assert(max_objects_to_spawn >= min_objects_to_spawn, "[%s] Maximum Spawn Amount must be atleast equal of greater than the minimum amount!" % resource_name)
-	assert(object_placement_area_size.length() > 0, "[%s] Spawn Area must be atleast 1x1x1" % resource_name)
+var m_loaded_obj
 
-	var spawn_pos = location.global_position
+func load_object() -> void:
+	m_loaded_obj = ResourceLoader.load(object_to_spawn)
+
+
+
+func spawn_object_async(owner : Node3D, location : Vector3, semaphore : Semaphore) -> int:
+	assert(not object_to_spawn.is_empty(), "[Spawn Setting - %s] Object to Spawn path is empty!" % resource_name)
+	assert(min_objects_to_spawn > 0, "[Spawn Setting - %s] Spawn Amount must be atleast a minimum of 1" % resource_name)
+	assert(max_objects_to_spawn >= min_objects_to_spawn, "[Spawn Setting - %s] Maximum Spawn Amount must be atleast equal of greater than the minimum amount!" % resource_name)
+	assert(object_placement_area_size.length() > 0, "[Spawn Setting - %s] Spawn Area must be atleast 1x1x1" % resource_name)
+
+
+
+	var obj : PackedScene = m_loaded_obj
+
+	print("[Spawn Setting]: Spawning [%s] at %s" % [obj, location])
+	var spawn_pos = location
 	var spawn_amm = randi_range(min_objects_to_spawn, max_objects_to_spawn)
+
+	if object_placement_area_size.length() < 2:
+		for i in spawn_amm:
+			var ins = obj.instantiate()
+			owner.call_deferred("add_child", ins)
+			ins.call_deferred("set_global_position", spawn_pos)
+			ins.process_mode = Node.PROCESS_MODE_PAUSABLE
+			semaphore.wait()
+		return SPAWN_OK
 
 	var half_extends = object_placement_area_size / 2
 	var spawn_counter : int = 0
-	print("[Spawn Setting]: object_placement_area_size.length() is %f" %  object_placement_area_size.length())
+
+	for y in object_placement_area_size.y:
+		for z in object_placement_area_size.z:
+			for x in object_placement_area_size.x:
+				var pos = spawn_pos + Vector3(x - half_extends.x, y, z - half_extends.z)
+				var ins = obj.instantiate()
+				owner.call_deferred("add_child", ins)
+				ins.call_deferred("set_global_position", pos)
+				ins.process_mode = Node.PROCESS_MODE_PAUSABLE
+				spawn_counter += 1
+
+				if spawn_counter >= spawn_amm:
+					return SPAWN_OK
+		semaphore.wait()
+
+	return SPAWN_ERR
+
+func spawn_object(owner : Node3D, location : Vector3) -> int:
+	assert(not object_to_spawn.is_empty(), "[Spawn Setting - %s] Object to Spawn path is empty!" % resource_name)
+	assert(min_objects_to_spawn > 0, "[Spawn Setting - %s] Spawn Amount must be atleast a minimum of 1" % resource_name)
+	assert(max_objects_to_spawn >= min_objects_to_spawn, "[Spawn Setting - %s] Maximum Spawn Amount must be atleast equal of greater than the minimum amount!" % resource_name)
+	assert(object_placement_area_size.length() > 0, "[Spawn Setting - %s] Spawn Area must be atleast 1x1x1" % resource_name)
+
+	var obj : PackedScene = m_loaded_obj
+
+	print("[Spawn Setting]: Spawning [%s] at %s" % [obj, location])
+	var spawn_pos = location
+	var spawn_amm = randi_range(min_objects_to_spawn, max_objects_to_spawn)
+
 	if object_placement_area_size.length() < 2:
 		for i in spawn_amm:
-			var obj := m_spawn_object(owner,object_to_spawn)
-			obj.global_position = spawn_pos
+			var ins = obj.instantiate()
+			owner.add_child( ins)
+			ins.global_position = spawn_pos
+
 		return SPAWN_OK
+
+	var half_extends = object_placement_area_size / 2
+	var spawn_counter : int = 0
 
 	for y in object_placement_area_size.y:
 		for z in object_placement_area_size.z:
 			for x in object_placement_area_size.x:
 				var pos = spawn_pos + Vector3(x - half_extends.x, y - half_extends.y, z - half_extends.z)
-				var obj := m_spawn_object(owner,object_to_spawn)
-				obj.global_position = pos
+				var ins = obj.instantiate()
+				owner.add_child( ins)
+				ins.global_position = pos
 				spawn_counter += 1
 				if spawn_counter >= spawn_amm:
 					return SPAWN_OK
 
 	return SPAWN_ERR
-
-
-func m_spawn_object(owner : Node3D, object_to_spawn : String) -> Node3D:
-	var scene : PackedScene = ResourceLoader.load(object_to_spawn)
-	var ins := scene.instantiate() as Node3D
-	owner.add_child(ins)
-	return ins

@@ -12,6 +12,7 @@ signal on_weapon_refill
 var fire_input_override : bool
 var fire_input : bool
 var weapon_owner : Node3D
+var damage_multiplier : float = 1.0
 
 var selected_weapon : int :
 	set(value):
@@ -93,7 +94,7 @@ func _process(_delta : float) -> void:
 	var weapon = m_weapon_inventory[selected_weapon]
 
 	if not fire_input_override and m_internal_clock == 0 and fire_input and weapon.has_ammo():
-		weapon.fire(self)
+		weapon.fire(self, damage_multiplier)
 		weapon.use_ammo()
 		m_internal_clock = weapon.fire_rate
 		on_weapon_fire.emit()

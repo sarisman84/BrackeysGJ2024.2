@@ -68,7 +68,7 @@ func m_update_visuals() -> void:
 
 	m_icon.texture = local_weapon.icon
 	m_title.text = local_weapon.display_name
-	
+
 	#Update left and right button icons
 	var temp = m_counter - 1
 	if temp < 0:
@@ -76,7 +76,7 @@ func m_update_visuals() -> void:
 	m_left_icon.texture = m_shop_items[temp].icon
 	temp = (temp + 2) % m_shop_items.size()
 	m_right_icon.texture = m_shop_items[temp].icon
-	
+
 	if not has_weapon_already:
 		m_buy.text = "Buy for %d" % local_weapon.weapon_cost
 		return
@@ -111,7 +111,7 @@ func _on_buy_button_pressed():
 	if not weapon_data:
 		weapon_data = m_shop_items[m_counter]
 	#if the player already owns the current weapon, try to buy ammo for it instead
-	if m_shop_bought_flags[m_counter]:
+	if m_weapon_manager.get_weapon(m_shop_items[m_counter].UUID):
 		#Calculate how much remaining ammo the player has left on the current gun
 		var required_ammo_to_fill = weapon_data.clip_size - weapon_data.m_current_clip_size
 		var ammo_cost = required_ammo_to_fill * weapon_data.ammo_cost

@@ -24,12 +24,13 @@ func apply_behaviour(args : Dictionary = {}) -> Dictionary:
 
 	var bullets = args["bullets"]
 	var weapon_manager : WeaponManager = args["owner"]
+	var damage_multiplier : float = args["damage_multiplier"]
 
 	for bullet in bullets:
 		var hurtbox = m_create_hurtbox(bullet)
-		hurtbox.body_entered.connect(func(incoming_body : Variant): on_bullet_hit(bullet, weapon_manager, incoming_body))
-		hurtbox.area_entered.connect(func(incoming_body : Variant): on_bullet_hit(bullet, weapon_manager, incoming_body))
+		hurtbox.body_entered.connect(func(incoming_body : Variant): on_bullet_hit(bullet, weapon_manager,damage_multiplier, incoming_body))
+		hurtbox.area_entered.connect(func(incoming_body : Variant): on_bullet_hit(bullet, weapon_manager,damage_multiplier, incoming_body))
 	return args
 
-func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body : Variant) -> void:
+func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager,damage_multiplier : float, incoming_body : Variant) -> void:
 	pass

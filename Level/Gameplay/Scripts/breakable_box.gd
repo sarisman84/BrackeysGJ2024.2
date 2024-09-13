@@ -7,13 +7,14 @@ extends RigidBody3D
 func _ready() -> void:
 	hurtbox.health_owner = self
 	hurtbox.on_death.connect(m_spawn_drop)
+	drop_setting.load_object()
 
 func m_spawn_drop() -> void:
 	assert(drop_setting, "[Breakable Crates]: %s has no drop setting!" % name)
 
 	var chance = randf()
 	if chance < drop_setting.chance_to_spawn:
-		drop_setting.spawn_object(get_parent(), self)
+		drop_setting.spawn_object(get_parent(), global_position)
 		print("[Breakable Crates]: Dropped %s" % drop_setting.resource_name)
 
 	queue_free()
