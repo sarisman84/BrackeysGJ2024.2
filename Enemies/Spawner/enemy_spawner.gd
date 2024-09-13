@@ -18,9 +18,9 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var space_state = get_world_3d().direct_space_state
-	var position = position_randomize()
-	var start = position + Vector3(0, spawn_margin, 0)
-	var end = position - Vector3(0, spawn_margin, 0)
+	var pos = position_randomize()
+	var start = pos + Vector3(0, spawn_margin, 0)
+	var end = pos - Vector3(0, spawn_margin, 0)
 	var query = PhysicsRayQueryParameters3D.create(start, end)
 
 	var result = space_state.intersect_ray(query)
