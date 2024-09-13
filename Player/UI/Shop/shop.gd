@@ -17,7 +17,7 @@ var can_toggle_shop : bool
 func _ready():
 	m_get_weapons_from_registry()
 	m_update_visuals()
-	#hide_shop()
+	hide_shop()
 
 
 func _process(_delta : float) -> void:
