@@ -1,66 +1,52 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqjis4gwh32fn"]
+[gd_scene load_steps=11 format=3 uid="uid://bqjis4gwh32fn"]
 
 [ext_resource type="Script" path="res://Player/UI/HUD/Scripts/main_ui.gd" id="1_r4d4i"]
 [ext_resource type="Texture2D" uid="uid://0k37q6nr1aoi" path="res://Weapons/Icons/rifle.png" id="2_1aw08"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6l7ef"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.763809, 0.763809, 0.763808, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mb50j"]
-bg_color = Color(0.827451, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_bottom = 2
-border_color = Color(0.764706, 0.764706, 0.764706, 1)
-corner_radius_top_left = 2
-corner_radius_bottom_left = 2
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
+[ext_resource type="Texture2D" uid="uid://bvbrkocqu046i" path="res://Menus/Assets/Fill Bar 2.png" id="2_ovri3"]
+[ext_resource type="Texture2D" uid="uid://c5ehk7epkt5va" path="res://Menus/Assets/Background Fill Bar.png" id="2_tkalm"]
+[ext_resource type="Texture2D" uid="uid://fi73p8h5ed4l" path="res://Menus/Assets/Fill-able Bar.png" id="3_1ob4i"]
+[ext_resource type="Texture2D" uid="uid://cgev4lid2ulog" path="res://Menus/Assets/Indicator with Large Label.png" id="5_xowod"]
+[ext_resource type="Texture2D" uid="uid://cv3ap4h2fau33" path="res://Menus/Assets/Fill Bar Small.png" id="6_fqmji"]
+[ext_resource type="FontFile" uid="uid://snwi17k1tj6i" path="res://Menus/Assets/Roboto_Slab_Font/static/RobotoSlab-Medium.ttf" id="7_xuewp"]
+[ext_resource type="Texture2D" uid="uid://bqqshv8a7iwd0" path="res://Menus/Assets/Crosshair.png" id="9_m4yw8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rcrtg"]
+font = ExtResource("7_xuewp")
 font_size = 32
+font_color = Color(1, 0.847059, 0.560784, 1)
 
 [node name="main_ui" type="CanvasLayer"]
 script = ExtResource("1_r4d4i")
 
-[node name="health_bar" type="ProgressBar" parent="."]
+[node name="health_bar" type="TextureProgressBar" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -160.0
-offset_top = 24.0
-offset_right = 160.0
-offset_bottom = 64.0
+offset_left = -347.0
+offset_top = 14.0
+offset_right = 347.0
+offset_bottom = 134.0
 grow_horizontal = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_6l7ef")
-theme_override_styles/fill = SubResource("StyleBoxFlat_mb50j")
-step = 1.0
-show_percentage = false
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(347, 0)
+value = 50.0
+texture_under = ExtResource("2_tkalm")
+texture_over = ExtResource("3_1ob4i")
+texture_progress = ExtResource("2_ovri3")
+texture_progress_offset = Vector2(28, 16)
 
-[node name="coin_tab" type="ColorRect" parent="."]
+[node name="coin_tab" type="TextureRect" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -216.0
+offset_left = -260.0
 offset_top = 16.0
 offset_right = -16.0
-offset_bottom = 90.0
+offset_bottom = 115.0
 grow_horizontal = 0
-color = Color(0.60933, 0.60933, 0.60933, 1)
+texture = ExtResource("5_xowod")
+expand_mode = 1
+flip_h = true
 metadata/_edit_group_ = true
 
 [node name="coin_label" type="Label" parent="coin_tab"]
@@ -68,35 +54,47 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 28.0
+offset_right = -88.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "0
-"
+text = "0"
+label_settings = SubResource("LabelSettings_rcrtg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ammo_tab" type="ColorRect" parent="."]
+[node name="ammo_tab" type="TextureRect" parent="."]
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 216.0
-offset_bottom = 88.0
-color = Color(0.60933, 0.60933, 0.60933, 1)
+offset_right = 260.0
+offset_bottom = 115.0
+texture = ExtResource("5_xowod")
+expand_mode = 1
 metadata/_edit_group_ = true
 
-[node name="container" type="HBoxContainer" parent="ammo_tab"]
+[node name="container" type="Control" parent="ammo_tab"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 10.0
 offset_top = -32.0
-offset_right = 190.0
+offset_right = 206.0
 offset_bottom = 32.0
 grow_vertical = 2
 
 [node name="weapon_icon" type="TextureRect" parent="ammo_tab/container"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 74.0
+offset_bottom = 70.0
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 size_flags_vertical = 4
 texture = ExtResource("2_1aw08")
 expand_mode = 3
@@ -104,22 +102,28 @@ stretch_mode = 4
 
 [node name="ammo_label" type="Label" parent="ammo_tab/container"]
 layout_mode = 2
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 202.0
+offset_bottom = 53.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "100/100"
 label_settings = SubResource("LabelSettings_rcrtg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="timer_tab" type="ColorRect" parent="."]
+[node name="timer_tab" type="TextureRect" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -72.0
-offset_top = 73.0
-offset_right = 72.0
-offset_bottom = 145.0
+offset_left = -108.0
+offset_top = 78.0
+offset_right = 108.0
+offset_bottom = 141.0
 grow_horizontal = 2
-color = Color(0.60933, 0.60933, 0.60933, 1)
+texture = ExtResource("6_fqmji")
+expand_mode = 1
 metadata/_edit_group_ = true
 
 [node name="timer_label" type="Label" parent="timer_tab"]
@@ -127,9 +131,28 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.847059, 0.560784, 1)
+theme_override_fonts/font = ExtResource("7_xuewp")
 theme_override_font_sizes/font_size = 50
 text = "0:00"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="crosshair" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_m4yw8")
+expand_mode = 1
