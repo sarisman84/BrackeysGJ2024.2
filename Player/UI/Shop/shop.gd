@@ -5,10 +5,11 @@ var m_shop_bought_flags : Array[bool]
 var m_weapon_manager : WeaponManager
 var m_counter=0
 
-@onready var m_icon = $shop_group/main_group/icon
-@onready var m_title = $shop_group/title
-@onready var m_cost = $shop_group/cost
-@onready var m_buy = $shop_group/buy/label
+@onready var m_icon = $shop_window/main_icon/texture
+@onready var m_left_icon = $shop_window/main_icon/left_button/texture
+@onready var m_right_icon = $shop_window/main_icon/right_button/texture
+@onready var m_title = $shop_window/title
+@onready var m_buy = $shop_window/buy/buy_label
 
 
 var can_toggle_shop : bool
@@ -67,7 +68,15 @@ func m_update_visuals() -> void:
 
 	m_icon.texture = local_weapon.icon
 	m_title.text = local_weapon.display_name
-
+	
+	#Update left and right button icons
+	var temp = m_counter - 1
+	if temp < 0:
+		temp += m_shop_items.size()
+	m_left_icon.texture = m_shop_items[temp].icon
+	temp = (temp + 2) % m_shop_items.size()
+	m_right_icon.texture = m_shop_items[temp].icon
+	
 	if not has_weapon_already:
 		m_buy.text = "Buy for %d" % local_weapon.weapon_cost
 		return

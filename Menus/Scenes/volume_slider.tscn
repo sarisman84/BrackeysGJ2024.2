@@ -3,4 +3,8 @@
 [ext_resource type="Script" path="res://Menus/Scripts/volume_slider.gd" id="1_1303h"]
 
 [node name="VolumeSlider" type="HSlider"]
+max_value = 1.0
+step = 0.01
 script = ExtResource("1_1303h")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var weapon_label : RichTextLabel = $weapon_label
+@onready var weapon_label : Label = $weapon_label
 
 signal on_weapon_select_start
 signal on_weapon_select_end
@@ -40,7 +40,8 @@ func _process(_delta : float) -> void:
 	for i in range(m_weapon_buttons.size()):
 		var b = m_weapon_buttons[i]
 		if b.is_hovered():
-			weapon_label.text = "[center]" + m_weapon_labels[i] + "[/center]"
+			weapon_label.text = m_weapon_labels[i]
+			#weapon_label.text = "[center]" + m_weapon_labels[i] + "[/center]"
 			return
 	#Reset the label if the user hasnt hovered over anything yet.
 	weapon_label.text = ""
