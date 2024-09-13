@@ -10,6 +10,7 @@ extends CharacterBody3D
 @export var air_decceleration : float = 5
 @export_group("Jump Settings")
 @export var jump_height : float = 1.0
+@export var jump_count : int = 1
 
 @onready var camera = %camera
 @onready var model = $model
@@ -23,6 +24,7 @@ extends CharacterBody3D
 
 var shop_open = false
 
+var m_jump_count : int = 0
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
@@ -56,8 +58,12 @@ func _physics_process(delta : float) -> void:
 		acceleration = air_acceleration
 		decceleration = air_decceleration
 
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if is_on_floor():
+		m_jump_count = jump_count
+
+	if Input.is_action_pressed("jump") and m_jump_count > 0:
 		velocity.y = m_calculate_jump_velocity()
+		m_jump_count -= 1
 	else:
 		var dir = m_calculate_input_direction()
 

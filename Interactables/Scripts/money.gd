@@ -19,7 +19,7 @@ var rotation_speed
 func _ready() -> void:
 	const SPAWN_VELOCITY = 2.5
 	apply_central_impulse(Vector3(randf_range(-1, 1) , 1,randf_range(-1, 1)).normalized() * SPAWN_VELOCITY)
-	
+
 	rotation_dir = [-1, 1].pick_random()
 	rotation_speed = randf_range(0.02, 0.05)
 	var size = randf_range(0.1, 0.18)

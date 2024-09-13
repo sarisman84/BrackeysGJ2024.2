@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cf7uhxniqioif"]
+[gd_scene load_steps=16 format=3 uid="uid://cf7uhxniqioif"]
 
 [ext_resource type="PackedScene" uid="uid://clmojr6n6jc32" path="res://Player/p_player.tscn" id="1_7d138"]
 [ext_resource type="Material" uid="uid://bbdcyr1gfoyh3" path="res://Level/Gameplay/Materials/m_ground_floor.tres" id="1_k5waq"]
@@ -14,9 +14,6 @@
 [ext_resource type="Resource" uid="uid://3fjug1vja3cp" path="res://Enemies/Spawner/Waves/wave1.tres" id="12_lldtr"]
 [ext_resource type="Resource" uid="uid://bxlxmrcwl32ad" path="res://Enemies/Spawner/Waves/wave2.tres" id="13_dboht"]
 [ext_resource type="Resource" uid="uid://c68arqvoqpeo3" path="res://Enemies/Spawner/Waves/wave3.tres" id="14_330ga"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_y06cb"]
-size = Vector3(1000, 1, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y06cb"]
 size = Vector3(1000, 1, 1000)
@@ -73,6 +70,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.624176, -0.319204, -12.4729
 radius = 83.0413
 sides = 19
 material = ExtResource("2_r8emv")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="blockout_enviroment/ground_floor/roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2037, -0.869404, 278.421)
+size = Vector3(3411.72, 1, 56.7561)
+material = ExtResource("2_r8emv")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="blockout_enviroment/ground_floor/roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288.79, -0.811943, 59.1684)
+size = Vector3(72.9219, 1, 452.939)
+material = ExtResource("2_r8emv")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="blockout_enviroment/ground_floor/roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -302.137, -0.811943, 59.1684)
+size = Vector3(73.665, 1, 452.939)
+material = ExtResource("2_r8emv")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="blockout_enviroment/ground_floor/roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 984.641, -0.811943, -134.429)
+size = Vector3(1367.33, 1, 65.7455)
+material = ExtResource("2_r8emv")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="blockout_enviroment/ground_floor/roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 287.82, -0.319204, 277.014)
+radius = 77.891
+sides = 19
+material = ExtResource("2_r8emv")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="blockout_enviroment/ground_floor/roads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.624176, -0.319204, -12.4729)
+radius = 83.0413
+sides = 19
+material = ExtResource("2_r8emv")
+
+[node name="roads2" type="CSGCombiner3D" parent="blockout_enviroment/ground_floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1113, 33.2689, 44.6439)
+operation = 2
+metadata/_edit_lock_ = true
 
 [node name="buildings" type="CSGCombiner3D" parent="blockout_enviroment"]
 
@@ -155,50 +189,6 @@ material = ExtResource("3_be6hc")
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -3.97721, 37.1899, -294.167)
 size = Vector3(112.142, 81.2119, 237.775)
 material = ExtResource("3_be6hc")
-
-[node name="ground_floor" type="CSGBox3D" parent="blockout_enviroment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1113, -33.2689, -44.6439)
-use_collision = true
-size = Vector3(3304.95, 65.5378, 2819.41)
-material = ExtResource("1_k5waq")
-metadata/_edit_lock_ = true
-
-[node name="roads" type="CSGCombiner3D" parent="blockout_enviroment/ground_floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1113, 33.2689, 44.6439)
-operation = 2
-metadata/_edit_lock_ = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="blockout_enviroment/ground_floor/roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2037, -0.869404, 278.421)
-size = Vector3(3411.72, 1, 56.7561)
-material = ExtResource("2_r8emv")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="blockout_enviroment/ground_floor/roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288.79, -0.811943, 59.1684)
-size = Vector3(72.9219, 1, 452.939)
-material = ExtResource("2_r8emv")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="blockout_enviroment/ground_floor/roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -302.137, -0.811943, 59.1684)
-size = Vector3(73.665, 1, 452.939)
-material = ExtResource("2_r8emv")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="blockout_enviroment/ground_floor/roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 984.641, -0.811943, -134.429)
-size = Vector3(1367.33, 1, 65.7455)
-material = ExtResource("2_r8emv")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="blockout_enviroment/ground_floor/roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 287.82, -0.319204, 277.014)
-radius = 77.891
-sides = 19
-material = ExtResource("2_r8emv")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="blockout_enviroment/ground_floor/roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.624176, -0.319204, -12.4729)
-radius = 83.0413
-sides = 19
-material = ExtResource("2_r8emv")
 
 [node name="player" parent="." instance=ExtResource("1_7d138")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

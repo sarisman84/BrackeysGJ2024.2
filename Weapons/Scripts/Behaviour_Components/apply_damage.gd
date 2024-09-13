@@ -5,7 +5,7 @@ extends OnHitBehaviour
 @export var damage : float = 1.0
 
 
-func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body : Variant) -> void:
+func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager,damage_multiplier : float, incoming_body : Variant) -> void:
 	var is_itself = bullet.get_instance_id() == incoming_body.get_instance_id()
 
 	if is_itself:
@@ -17,6 +17,6 @@ func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body
 		return
 
 	var health_manager = incoming_body as HealthManager
-	var result = health_manager.take_damage(damage, weapon_manager.weapon_owner)
+	var result = health_manager.take_damage(damage * damage_multiplier, weapon_manager.weapon_owner)
 	if delete_bullet_on_hit and result == HealthManager.DAMAGE_SUCCESS:
 		bullet.queue_free()

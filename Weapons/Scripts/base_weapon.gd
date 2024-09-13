@@ -20,7 +20,6 @@ class_name BaseWeapon
 var m_current_clip_size : int
 var m_barrel : Node3D
 
-
 func init() -> void:
 
 	m_current_clip_size = clip_size
@@ -62,8 +61,8 @@ func get_barrel() -> Node3D:
 
 
 # Virtual function
-func fire(owner : Node3D) -> void:
-	var input = {"weapon": self, "owner": owner}
+func fire(owner : Node3D, damage_multiplier : float) -> void:
+	var input = {"weapon": self, "owner": owner, "damage_multiplier" : damage_multiplier}
 	for behaviour in weapon_behaviours:
 		input = behaviour.apply_behaviour(input)
 	#var bullet

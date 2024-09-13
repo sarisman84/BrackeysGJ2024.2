@@ -7,7 +7,7 @@ extends OnHitBehaviour
 @export_flags_3d_physics var explosion_detection_mask : int
 @export var explosion_detection_duration_in_seconds : float
 
-func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body : Variant) -> void:
+func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager,damage_multiplier : float, incoming_body : Variant) -> void:
 	var is_itself = bullet.get_instance_id() == incoming_body.get_instance_id()
 
 
@@ -26,7 +26,8 @@ func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body
 
 	explosion_hitbox.collision_mask = explosion_detection_mask
 	explosion_hitbox.add_child(col)
-	explosion_hitbox.body_entered.connect(func(incoming_body : Variant): on_explosion(weapon_manager, incoming_body))
+	explosion_hitbox.body_entered.connect(func(incoming_body : Variant): on_explosion(damage_multiplier, weapon_manager, incoming_body))
+	explosion_hitbox.area_entered.connect(func(incoming_body : Variant): on_explosion(damage_multiplier, weapon_manager, incoming_body))
 
 	var scene_tree = weapon_manager.get_tree()
 	scene_tree.root.add_child(explosion_hitbox)
@@ -38,14 +39,14 @@ func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager, incoming_body
 	timer.start(explosion_detection_duration_in_seconds)
 	timer.timeout.connect(on_explosion_expire.bind(explosion_hitbox, timer))
 
-func on_explosion(weapon_manager: WeaponManager, incoming_body : Variant) -> void:
+func on_explosion(damage_multiplier : float,weapon_manager: WeaponManager, incoming_body : Variant) -> void:
 	if weapon_manager.owner.get_instance_id() == incoming_body.get_instance_id():
 		return
 	var health_manager = incoming_body as HealthManager
 	if health_manager.owner.get_instance_id() == incoming_body.get_instance_id():
 		return
 
-	health_manager.take_damage(damage, weapon_manager.weapon_owner)
+	health_manager.take_damage(damage * damage_multiplier, weapon_manager.weapon_owner)
 
 func on_explosion_expire(explosion_hitbox : Area3D, timer : Timer) -> void:
 	explosion_hitbox.queue_free()
