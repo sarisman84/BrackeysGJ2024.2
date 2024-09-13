@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://p4s150ayvuqi"]
+
+[ext_resource type="Script" path="res://Player/Scripts/weapon_select.gd" id="1_t0p1g"]
+[ext_resource type="Texture2D" uid="uid://ny7cubqqd1nh" path="res://Menus/Assets/Transparent HD Indicator.png" id="2_jnswf"]
+[ext_resource type="PackedScene" uid="uid://bqkqv0h1qxo78" path="res://Player/UI/Weapon_Select/ui_weapon_button.tscn" id="2_ogo4u"]
+[ext_resource type="FontFile" uid="uid://snwi17k1tj6i" path="res://Menus/Assets/Roboto_Slab_Font/static/RobotoSlab-Medium.ttf" id="4_jg4ut"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nmcve"]
+font = ExtResource("4_jg4ut")
+font_size = 25
+font_color = Color(1, 0.847059, 0.560784, 1)
+
+[node name="weapon_select" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_t0p1g")
+
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -244.5
+offset_right = 213.0
+offset_bottom = 244.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jnswf")
+expand_mode = 1
+
+[node name="weapon_button1" parent="." instance=ExtResource("2_ogo4u")]
+offset_left = -235.5
+offset_top = -76.0
+offset_right = -102.5
+offset_bottom = 76.0
+
+[node name="weapon_button2" parent="." instance=ExtResource("2_ogo4u")]
+offset_left = -151.0
+offset_top = 68.0
+offset_right = -18.0
+offset_bottom = 220.0
+
+[node name="weapon_button3" parent="." instance=ExtResource("2_ogo4u")]
+offset_left = 17.0
+offset_top = 68.0
+offset_right = 150.0
+offset_bottom = 220.0
+
+[node name="weapon_button4" parent="." instance=ExtResource("2_ogo4u")]
+offset_left = 100.5
+offset_top = -76.0
+offset_right = 233.5
+offset_bottom = 76.0
+
+[node name="weapon_button5" parent="." instance=ExtResource("2_ogo4u")]
+offset_left = 17.0
+offset_top = -221.0
+offset_right = 150.0
+offset_bottom = -69.0
+
+[node name="weapon_button6" parent="." instance=ExtResource("2_ogo4u")]
+offset_left = -151.0
+offset_top = -221.0
+offset_right = -18.0
+offset_bottom = -69.0
+
+[node name="weapon_label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -11.0
+offset_right = 115.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Test Weapon"
+label_settings = SubResource("LabelSettings_nmcve")
+horizontal_alignment = 1

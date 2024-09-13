@@ -27,3 +27,4 @@ func _on_timer_timeout() -> void:
 	if !array.is_empty():
 		for hm in array:
 			hm.take_damage(damage_amount)
+		m_timer.start()

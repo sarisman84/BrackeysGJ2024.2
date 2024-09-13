@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqda2pddionm4"]
+[gd_scene load_steps=9 format=3 uid="uid://dqda2pddionm4"]
 
 [ext_resource type="Script" path="res://Menus/Scripts/main_menu.gd" id="1_ro81h"]
 [ext_resource type="PackedScene" uid="uid://x36d33lrst47" path="res://Menus/Scenes/options.tscn" id="2_jb264"]
 [ext_resource type="PackedScene" uid="uid://bg12mkur7y1qe" path="res://Level/main_scene.tscn" id="2_lj1kc"]
+[ext_resource type="Texture2D" uid="uid://behxywopfdjb1" path="res://Menus/Assets/Title.png" id="3_3p3lh"]
+[ext_resource type="Texture2D" uid="uid://vq0qijmbvy0n" path="res://Menus/Assets/Small Filled Button.png" id="4_5553n"]
+[ext_resource type="Texture2D" uid="uid://cpvwn6dnq1yuf" path="res://Menus/Assets/Filled Button.png" id="4_ylba4"]
+[ext_resource type="FontFile" uid="uid://snwi17k1tj6i" path="res://Menus/Assets/Roboto_Slab_Font/static/RobotoSlab-Medium.ttf" id="5_ix5yj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jwjdp"]
+font = ExtResource("5_ix5yj")
+font_size = 32
+font_color = Color(1, 0.847059, 0.560784, 1)
 
 [node name="main_menu" type="CanvasLayer"]
 script = ExtResource("1_ro81h")
@@ -12,39 +21,91 @@ game_scene = ExtResource("2_lj1kc")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -576.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="vbox" type="VBoxContainer" parent="background"]
+[node name="title" type="TextureRect" parent="background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -248.0
+offset_top = 56.0
+offset_right = 250.0
+offset_bottom = 158.0
+grow_horizontal = 2
+texture = ExtResource("3_3p3lh")
+expand_mode = 1
+
+[node name="start_button" type="TextureButton" parent="background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.5
+offset_top = 200.0
+offset_right = 151.5
+offset_bottom = 276.0
+grow_horizontal = 2
+texture_normal = ExtResource("4_5553n")
+texture_hover = ExtResource("4_ylba4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="start_label" type="Label" parent="background/start_button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -126.0
-offset_top = -75.5
-offset_right = 126.0
-offset_bottom = 75.5
+offset_left = -104.5
+offset_top = -22.5
+offset_right = 104.5
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 25
-
-[node name="start_button" type="Button" parent="background/vbox"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 40
 text = "START GAME"
+label_settings = SubResource("LabelSettings_jwjdp")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="options_button" type="Button" parent="background/vbox"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 40
-text = "OPTIONS
-"
+[node name="options_button" type="TextureButton" parent="background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.5
+offset_top = 296.0
+offset_right = 151.5
+offset_bottom = 372.0
+grow_horizontal = 2
+texture_normal = ExtResource("4_5553n")
+texture_hover = ExtResource("4_ylba4")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="options_label" type="Label" parent="background/options_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.5
+offset_top = -22.5
+offset_right = 104.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_jwjdp")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="options" parent="." instance=ExtResource("2_jb264")]
 visible = false
 
-[connection signal="pressed" from="background/vbox/start_button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="background/vbox/options_button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="background/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="background/options_button" to="." method="_on_options_button_pressed"]
