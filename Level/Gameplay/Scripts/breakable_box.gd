@@ -4,9 +4,6 @@ extends RigidBody3D
 
 @onready var hurtbox : HealthManager = $hurtbox
 
-
-
-
 func _ready() -> void:
 	hurtbox.health_owner = self
 	hurtbox.on_death.connect(m_spawn_drop)
