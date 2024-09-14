@@ -22,6 +22,7 @@ class_name BaseWeapon
 @export var hit_sfx_guid : String
 
 
+@export var sellable : bool = true
 
 var m_current_clip_size : int
 var m_barrel : Node3D

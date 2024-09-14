@@ -40,6 +40,7 @@ icon = ExtResource("1_rkfo3")
 display_name = "Machine Gun"
 weapon_cost = 10000
 ammo_cost = 100
+sellable = true
 fire_sfx_name = "event:/Player/Plasma Rifle Shoot"
 fire_sfx_guid = "{c109eaac-e945-4159-9f42-8a8a75912bdc}"
 hit_sfx_name = "event:/Player/Plasma Rifle Hit"

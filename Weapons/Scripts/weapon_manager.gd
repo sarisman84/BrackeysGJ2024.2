@@ -90,12 +90,6 @@ func m_set_all_weapon_visibility(new_visibility : bool) -> void:
 	#m_weapon_inventory.append(weapon)
 	#selected_weapon_index = last_indx
 
-
-func _ready() -> void:
-	#WeaponBehaviours.init()
-	add_weapon("machine_gun")
-	pass
-
 func _process(_delta : float) -> void:
 	m_internal_clock -= _delta
 	m_internal_clock = max(m_internal_clock, 0)

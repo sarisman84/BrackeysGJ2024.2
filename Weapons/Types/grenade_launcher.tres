@@ -47,6 +47,7 @@ icon = ExtResource("1_hnpn8")
 display_name = "Nova Launcher"
 weapon_cost = 10000
 ammo_cost = 500
+sellable = true
 fire_sfx_name = "event:/Player/Grenade Launcher Shoot"
 fire_sfx_guid = "{b684b2c1-a1ab-425d-b953-2ccd67bbd52c}"
 hit_sfx_name = "event:/Player/Grenade Launcher Explode"

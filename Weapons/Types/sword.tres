@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=9 format=3 uid="uid://byn0c73rierit"]
+
+[ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="1_tiw7m"]
+[ext_resource type="Texture2D" uid="uid://0k37q6nr1aoi" path="res://Weapons/Icons/rifle.png" id="1_xhof0"]
+[ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/base_behaviour.gd" id="2_lreg0"]
+[ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/meele_attack.gd" id="3_3rqou"]
+[ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/apply_damage.gd" id="5_nasgn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2if1"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="Resource" id="Resource_o8uo6"]
+script = ExtResource("3_3rqou")
+hurtbox_shape = SubResource("BoxShape3D_w2if1")
+hurtbox_detection_mask = 32
+delete_bullet_on_hit = true
+UUID = -1
+
+[sub_resource type="Resource" id="Resource_j2fv3"]
+script = ExtResource("5_nasgn")
+damage = 10.0
+hurtbox_detection_mask = 0
+delete_bullet_on_hit = true
+UUID = -1
+
+[resource]
+script = ExtResource("1_tiw7m")
+weapon_behaviours = Array[ExtResource("2_lreg0")]([SubResource("Resource_o8uo6"), SubResource("Resource_j2fv3")])
+fire_rate = 0.5
+clip_size = -1
+model = "res://Weapons/Models/p_grenade_launcher.tscn"
+icon = ExtResource("1_xhof0")
+display_name = "Sword"
+weapon_cost = 10000
+ammo_cost = 0
+sellable = false
+UUID = -1
