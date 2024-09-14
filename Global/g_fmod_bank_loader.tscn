@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bg5388rgnlgsc"]
+
+[node name="fmod_bank_loader" type="FmodBankLoader"]
+bank_paths = ["res://FMOD/Master.strings.bank", "res://FMOD/Master.bank", "res://FMOD/Music.bank", "res://FMOD/SFX.bank"]

@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var m_group_timer = $group_timer
 @onready var m_downtime_timer = $downtime_timer
-#@onready var music_player : FmodEventEmitter3D = $player_tracker/music_player
+@onready var music_player : FmodEventEmitter3D = $player_tracker/music
 
 #Wave Manager
 @export var wave_info_array : Array[WaveInfo]
@@ -15,7 +15,7 @@ var spawn_margin = 15
 var raycast_result
 
 func _ready() -> void:
-	#music_player.play()
+	music_player.play()
 	start_wave_countdown()
 
 func _physics_process(_delta: float) -> void:
@@ -33,7 +33,7 @@ func start_wave_countdown():
 	m_downtime_timer.start(wave_info_array[cur_wave].wave_start_time - Global.time_elapsed)
 	m_group_timer.wait_time = wave_info_array[cur_wave].init_spawn_time_delay
 	groups_spawned = 0
-	#music_player.set_parameter("Intensity", wave_info_array[cur_wave].music_intensity)
+	music_player.set_parameter("Intensity", wave_info_array[cur_wave].music_intensity)
 
 
 func position_randomize() -> Vector3:

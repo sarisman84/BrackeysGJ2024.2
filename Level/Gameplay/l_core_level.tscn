@@ -566,6 +566,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 214.137, -3.05176e-05, 188.97
 [node name="enemy_spawner" parent="." instance=ExtResource("10_l0yoi")]
 wave_info_array = Array[ExtResource("11_8kyki")]([ExtResource("12_lldtr"), ExtResource("13_dboht"), ExtResource("14_330ga")])
 
+[node name="player_tracker" parent="enemy_spawner" index="2"]
+remote_path = NodePath("../../player")
+
+[node name="music" parent="enemy_spawner/player_tracker" index="0"]
+process_mode = 3
+
 [node name="powerup_test" type="Node3D" parent="."]
 
 [node name="powerup_template" parent="powerup_test" instance=ExtResource("15_5562t")]
