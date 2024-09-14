@@ -22,6 +22,6 @@ func powerup_obtained(player: AvatarController) -> void:
 			player.main_ui.m_update_visual_max_health(player.health_manager)
 		"JumpLimitUp":
 			player.jump_count += jump_limit_up
-		#"AttackUp":
-			#player.weapon_manager.damage_multiplier += attack_up
+		"AttackUp":
+			player.weapon_manager.damage_multiplier += attack_up
 	player.main_ui.m_display_powerup_popup(powerup_info.name)
