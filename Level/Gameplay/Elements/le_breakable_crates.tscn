@@ -9,8 +9,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwh0y"]
 size = Vector3(1.50684, 1.44922, 1.36523)
 
-[node name="breakable_crates2" type="RigidBody3D"]
+[node name="breakable_crates" type="RigidBody3D"]
 script = ExtResource("1_3enxs")
+crate_break_sfx_name = "event:/World/Crate Breaking"
+crate_break_sfx_guid = "{fd93cd34-6555-4c5a-91a2-a40a11ff35b9}"
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_g3fc8")

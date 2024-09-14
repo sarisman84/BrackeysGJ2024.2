@@ -8,15 +8,14 @@ extends BaseBehaviour
 @export var bullet_spread_in_degrees : float = 0.0
 @export var bullet_direction_offset : Vector3 = Vector3.ZERO
 @export var bullet_velocity : float = 100
-
+@export var bullet_gravity : float = 0
 @export var bullet_collision_shape : Shape3D
 
 func m_create_projectile(owner : WeaponManager) -> RigidBody3D:
 	var proj := RigidBody3D.new()
 	var hitbox = CollisionShape3D.new()
-
 	hitbox.shape = bullet_collision_shape
-
+	proj.gravity_scale = bullet_gravity
 	proj.add_child(hitbox)
 	owner.weapon_owner.get_parent().add_child(proj)
 	return proj

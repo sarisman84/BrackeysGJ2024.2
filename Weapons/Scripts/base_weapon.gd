@@ -15,7 +15,14 @@ class_name BaseWeapon
 @export_group("Costs")
 @export var weapon_cost : int = 10000
 @export var ammo_cost : int = 500
+@export_group("SFX")
+@export var fire_sfx_name : String
+@export var fire_sfx_guid : String
+@export var hit_sfx_name : String
+@export var hit_sfx_guid : String
 
+
+@export var sellable : bool = true
 
 var m_current_clip_size : int
 var m_barrel : Node3D

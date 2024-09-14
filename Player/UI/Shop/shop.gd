@@ -10,6 +10,11 @@ var m_counter=0
 @onready var m_right_icon = $shop_window/main_icon/right_button/texture
 @onready var m_title = $shop_window/title
 @onready var m_buy = $shop_window/buy/buy_label
+@onready var shop_buy_sfx : FmodEventEmitter3D = $shop_buy_sfx
+@onready var shop_open_close_sfx : FmodEventEmitter3D = $shop_open_close_sfx
+@onready var shop_press_sfx : FmodEventEmitter3D = $shop_press_sfx
+@onready var shop_hover_sfx : FmodEventEmitter3D = $shop_hover_sfx
+
 
 
 var can_toggle_shop : bool
@@ -41,12 +46,14 @@ func show_shop() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().paused = true
 	Global.current_paused_state = Global.PausedStates.SHOP
+	shop_open_close_sfx.play()
 
 func hide_shop() -> void:
 	hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
 	Global.current_paused_state = Global.PausedStates.NONE
+	shop_open_close_sfx.play()
 
 func is_open() -> bool:
 	return visible
@@ -90,8 +97,8 @@ func m_update_visuals() -> void:
 func m_get_weapons_from_registry() -> void:
 	for item in ItemRegistry.item_registry:
 		if item is BaseWeapon:
-			m_shop_items.append(item.duplicate())
-			m_shop_bought_flags.append(false)
+			if item.sellable:
+				m_shop_items.append(item.duplicate())
 
 #Scroll shop items
 func _on_left_button_pressed() -> void:
@@ -99,10 +106,19 @@ func _on_left_button_pressed() -> void:
 	if m_counter < 0:
 		m_counter += m_shop_items.size()
 	m_update_visuals()
+	shop_press_sfx.play()
 
 func _on_right_button_pressed() -> void:
 	m_counter = (m_counter+1) % m_shop_items.size()
 	m_update_visuals()
+	shop_press_sfx.play()
+
+func _on_left_button_mouse_entered():
+	shop_hover_sfx.play()
+
+
+func _on_right_button_mouse_entered():
+	shop_hover_sfx.play()
 
 #Emit buy signal when buy button is pressed
 func _on_buy_button_pressed():
@@ -120,9 +136,11 @@ func _on_buy_button_pressed():
 		if ammo_cost <= money and required_ammo_to_fill != 0:
 			Global.current_currency -= ammo_cost
 			m_weapon_manager.refill_ammo_for(m_shop_items[m_counter].UUID, required_ammo_to_fill)
+			shop_buy_sfx.play()
 	#Attempt to buy the current gun instead.
 	elif weapon_data.weapon_cost <= money:
 		Global.current_currency -= weapon_data.weapon_cost
 		m_weapon_manager.add_weapon(m_shop_items[m_counter].UUID)
+		shop_buy_sfx.play()
 
 	m_update_visuals()

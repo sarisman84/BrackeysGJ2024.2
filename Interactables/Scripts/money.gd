@@ -2,9 +2,12 @@ extends RigidBody3D
 
 @onready var m_gear_mesh = $gear_mesh
 
+
 var value = 10
 var fly_distance = 6
 var jump_triggered = false
+var pickup_sfx_name : String = "event:/Player/Currency Pickup"
+var pickup_sfx_guid : String = "{059c0e4a-cbe8-45f0-8dbf-d38edcb80b05}"
 
 var fly_speed = 20
 var jump_speed = 300
@@ -46,4 +49,23 @@ func jump_once() -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		Global.current_currency = Global.current_currency + value
-		queue_free()
+
+		var emitter := FmodEventEmitter3D.new()
+
+		emitter.event_name = pickup_sfx_name
+		emitter.event_guid = pickup_sfx_guid
+		emitter.preload_event = false
+		emitter.global_position = global_position
+		get_tree().root.add_child(emitter)
+		emitter.play()
+
+		var timer := Timer.new()
+		timer.start(0.5)
+		timer.timeout.connect(m_clear_sfx.bind(emitter, timer))
+		get_tree().root.add_child(timer)
+
+	queue_free()
+
+func m_clear_sfx(emitter : FmodEventEmitter3D, timer : Timer) -> void:
+	emitter.queue_free()
+	timer.queue_free()

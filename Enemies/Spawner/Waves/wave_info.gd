@@ -9,3 +9,4 @@ class_name WaveInfo
 @export var group_amount : int
 @export var init_spawn_time_delay : float
 @export var spawn_time_delay_decrease : float
+@export var music_intensity : int

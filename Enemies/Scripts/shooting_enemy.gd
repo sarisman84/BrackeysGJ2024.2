@@ -25,6 +25,7 @@ func _ready() -> void:
 	original_mat = model_meshes[0].get_surface_override_material(0)
 	
 	m_weapon_manager.weapon_owner = self
+	m_weapon_manager.add_weapon("machine_gun")
 
 #func _physics_process(delta: float) -> void:
 	#if !Global.player_ref:

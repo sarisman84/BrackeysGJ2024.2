@@ -4,6 +4,9 @@ extends Node3D
 var m_internal_clock : float
 var m_weapon_inventory : Array[BaseWeapon]
 var m_internal_weapon_models : Array[Node3D]
+var m_sfx_emitters : Array[FmodEventEmitter3D]
+
+#@onready var weapon_fire : FmodEventEmitter3D = $weapon_fire
 
 signal on_weapon_switch
 signal on_weapon_fire
@@ -23,6 +26,7 @@ var selected_weapon : int :
 		on_weapon_switch.emit()
 
 
+
 func refill_ammo_for(weapon_name_or_uuid : Variant, refill_amount : int) -> bool:
 	for i in range(m_weapon_inventory.size()):
 		var w = m_weapon_inventory[i]
@@ -40,9 +44,6 @@ func refill_ammo_for(weapon_name_or_uuid : Variant, refill_amount : int) -> bool
 					if result:
 						on_weapon_refill.emit()
 					return result
-
-
-
 	return false
 
 func add_weapon(new_weapon: Variant) -> void:
@@ -55,6 +56,14 @@ func add_weapon(new_weapon: Variant) -> void:
 	m_internal_weapon_models.append(weapon.instantiate_weapon_model(self))
 	m_weapon_inventory.append(weapon)
 	selected_weapon = last_indx
+
+
+	var emitter := FmodEventEmitter3D.new()
+	emitter.preload_event = false
+	emitter.event_guid = weapon.fire_sfx_guid
+	emitter.event_name = weapon.fire_sfx_name
+	add_child(emitter)
+	m_sfx_emitters.append(emitter)
 
 func get_weapon(weapon_name_or_uuid: Variant) -> BaseWeapon:
 	for i in range(m_weapon_inventory.size()):
@@ -81,12 +90,6 @@ func m_set_all_weapon_visibility(new_visibility : bool) -> void:
 	#m_weapon_inventory.append(weapon)
 	#selected_weapon_index = last_indx
 
-
-func _ready() -> void:
-	#WeaponBehaviours.init()
-	add_weapon("machine_gun")
-	pass
-
 func _process(_delta : float) -> void:
 	m_internal_clock -= _delta
 	m_internal_clock = max(m_internal_clock, 0)
@@ -97,4 +100,5 @@ func _process(_delta : float) -> void:
 		weapon.fire(self, damage_multiplier)
 		weapon.use_ammo()
 		m_internal_clock = weapon.fire_rate
+		m_sfx_emitters[selected_weapon].play()
 		on_weapon_fire.emit()

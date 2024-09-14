@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="BaseWeapon" load_steps=12 format=3 uid="uid://dk3csf75j3e2x"]
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=11 format=3 uid="uid://dk3csf75j3e2x"]
 
 [ext_resource type="Texture2D" uid="uid://kjlwgtc8tt00" path="res://Weapons/Icons/sonic-boom.png" id="1_hnpn8"]
 [ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="2_2dqry"]
 [ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/base_behaviour.gd" id="3_8yd8p"]
 [ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/fire_projectile.gd" id="4_iktmo"]
 [ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/apply_explosion.gd" id="5_7mg6t"]
-[ext_resource type="PackedScene" uid="uid://w4mwnk6r187e" path="res://Weapons/Explosion/explosion_vfx.tscn" id="5_l2njb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uloda"]
 radius = 0.25
@@ -17,7 +16,8 @@ bullet_amount = 1
 delay_between_bullets_shot_in_seconds = 0.0
 bullet_spread_in_degrees = 0.0
 bullet_direction_offset = Vector3(0, 1, 0)
-bullet_velocity = 14.0
+bullet_velocity = 25.0
+bullet_gravity = 5.75
 bullet_collision_shape = SubResource("SphereShape3D_uloda")
 UUID = -1
 
@@ -32,11 +32,10 @@ damage = 10
 explosion_shape = SubResource("SphereShape3D_6plbv")
 explosion_detection_mask = 32
 explosion_detection_duration_in_seconds = 0.1
-explosion_vfx = ExtResource("5_l2njb")
 hurtbox_shape = SubResource("SphereShape3D_2og7x")
 hurtbox_detection_mask = 33
-delete_bullet_on_hit = true
-UUID = -1
+delete_bullet_on_hit = null
+UUID = null
 
 [resource]
 script = ExtResource("2_2dqry")
@@ -48,4 +47,9 @@ icon = ExtResource("1_hnpn8")
 display_name = "Nova Launcher"
 weapon_cost = 10000
 ammo_cost = 500
+fire_sfx_name = "event:/Player/Grenade Launcher Shoot"
+fire_sfx_guid = "{b684b2c1-a1ab-425d-b953-2ccd67bbd52c}"
+hit_sfx_name = "event:/Player/Grenade Launcher Explode"
+hit_sfx_guid = "{603deb0f-cc19-4821-a63e-a94b5406f719}"
+sellable = true
 UUID = -1
