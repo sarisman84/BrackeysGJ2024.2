@@ -3,5 +3,6 @@
 [ext_resource type="Script" path="res://Global/Root/Scripts/root.gd" id="1_l664b"]
 
 [node name="root" type="Node"]
+process_mode = 3
 script = ExtResource("1_l664b")
 scene_to_load = "res://Level/Gameplay/l_core_level.tscn"

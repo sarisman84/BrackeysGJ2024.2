@@ -164,7 +164,6 @@ sides = 19
 material = ExtResource("2_r8emv")
 
 [node name="player" parent="." instance=ExtResource("1_7d138")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 movement_speed = 15.0
 jump_height = 2.0
 
@@ -580,3 +579,5 @@ powerup_info = SubResource("Resource_ssfdk")
 [node name="powerup_template3" parent="powerup_test" instance=ExtResource("15_5562t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
 powerup_info = SubResource("Resource_pu1d4")
+
+[editable path="enemy_spawner"]

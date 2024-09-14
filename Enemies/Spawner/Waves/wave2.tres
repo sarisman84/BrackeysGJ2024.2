@@ -13,3 +13,4 @@ wave_start_time = 90.0
 group_amount = 10
 init_spawn_time_delay = 4.0
 spawn_time_delay_decrease = 0.2
+music_intensity = 20
