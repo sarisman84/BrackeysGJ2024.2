@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="WaveInfo" load_steps=3 format=3 uid="uid://3fjug1vja3cp"]
 
 [ext_resource type="Script" path="res://Enemies/Spawner/Waves/wave_info.gd" id="1_cvj7k"]
-[ext_resource type="PackedScene" uid="uid://cjhnfiv3kdyek" path="res://Enemies/Scenes/shooting_enemy.tscn" id="1_uf4ee"]
+[ext_resource type="PackedScene" uid="uid://dxcxm2wvtq7fp" path="res://Enemies/Scenes/basic_enemy.tscn" id="1_flnmn"]
 
 [resource]
 script = ExtResource("1_cvj7k")
-enemies = Array[PackedScene]([ExtResource("1_uf4ee")])
+enemies = Array[PackedScene]([ExtResource("1_flnmn")])
 spawn_distance = 25
 flying_distance = 10
 wave_start_time = 5.0
