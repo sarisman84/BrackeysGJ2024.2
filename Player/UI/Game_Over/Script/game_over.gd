@@ -28,11 +28,16 @@ func m_disable() -> void:
 	get_tree().paused = false
 
 func m_on_play() -> void:
+	ItemRegistry.reset_all_spawned_items()
 	m_disable()
-	owner.get_tree().reload_current_scene()
+	Loading.reload_scene(owner.get_tree())
+	#owner.get_tree().reload_current_scene()
 	Global.time_elapsed = 0.0
 
 
+
 func m_on_quit() -> void:
+	ItemRegistry.reset_all_spawned_items()
 	m_disable()
-	get_tree().change_scene_to_file(quit_scene)
+	Loading.load_new_scene(quit_scene)
+	#get_tree().change_scene_to_file(quit_scene)

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="BrackeysGJ2024.2"
+run/main_scene="res://Global/Root/s_root.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://Global/global.gd"
 ItemRegistry="*res://Global/g_item_registry.tscn"
 WeaponBehaviours="*res://Global/Scripts/weapon_behaviours.gd"
+Loading="*res://Global/Root/g_loading_manager.tscn"
 
 [global_group]
 
