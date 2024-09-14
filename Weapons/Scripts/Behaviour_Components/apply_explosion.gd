@@ -10,11 +10,13 @@ extends OnHitBehaviour
 
 func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager,damage_multiplier : float, incoming_body : Variant) -> void:
 	var is_itself = bullet.get_instance_id() == incoming_body.get_instance_id()
-
-
+	
 	if is_itself :
 		return
-
+	
+	if incoming_body.get_parent().get_instance_id() == weapon_manager.weapon_owner.get_instance_id():
+		return
+	
 	print("[ApplyExplosionOnHit]: collison: %s" % incoming_body.name)
 
 	var hit_pos = bullet.global_position

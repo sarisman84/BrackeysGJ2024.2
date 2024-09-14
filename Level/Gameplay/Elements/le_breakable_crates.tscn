@@ -9,7 +9,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwh0y"]
 size = Vector3(1.50684, 1.44922, 1.36523)
 
-[node name="breakable_crates" type="RigidBody3D"]
+[node name="breakable_crates2" type="RigidBody3D"]
 script = ExtResource("1_3enxs")
 
 [node name="shape" type="CollisionShape3D" parent="."]

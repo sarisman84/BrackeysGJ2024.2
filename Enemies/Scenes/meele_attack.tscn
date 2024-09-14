@@ -13,6 +13,7 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="meele_attack" type="Area3D"]
 script = ExtResource("1_yjuh3")
+damage_amount = 10
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_1agxi")
