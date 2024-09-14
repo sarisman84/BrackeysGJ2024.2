@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjhnfiv3kdyek"]
+[gd_scene load_steps=6 format=3 uid="uid://cjhnfiv3kdyek"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/shooting_enemy.gd" id="1_2ecym"]
+[ext_resource type="Material" uid="uid://b6wtw6hlrqhvh" path="res://Level/Gameplay/Resources/white_material.tres" id="2_1rqh0"]
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="2_b4uvf"]
 [ext_resource type="PackedScene" uid="uid://clda4emv0gms1" path="res://Enemies/Models/shooting_enemy.tscn" id="2_ifepm"]
 
@@ -12,6 +13,7 @@ collision_mask = 7
 script = ExtResource("1_2ecym")
 money_amount = 4
 money_value = 15
+blink_material = ExtResource("2_1rqh0")
 
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_5f3dy")
