@@ -2,6 +2,8 @@ extends CanvasLayer
 @onready var m_button_click_sfx = $button_click_sfx
 @onready var m_button_hover_sfx = $button_hover_sfx
 
+var main_menu_path = "res://Menus/Scenes/main_menu.tscn"
+
 func _input(event: InputEvent) -> void:
 	if Global.current_paused_state != Global.PausedStates.NONE and Global.current_paused_state != Global.PausedStates.PAUSE_MENU:
 		return
@@ -25,3 +27,9 @@ func _on_back_button_pressed() -> void:
 
 func _on_back_button_mouse_entered():
 	m_button_hover_sfx.play()
+
+
+func _on_main_menu_button_pressed() -> void:
+	Global.current_paused_state = Global.PausedStates.NONE
+	Loading.load_new_scene(main_menu_path)
+	m_button_click_sfx.play()
