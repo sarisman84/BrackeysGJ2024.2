@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 func m_load_scene() -> void:
-	ItemRegistry.initialize_spawn_items(4)
+	ItemRegistry.initialize_spawn_items(8)
 	ResourceLoader.load_threaded_request(scene_to_load)
 
 func m_load_complete() -> bool:

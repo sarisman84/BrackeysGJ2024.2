@@ -1,6 +1,9 @@
 extends RigidBody3D
 
 @export var drop_setting : SpawnSetting
+@export_group("SFX")
+@export var crate_break_sfx_name : String
+@export var crate_break_sfx_guid : String
 
 @onready var hurtbox : HealthManager = $hurtbox
 
@@ -22,3 +25,18 @@ func m_spawn_drop() -> void:
 		print("[Breakable Crates]: Dropped %s" % drop_setting.resource_name)
 
 	ItemRegistry.reset_cached_item(self)
+
+	var emitter := FmodEventEmitter3D.new()
+
+	emitter.event_name = crate_break_sfx_name
+	emitter.event_guid = crate_break_sfx_guid
+	emitter.global_position = global_position
+	emitter.preload_event = false
+	emitter.play()
+
+	var timer := Timer.new()
+	timer.start(0.5)
+	timer.timeout.connect(m_clear_sfx.bind(emitter))
+
+func m_clear_sfx(emitter : FmodEventEmitter3D) -> void:
+	emitter.queue_free()

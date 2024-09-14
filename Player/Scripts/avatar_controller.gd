@@ -38,7 +38,6 @@ func _ready() -> void:
 	shop.init(weapon_manager)
 	main_ui.init(health_manager, weapon_manager)
 
-
 	main_ui.m_update_visual_max_health(health_manager)
 	main_ui.m_update_visual_health_bar(health_manager)
 	#DEBUG
@@ -80,7 +79,6 @@ func _physics_process(delta : float) -> void:
 			velocity = lerp(velocity, Vector3.ZERO, decceleration * delta)
 			velocity.y = y_vel
 
-
 	move_and_slide()
 	#Global.player_coords = position
 
@@ -106,11 +104,3 @@ func m_calculate_jump_velocity() -> float:
 func m_on_death() -> void:
 	game_over.transition(self)
 	pass
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("interact") and Global.player_at_shop:
-		#if shop_open:
-			#shop.hide_shop()
-			#shop_open = false
-		#else:
-			#shop.show_shop()
-			#shop_open = true

@@ -106,5 +106,15 @@ vertical_alignment = 1
 [node name="options" parent="." instance=ExtResource("2_jb264")]
 visible = false
 
+[node name="button_click_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/UI Click"
+event_guid = "{d8c72776-396b-42ec-bfe0-9bfe45bb4eb9}"
+
+[node name="button_hover_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/UI Hover"
+event_guid = "{060e5c31-6ad0-4587-8885-44dceb6ea037}"
+
+[connection signal="mouse_entered" from="background/start_button" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="background/start_button" to="." method="_on_start_button_mouse_exited"]
 [connection signal="pressed" from="background/start_button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="background/options_button" to="." method="_on_options_button_pressed"]

@@ -7,12 +7,27 @@ extends OnHitBehaviour
 @export_flags_3d_physics var explosion_detection_mask : int
 @export var explosion_detection_duration_in_seconds : float
 
-func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager,damage_multiplier : float, incoming_body : Variant) -> void:
+func on_bullet_hit(bullet : Node3D, weapon : BaseWeapon, weapon_manager: WeaponManager,damage_multiplier : float, incoming_body : Variant) -> void:
 	var is_itself = bullet.get_instance_id() == incoming_body.get_instance_id()
 
 
-	if is_itself :
+	if is_itself:
 		return
+
+	if incoming_body.get_parent().get_instance_id() == weapon_manager.weapon_owner.get_instance_id():
+		return
+
+	var emitter := FmodEventEmitter3D.new()
+
+	emitter.event_name = weapon.hit_sfx_name
+	emitter.event_guid = weapon.hit_sfx_guid
+	emitter.global_position = bullet.global_position
+	emitter.preload_event = false
+	emitter.play()
+
+	var timer := Timer.new()
+	timer.start(0.5)
+	timer.timeout.connect(m_clear_sfx.bind(emitter))
 
 	print("[ApplyExplosionOnHit]: collison: %s" % incoming_body.name)
 
@@ -34,10 +49,13 @@ func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager,damage_multipl
 
 	explosion_hitbox.global_position = hit_pos
 
-	var timer = Timer.new()
+	timer = Timer.new()
 	scene_tree.root.add_child(timer)
 	timer.start(explosion_detection_duration_in_seconds)
 	timer.timeout.connect(on_explosion_expire.bind(explosion_hitbox, timer))
+
+func m_clear_sfx(emitter : FmodEventEmitter3D) -> void:
+	emitter.queue_free()
 
 func on_explosion(damage_multiplier : float,weapon_manager: WeaponManager, incoming_body : Variant) -> void:
 	if weapon_manager.owner.get_instance_id() == incoming_body.get_instance_id():

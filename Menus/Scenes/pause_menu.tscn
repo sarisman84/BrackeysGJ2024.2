@@ -78,4 +78,13 @@ grow_vertical = 2
 text = "BACK TO GAME"
 label_settings = SubResource("LabelSettings_peyt7")
 
+[node name="button_click_sfx" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/UI/UI Click"
+event_guid = "{d8c72776-396b-42ec-bfe0-9bfe45bb4eb9}"
+
+[node name="button_hover_sfx" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/UI/UI Hover"
+event_guid = "{060e5c31-6ad0-4587-8885-44dceb6ea037}"
+
+[connection signal="mouse_entered" from="background/back_button" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="background/back_button" to="." method="_on_back_button_pressed"]

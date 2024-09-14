@@ -42,6 +42,10 @@ ItemRegistry="*res://Global/g_item_registry.tscn"
 WeaponBehaviours="*res://Global/Scripts/weapon_behaviours.gd"
 Loading="*res://Global/Root/g_loading_manager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")

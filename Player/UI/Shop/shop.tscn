@@ -212,6 +212,24 @@ text = "BUY"
 label_settings = SubResource("LabelSettings_210i1")
 horizontal_alignment = 1
 
+[node name="shop_buy_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/Shop Buy"
+event_guid = "{f9ad4001-a5db-4ac7-8c92-6b148b9f1db3}"
+
+[node name="shop_open_close_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/Shop OpenClose"
+event_guid = "{b971197e-0e2f-4bca-a605-cf35d4d777fc}"
+
+[node name="shop_press_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/UI Click"
+event_guid = "{d8c72776-396b-42ec-bfe0-9bfe45bb4eb9}"
+
+[node name="shop_hover_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/UI Hover"
+event_guid = "{060e5c31-6ad0-4587-8885-44dceb6ea037}"
+
+[connection signal="mouse_entered" from="shop_window/main_icon/left_button" to="." method="_on_left_button_mouse_entered"]
 [connection signal="pressed" from="shop_window/main_icon/left_button" to="." method="_on_left_button_pressed"]
+[connection signal="mouse_entered" from="shop_window/main_icon/right_button" to="." method="_on_right_button_mouse_entered"]
 [connection signal="pressed" from="shop_window/main_icon/right_button" to="." method="_on_right_button_pressed"]
 [connection signal="pressed" from="shop_window/buy" to="." method="_on_buy_button_pressed"]
