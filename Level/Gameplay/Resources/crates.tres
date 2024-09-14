@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource("1_dfmqr")
 object_to_spawn = "res://Level/Gameplay/Elements/le_breakable_crates.tscn"
+allocated_object_count = 2000
 chance_to_spawn = 0.8
-min_objects_to_spawn = 4
-max_objects_to_spawn = 18
+min_objects_to_spawn = 1
+max_objects_to_spawn = 27
 object_placement_area_size = Vector3i(3, 3, 3)
+UUID = -1
