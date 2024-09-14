@@ -20,17 +20,17 @@ func m_create_hurtbox(bullet : Node3D) -> Area3D:
 func apply_behaviour(args : Dictionary = {}) -> Dictionary:
 	assert(args.has("weapon"))
 	assert(args.has("owner"))
-	
-	
+
+	var weapon : BaseWeapon = args["weapon"]
 	var weapon_manager : WeaponManager = args["owner"]
 	var damage_multiplier : float = args["damage_multiplier"]
 	if args.has("bullets"):
 		var bullets = args["bullets"]
-		
+
 		for bullet in bullets:
 			var hurtbox = m_create_hurtbox(bullet)
 			hurtbox.body_entered.connect(func(incoming_body : Variant): on_bullet_hit(bullet,weapon, weapon_manager,damage_multiplier, incoming_body))
-		    hurtbox.area_entered.connect(func(incoming_body : Variant): on_bullet_hit(bullet,weapon, weapon_manager,damage_multiplier, incoming_body))
+			hurtbox.area_entered.connect(func(incoming_body : Variant): on_bullet_hit(bullet,weapon, weapon_manager,damage_multiplier, incoming_body))
 	elif args.has("hitbox"):
 		var hurtbox : Area3D = args["hitbox"]
 		hurtbox.body_entered.connect(func(incoming_body : Variant): on_bullet_hit(hurtbox,weapon, weapon_manager,damage_multiplier, incoming_body))

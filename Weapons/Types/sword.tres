@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BaseWeapon" load_steps=9 format=3 uid="uid://byn0c73rierit"]
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=9 format=3 uid="uid://uxrjrj5o3hoj"]
 
 [ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="1_tiw7m"]
 [ext_resource type="Texture2D" uid="uid://0k37q6nr1aoi" path="res://Weapons/Icons/rifle.png" id="1_xhof0"]
@@ -33,5 +33,9 @@ icon = ExtResource("1_xhof0")
 display_name = "Sword"
 weapon_cost = 10000
 ammo_cost = 0
+fire_sfx_name = "event:/Player/MeleePlayer+Enemy"
+fire_sfx_guid = "{cbcf8181-dc4b-4893-938f-57499743e04a}"
+hit_sfx_name = "event:/Player/MeleeHitPlayer+Enemy"
+hit_sfx_guid = "{1143d981-ee1e-4abe-9545-2bf2f5256000}"
 sellable = false
 UUID = -1

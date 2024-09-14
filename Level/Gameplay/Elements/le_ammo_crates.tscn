@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmbcdrfkrnpku"]
+[gd_scene load_steps=7 format=3 uid="uid://s131vjqg7rk2"]
 
 [ext_resource type="Script" path="res://Level/Gameplay/Scripts/breakable_box.gd" id="1_u3dtc"]
 [ext_resource type="Resource" uid="uid://cs0hu3403koad" path="res://Level/Gameplay/Resources/currency.tres" id="2_nr0v1"]
@@ -10,7 +10,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwh0y"]
 size = Vector3(1.50684, 1.44922, 1.36523)
 
-[node name="breakable_crates" type="RigidBody3D"]
+[node name="ammo_crates" type="RigidBody3D"]
 script = ExtResource("1_u3dtc")
 drop_setting = ExtResource("2_nr0v1")
 

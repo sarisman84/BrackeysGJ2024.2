@@ -34,8 +34,8 @@ explosion_detection_mask = 32
 explosion_detection_duration_in_seconds = 0.1
 hurtbox_shape = SubResource("SphereShape3D_2og7x")
 hurtbox_detection_mask = 33
-delete_bullet_on_hit = true
-UUID = -1
+delete_bullet_on_hit = null
+UUID = null
 
 [resource]
 script = ExtResource("2_2dqry")
@@ -47,9 +47,9 @@ icon = ExtResource("1_hnpn8")
 display_name = "Nova Launcher"
 weapon_cost = 10000
 ammo_cost = 500
-sellable = true
 fire_sfx_name = "event:/Player/Grenade Launcher Shoot"
 fire_sfx_guid = "{b684b2c1-a1ab-425d-b953-2ccd67bbd52c}"
 hit_sfx_name = "event:/Player/Grenade Launcher Explode"
 hit_sfx_guid = "{603deb0f-cc19-4821-a63e-a94b5406f719}"
+sellable = true
 UUID = -1

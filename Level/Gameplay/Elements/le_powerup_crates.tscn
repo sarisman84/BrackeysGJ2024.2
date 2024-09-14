@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d6dji5xg4kvi"]
+[gd_scene load_steps=7 format=3 uid="uid://b72oiuwy6nrhd"]
 
 [ext_resource type="Script" path="res://Level/Gameplay/Scripts/breakable_box.gd" id="1_l18h4"]
-[ext_resource type="Resource" uid="uid://bpwh345tl8udh" path="res://Level/Gameplay/Resources/powerup.tres" id="2_wrcdu"]
+[ext_resource type="Resource" path="res://Level/Gameplay/Resources/powerup.tres" id="2_wrcdu"]
 [ext_resource type="Script" path="res://Interactables/Scripts/health_manager.gd" id="3_v3805"]
 [ext_resource type="Material" uid="uid://c6qyfm3m85jk" path="res://Level/Gameplay/Materials/m_building.tres" id="4_warq1"]
 
@@ -10,7 +10,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwh0y"]
 size = Vector3(1.50684, 1.44922, 1.36523)
 
-[node name="breakable_crates" type="RigidBody3D"]
+[node name="powerup_crates" type="RigidBody3D"]
 script = ExtResource("1_l18h4")
 drop_setting = ExtResource("2_wrcdu")
 

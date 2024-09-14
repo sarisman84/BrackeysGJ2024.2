@@ -9,7 +9,7 @@ extends BaseBehaviour
 func m_create_hurtbox(owner : WeaponManager) -> Area3D:
 	var hurtbox := Area3D.new()
 	var col := CollisionShape3D.new()
-	
+
 	col.shape = hurtbox_shape
 	hurtbox.collision_mask = hurtbox_detection_mask
 
@@ -20,25 +20,24 @@ func m_create_hurtbox(owner : WeaponManager) -> Area3D:
 func apply_behaviour(args : Dictionary = {}) -> Dictionary:
 	assert(args.has("weapon"))
 	assert(args.has("owner"))
-	
+
 	var weapon_manager : WeaponManager = args["owner"]
-	var weapon : BaseWeapon = args["weapon"] 
-	
+	var weapon : BaseWeapon = args["weapon"]
+
 	var matrix = weapon.get_barrel().global_basis
-	
+
 	var hurtbox = m_create_hurtbox(args["owner"])
 	hurtbox.global_position = weapon.get_barrel().global_position
-	
+
 	var scene_tree = weapon_manager.get_tree()
 	var timer = Timer.new()
 	scene_tree.root.add_child(timer)
 	timer.start(0.15)
 	timer.timeout.connect(on_expire.bind(hurtbox, timer))
-	
+
 	args["hitbox"] = hurtbox
 	return args
 
 func on_expire(hitbox : Area3D, timer : Timer) -> void:
 	hitbox.queue_free()
 	timer.queue_free()
-	
