@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://clmojr6n6jc32"]
+[gd_scene load_steps=14 format=3 uid="uid://clmojr6n6jc32"]
 
 [ext_resource type="Script" path="res://Player/Scripts/avatar_controller.gd" id="1_f0er1"]
 [ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
-[ext_resource type="PackedScene" uid="uid://c0fscew8ib3m" path="res://Player/Model/FBX/Robot.fbx" id="3_1ujbd"]
+[ext_resource type="Material" uid="uid://b6wtw6hlrqhvh" path="res://Level/Gameplay/Resources/white_material.tres" id="2_ew1h0"]
 [ext_resource type="PackedScene" uid="uid://6klxf7f7gsbv" path="res://Weapons/p_weapon_manager.tscn" id="3_h2gkg"]
+[ext_resource type="PackedScene" uid="uid://dqo6f1s4d7vtj" path="res://Player/Model/robot.tscn" id="3_svql1"]
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="5_y2spw"]
 [ext_resource type="PackedScene" uid="uid://p4s150ayvuqi" path="res://Player/UI/Weapon_Select/weapon_select.tscn" id="6_rtsif"]
 [ext_resource type="PackedScene" uid="uid://f5xwx0lb148q" path="res://Player/UI/Shop/shop.tscn" id="8_hv24j"]
@@ -18,6 +19,7 @@
 [node name="player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 4
 script = ExtResource("1_f0er1")
+blink_material = ExtResource("2_ew1h0")
 movement_speed = 25.0
 
 [node name="col_box" type="CollisionShape3D" parent="."]
@@ -37,8 +39,8 @@ near = 0.001
 
 [node name="model" type="Node3D" parent="."]
 
-[node name="robot" parent="model" instance=ExtResource("3_1ujbd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.560254, 0)
+[node name="robot" parent="model" instance=ExtResource("3_svql1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.56, 0)
 
 [node name="weapon_manager" parent="model" instance=ExtResource("3_h2gkg")]
 unique_name_in_owner = true
