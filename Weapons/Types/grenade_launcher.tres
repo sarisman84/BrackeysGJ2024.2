@@ -28,7 +28,7 @@ radius = 5.0
 
 [sub_resource type="Resource" id="Resource_gche0"]
 script = ExtResource("5_7mg6t")
-damage = 1
+damage = 10
 explosion_shape = SubResource("SphereShape3D_6plbv")
 explosion_detection_mask = 32
 explosion_detection_duration_in_seconds = 0.1

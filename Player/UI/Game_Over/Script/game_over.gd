@@ -2,8 +2,9 @@ extends CanvasLayer
 
 @export_file("*.tscn") var quit_scene : String
 
-@onready var play : Button = $menu_group/button_group/play
-@onready var quit : Button = $menu_group/button_group/quit
+@onready var play = %play
+@onready var quit = %quit
+@onready var gear_count_label = %gear_count
 
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func transition(player : AvatarController) -> void:
 func m_enable() -> void:
 	show()
 	Global.current_paused_state = Global.PausedStates.GAME_OVER
+	gear_count_label.text = "Gears Collected: %d" % Global.current_currency
 	get_tree().paused = true
 
 
