@@ -6,6 +6,7 @@ extends OnHitBehaviour
 @export var explosion_shape : Shape3D
 @export_flags_3d_physics var explosion_detection_mask : int
 @export var explosion_detection_duration_in_seconds : float
+@export var explosion_vfx : PackedScene
 
 func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager,damage_multiplier : float, incoming_body : Variant) -> void:
 	var is_itself = bullet.get_instance_id() == incoming_body.get_instance_id()
@@ -31,13 +32,18 @@ func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager,damage_multipl
 
 	var scene_tree = weapon_manager.get_tree()
 	scene_tree.root.add_child(explosion_hitbox)
-
+	
 	explosion_hitbox.global_position = hit_pos
 
 	var timer = Timer.new()
 	scene_tree.root.add_child(timer)
 	timer.start(explosion_detection_duration_in_seconds)
 	timer.timeout.connect(on_explosion_expire.bind(explosion_hitbox, timer))
+	
+	var vfx = explosion_vfx.instantiate()
+	vfx.global_position = hit_pos
+	vfx.scale = Vector3(4, 4, 4)
+	scene_tree.root.add_child(vfx)
 
 func on_explosion(damage_multiplier : float,weapon_manager: WeaponManager, incoming_body : Variant) -> void:
 	if weapon_manager.owner.get_instance_id() == incoming_body.get_instance_id():
