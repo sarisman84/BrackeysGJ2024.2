@@ -1,8 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3sqxq4mixlx0"]
+[gd_scene load_steps=6 format=3 uid="uid://d3sqxq4mixlx0"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/meele_attack.gd" id="1_yjuh3"]
+[ext_resource type="ArrayMesh" uid="uid://b34e6682eo624" path="res://Enemies/Models/Drill/Drill.obj" id="2_37ogj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1agxi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hc7u"]
+albedo_color = Color(0.561712, 1.34766e-06, 4.33177e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71gcq"]
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="meele_attack" type="Area3D"]
 script = ExtResource("1_yjuh3")
@@ -12,6 +19,12 @@ shape = SubResource("BoxShape3D_1agxi")
 
 [node name="timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.49691e-10, -0.008, -3.49691e-10, 0, -3.49691e-10, 0.008, -0.008, 3.49691e-10, 1.52855e-17, 0, -0.691238, 0)
+mesh = ExtResource("2_37ogj")
+surface_material_override/0 = SubResource("StandardMaterial3D_7hc7u")
+surface_material_override/1 = SubResource("StandardMaterial3D_71gcq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

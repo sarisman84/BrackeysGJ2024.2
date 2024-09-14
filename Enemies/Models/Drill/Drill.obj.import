@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b34e6682eo624"
+path="res://.godot/imported/Drill.obj-deeb26d5dc8a505e7f2bc4c21322e6dd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Drill.obj-deeb26d5dc8a505e7f2bc4c21322e6dd.mesh"]
+
+source_file="res://Enemies/Models/Drill/Drill.obj"
+dest_files=["res://.godot/imported/Drill.obj-deeb26d5dc8a505e7f2bc4c21322e6dd.mesh", "res://.godot/imported/Drill.obj-deeb26d5dc8a505e7f2bc4c21322e6dd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
