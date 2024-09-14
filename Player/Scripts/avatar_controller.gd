@@ -43,7 +43,7 @@ func _ready() -> void:
 	weapon_select.init(weapon_manager)
 	shop.init(weapon_manager)
 	main_ui.init(health_manager, weapon_manager)
-
+	weapon_manager.add_weapon("sword")
 
 	main_ui.m_update_visual_max_health(health_manager)
 	main_ui.m_update_visual_health_bar(health_manager)

@@ -48,4 +48,5 @@ icon = ExtResource("1_hnpn8")
 display_name = "Nova Launcher"
 weapon_cost = 10000
 ammo_cost = 500
+sellable = true
 UUID = -1

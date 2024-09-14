@@ -40,4 +40,5 @@ icon = ExtResource("1_rkfo3")
 display_name = "Machine Gun"
 weapon_cost = 10000
 ammo_cost = 100
+sellable = true
 UUID = -1

@@ -90,8 +90,8 @@ func m_update_visuals() -> void:
 func m_get_weapons_from_registry() -> void:
 	for item in ItemRegistry.item_registry:
 		if item is BaseWeapon:
-			m_shop_items.append(item.duplicate())
-			m_shop_bought_flags.append(false)
+			if item.sellable:
+				m_shop_items.append(item.duplicate())
 
 #Scroll shop items
 func _on_left_button_pressed() -> void:
