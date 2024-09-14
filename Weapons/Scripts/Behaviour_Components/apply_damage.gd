@@ -10,7 +10,10 @@ func on_bullet_hit(bullet : Node3D, weapon_manager: WeaponManager,damage_multipl
 
 	if is_itself:
 		return
-
+	
+	if not weapon_manager:
+		return
+	
 	if incoming_body is not HealthManager:
 		if delete_bullet_on_hit:
 			bullet.queue_free()

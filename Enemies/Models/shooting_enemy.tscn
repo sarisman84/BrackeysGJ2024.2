@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c0fscew8ib3m" path="res://Player/Model/FBX/Robot.fbx" id="1_ciwfi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojrou"]
-albedo_color = Color(0.937255, 0, 0.105882, 1)
+albedo_color = Color(0.427451, 0.407843, 1, 1)
 
 [node name="Robot" instance=ExtResource("1_ciwfi")]
 
