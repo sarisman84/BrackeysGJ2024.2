@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqda2pddionm4"]
+[gd_scene load_steps=8 format=3 uid="uid://dqda2pddionm4"]
 
 [ext_resource type="Script" path="res://Menus/Scripts/main_menu.gd" id="1_ro81h"]
 [ext_resource type="PackedScene" uid="uid://x36d33lrst47" path="res://Menus/Scenes/options.tscn" id="2_jb264"]
-[ext_resource type="PackedScene" uid="uid://bg12mkur7y1qe" path="res://Level/main_scene.tscn" id="2_lj1kc"]
 [ext_resource type="Texture2D" uid="uid://behxywopfdjb1" path="res://Menus/Assets/Title.png" id="3_3p3lh"]
 [ext_resource type="Texture2D" uid="uid://vq0qijmbvy0n" path="res://Menus/Assets/Small Filled Button.png" id="4_5553n"]
 [ext_resource type="Texture2D" uid="uid://cpvwn6dnq1yuf" path="res://Menus/Assets/Filled Button.png" id="4_ylba4"]
@@ -15,7 +14,7 @@ font_color = Color(1, 0.847059, 0.560784, 1)
 
 [node name="main_menu" type="CanvasLayer"]
 script = ExtResource("1_ro81h")
-game_scene = ExtResource("2_lj1kc")
+game_scene = "res://Level/Gameplay/l_core_level.tscn"
 
 [node name="background" type="TextureRect" parent="."]
 anchors_preset = 15

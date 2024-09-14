@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6inict2ocfld"]
+
+[ext_resource type="Script" path="res://Global/Scripts/spawn_elements_manager.gd" id="1_g5leg"]
+[ext_resource type="Script" path="res://Level/Gameplay/Scripts/spawn_setting.gd" id="2_02jb4"]
+[ext_resource type="Resource" uid="uid://dew8a50ncs82e" path="res://Level/Gameplay/Resources/crates.tres" id="3_o0ja6"]
+[ext_resource type="Resource" uid="uid://wsstv0blmulp" path="res://Level/Gameplay/Resources/shop.tres" id="4_hvkdm"]
+
+[node name="spawn_elements_manager" type="Node"]
+script = ExtResource("1_g5leg")
+elements_to_spawn = Array[ExtResource("2_02jb4")]([ExtResource("3_o0ja6"), ExtResource("4_hvkdm")])
+element_count_per_type = 750
