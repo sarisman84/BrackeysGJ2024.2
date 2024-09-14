@@ -1,6 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bumssll3hub0p"]
+[gd_scene load_steps=8 format=3 uid="uid://bumssll3hub0p"]
 
 [ext_resource type="Script" path="res://Powerups/Scripts/powerup_template.gd" id="1_5x52h"]
+[ext_resource type="Script" path="res://Powerups/Scripts/powerup.gd" id="2_hhg5w"]
+
+[sub_resource type="Resource" id="Resource_2qxx0"]
+script = ExtResource("2_hhg5w")
+name = ""
+UUID = -1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_egdq0"]
 
@@ -16,6 +22,7 @@ height = 1.0
 [node name="powerup_template" type="RigidBody3D"]
 collision_layer = 8
 script = ExtResource("1_5x52h")
+powerup_info = SubResource("Resource_2qxx0")
 
 [node name="area" type="Area3D" parent="."]
 collision_layer = 0

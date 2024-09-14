@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://clda4emv0gms1"]
+
+[ext_resource type="PackedScene" uid="uid://c0fscew8ib3m" path="res://Player/Model/FBX/Robot.fbx" id="1_ciwfi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojrou"]
+albedo_color = Color(0.427451, 0.407843, 1, 1)
+
+[node name="Robot" instance=ExtResource("1_ciwfi")]
+
+[node name="Foot_L_2" parent="RobotArmature/Skeleton3D" index="0"]
+transform = Transform3D(1, 9.58673e-08, -5.20144e-08, -9.5867e-08, 1, 9.68575e-08, 5.20144e-08, -1.11759e-07, 1, 0.00187217, -0.000573343, 0.00119299)
+bone_idx = 2
+
+[node name="Foot_L_2" parent="RobotArmature/Skeleton3D/Foot_L_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Torso" parent="RobotArmature/Skeleton3D" index="1"]
+transform = Transform3D(1, 5.83782e-11, -5.8165e-11, -5.82077e-11, 1, 0, 5.82361e-11, 0, 1, -8.14691e-06, 5.87429e-05, 0.00662803)
+bone_idx = 5
+
+[node name="Torso" parent="RobotArmature/Skeleton3D/Torso" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Head_2" parent="RobotArmature/Skeleton3D" index="2"]
+transform = Transform3D(0.998071, 0.0405853, -0.0469698, -0.0377837, 0.997538, 0.0590701, 0.0492516, -0.0571814, 0.997148, -0.000156562, 3.40308e-06, 0.0109594)
+bone_idx = 11
+
+[node name="Head_2" parent="RobotArmature/Skeleton3D/Head_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Shoulder_L_2" parent="RobotArmature/Skeleton3D" index="3"]
+transform = Transform3D(0.434578, 1.54374e-07, 0.900634, 1.91115e-07, 0.999999, -3.28503e-07, -0.900634, 2.50733e-07, 0.434578, 0.00174804, 6.29816e-05, 0.00722415)
+bone_idx = 14
+
+[node name="Shoulder_L_2" parent="RobotArmature/Skeleton3D/Shoulder_L_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Arm_L" parent="RobotArmature/Skeleton3D" index="4"]
+transform = Transform3D(0.435432, -0.00201489, 0.90022, 0.233061, 0.966155, -0.110568, -0.869529, 0.257951, 0.421165, 0.000795006, -0.000392084, 0.00865368)
+bone_idx = 16
+
+[node name="Arm_L" parent="RobotArmature/Skeleton3D/Arm_L" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Shoulder_R_2" parent="RobotArmature/Skeleton3D" index="5"]
+transform = Transform3D(0.448449, -1.55467e-09, -0.893808, -1.3079e-07, 1, -7.95574e-08, 0.893808, 1.4006e-07, 0.448449, -0.00191096, 6.29817e-05, 0.00722243)
+bone_idx = 34
+
+[node name="Shoulder_R_2" parent="RobotArmature/Skeleton3D/Shoulder_R_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Arm_R" parent="RobotArmature/Skeleton3D" index="6"]
+transform = Transform3D(0.101816, 1.22935e-07, -0.202931, 0.0178376, 0.226162, 0.00894972, 0.202145, -0.0199569, 0.101422, -0.00247707, -0.000120731, 0.00605435)
+bone_idx = 36
+
+[node name="Arm_R" parent="RobotArmature/Skeleton3D/Arm_R" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Leg_L" parent="RobotArmature/Skeleton3D" index="7"]
+transform = Transform3D(0.984221, -0.175534, -0.0223151, 0.176784, 0.980866, 0.0816353, 0.00755824, -0.084299, 0.996414, 0.00193149, -8.61573e-05, 0.00356098)
+bone_idx = 54
+
+[node name="Leg_L" parent="RobotArmature/Skeleton3D/Leg_L" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="LowerLeg_L_2" parent="RobotArmature/Skeleton3D" index="8"]
+transform = Transform3D(0.984156, -0.177236, 0.00489852, 0.177099, 0.981343, -0.0749506, 0.00847663, 0.0746206, 0.997179, 0.00205311, -0.000643797, 0.0011159)
+bone_idx = 56
+
+[node name="LowerLeg_L_2" parent="RobotArmature/Skeleton3D/LowerLeg_L_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Leg_R" parent="RobotArmature/Skeleton3D" index="9"]
+transform = Transform3D(0.962472, 0.267767, 0.0441128, -0.271059, 0.956433, 0.108365, -0.0131744, -0.11626, 0.993133, -0.00199966, -5.38364e-05, 0.00355302)
+bone_idx = 59
+
+[node name="Leg_R" parent="RobotArmature/Skeleton3D/Leg_R" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="LowerLeg_R_2" parent="RobotArmature/Skeleton3D" index="10"]
+transform = Transform3D(0.962589, 0.270826, -0.00860239, -0.270696, 0.959726, -0.075024, -0.0120627, 0.0745342, 0.997149, -0.00219127, -0.000619198, 0.00111611)
+bone_idx = 61
+
+[node name="LowerLeg_R_2" parent="RobotArmature/Skeleton3D/LowerLeg_R_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Foot_R_2" parent="RobotArmature/Skeleton3D" index="11"]
+transform = Transform3D(1, 9.58669e-08, -5.12621e-08, -9.5867e-08, 1, -1.49012e-08, 5.12625e-08, 2.98023e-08, 1, -0.00191399, -0.000573344, 0.00119299)
+bone_idx = 66
+
+[node name="Foot_R_2" parent="RobotArmature/Skeleton3D/Foot_R_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Hand_R" parent="RobotArmature/Skeleton3D" index="12"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")
+
+[node name="Hand_L" parent="RobotArmature/Skeleton3D" index="13"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ojrou")

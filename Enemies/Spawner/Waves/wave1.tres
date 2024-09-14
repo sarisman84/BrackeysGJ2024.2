@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_cvj7k")
 enemies = Array[PackedScene]([ExtResource("1_flnmn")])
-spawn_distance = 15
+spawn_distance = 25
 flying_distance = 10
 wave_start_time = 5.0
 group_amount = 10

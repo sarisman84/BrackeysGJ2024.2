@@ -1,7 +1,10 @@
 extends CharacterBody3D
 
+@export var blink_material : Resource
+
 @onready var m_nav = $navigation
 @onready var m_health_manager = $health_manager
+@onready var model = $model
 
 @export var m_speed : int = 4
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -9,8 +12,15 @@ var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var money_amount : int
 @export var money_value : int
 
+var model_meshes
+var original_mat
+
 func _ready() -> void:
+	m_health_manager.on_take_damage.connect(m_model_blink)
 	m_health_manager.health_owner = self
+	
+	model_meshes = model.find_children("*", "MeshInstance3D")
+	original_mat = model_meshes[0].get_surface_override_material(0)
 
 func _physics_process(delta: float) -> void:
 	if !Global.player_ref:
@@ -33,6 +43,12 @@ func _physics_process(delta: float) -> void:
 	rotation.y = - Vector2(direction.x, direction.z).angle()
 	move_and_slide()
 
+func m_model_blink() -> void:
+	for mesh in model_meshes:
+		mesh.set_surface_override_material(0, blink_material)
+	await get_tree().create_timer(0.5).timeout
+	for mesh in model_meshes:
+		mesh.set_surface_override_material(0, original_mat)
 
 #func _physics_process(delta: float) -> void:
 	#var m_position_diff = Global.player_ref.global_position - global_position

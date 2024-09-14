@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkioqy3gcn38k"]
+[gd_scene load_steps=7 format=3 uid="uid://bmbcdrfkrnpku"]
 
-[ext_resource type="Script" path="res://Level/Gameplay/Scripts/breakable_box.gd" id="1_3enxs"]
-[ext_resource type="Script" path="res://Interactables/Scripts/health_manager.gd" id="2_do1b5"]
-[ext_resource type="Material" uid="uid://c6qyfm3m85jk" path="res://Level/Gameplay/Materials/m_building.tres" id="3_j7bej"]
+[ext_resource type="Script" path="res://Level/Gameplay/Scripts/breakable_box.gd" id="1_u3dtc"]
+[ext_resource type="Resource" uid="uid://cs0hu3403koad" path="res://Level/Gameplay/Resources/currency.tres" id="2_nr0v1"]
+[ext_resource type="Script" path="res://Interactables/Scripts/health_manager.gd" id="3_5v5yc"]
+[ext_resource type="Material" uid="uid://c6qyfm3m85jk" path="res://Level/Gameplay/Materials/m_building.tres" id="4_byh7g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g3fc8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwh0y"]
 size = Vector3(1.50684, 1.44922, 1.36523)
 
-[node name="breakable_crates2" type="RigidBody3D"]
-script = ExtResource("1_3enxs")
-crate_break_sfx_name = "event:/World/Crate Breaking"
-crate_break_sfx_guid = "{fd93cd34-6555-4c5a-91a2-a40a11ff35b9}"
+[node name="breakable_crates" type="RigidBody3D"]
+script = ExtResource("1_u3dtc")
+drop_setting = ExtResource("2_nr0v1")
 
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_g3fc8")
@@ -20,7 +20,7 @@ shape = SubResource("BoxShape3D_g3fc8")
 [node name="hurtbox" type="Area3D" parent="."]
 collision_layer = 32
 collision_mask = 0
-script = ExtResource("2_do1b5")
+script = ExtResource("3_5v5yc")
 
 [node name="shape" type="CollisionShape3D" parent="hurtbox"]
 shape = SubResource("BoxShape3D_mwh0y")
@@ -28,7 +28,7 @@ shape = SubResource("BoxShape3D_mwh0y")
 [node name="model" type="CSGCombiner3D" parent="."]
 
 [node name="core" type="CSGBox3D" parent="model"]
-material = ExtResource("3_j7bej")
+material = ExtResource("4_byh7g")
 
 [node name="sides" type="CSGCombiner3D" parent="model"]
 operation = 2
@@ -63,39 +63,39 @@ operation = 2
 [node name="CSGBox3D" type="CSGBox3D" parent="model/edges"]
 transform = Transform3D(0.707107, -0.5, -0.5, 0, 0.707107, -0.707107, 0.707107, 0.5, 0.5, 0.501215, 0.475463, -0.49696)
 size = Vector3(1, 1, 0.0722656)
-material = ExtResource("3_j7bej")
+material = ExtResource("4_byh7g")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="model/edges"]
 transform = Transform3D(-0.707107, 0.5, 0.5, 0, 0.707107, -0.707107, -0.707107, -0.5, -0.5, -0.495247, 0.475463, 0.495786)
 size = Vector3(1, 1, 0.0722656)
-material = ExtResource("3_j7bej")
+material = ExtResource("4_byh7g")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="model/edges"]
 transform = Transform3D(0.707107, 0.5, 0.5, 0, 0.707107, -0.707107, -0.707107, 0.5, 0.5, -0.493389, 0.475463, -0.498818)
 size = Vector3(1, 1, 0.0722656)
-material = ExtResource("3_j7bej")
+material = ExtResource("4_byh7g")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="model/edges"]
 transform = Transform3D(-0.707107, -0.5, -0.5, 0, 0.707107, -0.707107, 0.707107, -0.5, -0.5, 0.499358, 0.475463, 0.497644)
 size = Vector3(1, 1, 0.0722656)
-material = ExtResource("3_j7bej")
+material = ExtResource("4_byh7g")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="model/edges"]
 transform = Transform3D(0.707107, -0.5, -0.5, -6.18172e-08, -0.707107, 0.707107, -0.707107, -0.5, -0.5, 0.501215, -0.479011, 0.495786)
 size = Vector3(1, 1, 0.0722656)
-material = ExtResource("3_j7bej")
+material = ExtResource("4_byh7g")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="model/edges"]
 transform = Transform3D(-0.707107, 0.5, 0.5, 6.18172e-08, -0.707107, 0.707107, 0.707107, 0.5, 0.5, -0.495247, -0.479011, -0.49696)
 size = Vector3(1, 1, 0.0722656)
-material = ExtResource("3_j7bej")
+material = ExtResource("4_byh7g")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="model/edges"]
 transform = Transform3D(0.707107, 0.5, 0.5, 6.18172e-08, -0.707107, 0.707107, 0.707107, -0.5, -0.5, -0.493389, -0.479011, 0.497644)
 size = Vector3(1, 1, 0.0722656)
-material = ExtResource("3_j7bej")
+material = ExtResource("4_byh7g")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="model/edges"]
 transform = Transform3D(-0.707107, -0.5, -0.5, -6.18172e-08, -0.707107, 0.707107, -0.707107, 0.5, 0.5, 0.499358, -0.479011, -0.498818)
 size = Vector3(1, 1, 0.0722656)
-material = ExtResource("3_j7bej")
+material = ExtResource("4_byh7g")

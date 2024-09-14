@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://cf7uhxniqioif"]
+[gd_scene load_steps=21 format=3 uid="uid://cf7uhxniqioif"]
 
 [ext_resource type="PackedScene" uid="uid://clmojr6n6jc32" path="res://Player/p_player.tscn" id="1_7d138"]
+[ext_resource type="Script" path="res://Level/Gameplay/l_core_level.gd" id="1_enfbq"]
 [ext_resource type="Material" uid="uid://bbdcyr1gfoyh3" path="res://Level/Gameplay/Materials/m_ground_floor.tres" id="1_k5waq"]
 [ext_resource type="Material" uid="uid://bhmcesl2arwct" path="res://Level/Gameplay/Materials/m_road.tres" id="2_r8emv"]
 [ext_resource type="Material" uid="uid://c6qyfm3m85jk" path="res://Level/Gameplay/Materials/m_building.tres" id="3_be6hc"]
@@ -33,6 +34,7 @@ name = "JumpLimitUp"
 UUID = -1
 
 [node name="core_level" type="Node"]
+script = ExtResource("1_enfbq")
 
 [node name="blockout_enviroment" type="Node3D" parent="."]
 

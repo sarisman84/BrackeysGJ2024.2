@@ -1,6 +1,7 @@
 class_name AvatarController
 extends CharacterBody3D
 
+@export var blink_material : Resource
 
 @export_group("Movement Settings")
 @export var movement_speed : float
@@ -21,11 +22,15 @@ extends CharacterBody3D
 @onready var main_ui : MainUI = $main_ui
 @onready var health_manager : HealthManager = $health_manager
 @onready var game_over = $game_over
+@onready var robot = $model/robot
 
 var shop_open = false
 
 var m_jump_count : int = 0
 var m_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+var model_meshes
+var original_mat
 
 func _ready() -> void:
 	health_manager.health_owner = self
@@ -33,17 +38,23 @@ func _ready() -> void:
 	Global.player_ref = self
 
 	health_manager.on_death.connect(m_on_death)
-
+	health_manager.on_take_damage.connect(m_model_blink)
+	
 	weapon_select.init(weapon_manager)
 	shop.init(weapon_manager)
 	main_ui.init(health_manager, weapon_manager)
 
 	main_ui.m_update_visual_max_health(health_manager)
 	main_ui.m_update_visual_health_bar(health_manager)
+	
+	model_meshes = robot.find_children("*", "MeshInstance3D")
+	original_mat = model_meshes[0].get_surface_override_material(0)
+	
 	#DEBUG
 	Global.current_currency = 100000
 
 func _physics_process(delta : float) -> void:
+	
 	if shop_open:
 		return
 
@@ -104,3 +115,19 @@ func m_calculate_jump_velocity() -> float:
 func m_on_death() -> void:
 	game_over.transition(self)
 	pass
+
+func m_model_blink() -> void:
+	for mesh in model_meshes:
+		mesh.set_surface_override_material(0, blink_material)
+	await get_tree().create_timer(0.5).timeout
+	for mesh in model_meshes:
+		mesh.set_surface_override_material(0, original_mat)
+
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("interact") and Global.player_at_shop:
+		#if shop_open:
+			#shop.hide_shop()
+			#shop_open = false
+		#else:
+			#shop.show_shop()
+			#shop_open = true
