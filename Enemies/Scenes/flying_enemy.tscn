@@ -1,17 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbhpk13ktqxn5"]
+[gd_scene load_steps=6 format=3 uid="uid://dbhpk13ktqxn5"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/flying_enemy.gd" id="1_7tov3"]
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="2_0duqf"]
+[ext_resource type="PackedScene" uid="uid://bla1b8p7fhen4" path="res://Enemies/Models/flying_enemy.tscn" id="2_vjwpu"]
 [ext_resource type="PackedScene" uid="uid://d3sqxq4mixlx0" path="res://Enemies/Scenes/meele_attack.tscn" id="3_54dyb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2aftr"]
-height = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyuax"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_k1ryd"]
-material = SubResource("StandardMaterial3D_wyuax")
 height = 1.0
 
 [node name="flying_enemy" type="CharacterBody3D"]
@@ -24,8 +18,8 @@ money_value = 14
 [node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_2aftr")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_k1ryd")
+[node name="model" parent="." instance=ExtResource("2_vjwpu")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, 0, -1.24035, 0)
 
 [node name="health_manager" parent="." instance=ExtResource("2_0duqf")]
 max_health = 12
