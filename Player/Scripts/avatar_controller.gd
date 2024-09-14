@@ -39,22 +39,22 @@ func _ready() -> void:
 
 	health_manager.on_death.connect(m_on_death)
 	health_manager.on_take_damage.connect(m_model_blink)
-	
+
 	weapon_select.init(weapon_manager)
 	shop.init(weapon_manager)
 	main_ui.init(health_manager, weapon_manager)
 
 	main_ui.m_update_visual_max_health(health_manager)
 	main_ui.m_update_visual_health_bar(health_manager)
-	
+
 	model_meshes = robot.find_children("*", "MeshInstance3D")
 	original_mat = model_meshes[0].get_surface_override_material(0)
-	
+
 	#DEBUG
 	Global.current_currency = 100000
 
 func _physics_process(delta : float) -> void:
-	
+
 	if shop_open:
 		return
 

@@ -13,10 +13,10 @@ func on_bullet_hit(bullet : Node3D, weapon : BaseWeapon, weapon_manager: WeaponM
 
 	if is_itself :
 		return
-        
+
 	if incoming_body.get_parent().get_instance_id() == weapon_manager.weapon_owner.get_instance_id():
 		return
-	
+
 	var emitter := FmodEventEmitter3D.new()
 
 	emitter.event_name = weapon.hit_sfx_name
@@ -46,14 +46,14 @@ func on_bullet_hit(bullet : Node3D, weapon : BaseWeapon, weapon_manager: WeaponM
 
 	var scene_tree = weapon_manager.get_tree()
 	scene_tree.root.add_child(explosion_hitbox)
-	
+
 	explosion_hitbox.global_position = hit_pos
 
 	timer = Timer.new()
 	scene_tree.root.add_child(timer)
 	timer.start(explosion_detection_duration_in_seconds)
 	timer.timeout.connect(on_explosion_expire.bind(explosion_hitbox, timer))
-	
+
 	var vfx = explosion_vfx.instantiate()
 	vfx.global_position = hit_pos
 	vfx.scale = Vector3(4, 4, 4)
