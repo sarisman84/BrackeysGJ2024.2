@@ -1,0 +1,235 @@
+[gd_scene load_steps=12 format=3 uid="uid://f5xwx0lb148q"]
+
+[ext_resource type="Script" path="res://Player/UI/Shop/shop.gd" id="1_2we4n"]
+[ext_resource type="FontFile" uid="uid://snwi17k1tj6i" path="res://Menus/Assets/Roboto_Slab_Font/static/RobotoSlab-Medium.ttf" id="2_iefpp"]
+[ext_resource type="Texture2D" uid="uid://ctrhhbee60m0e" path="res://Menus/Assets/Indicator.png" id="3_8vfly"]
+[ext_resource type="Texture2D" uid="uid://cpvwn6dnq1yuf" path="res://Menus/Assets/Filled Button.png" id="4_56xnr"]
+[ext_resource type="Texture2D" uid="uid://0k37q6nr1aoi" path="res://Weapons/Icons/rifle.png" id="4_lrf47"]
+[ext_resource type="Texture2D" uid="uid://1jkddlk8okny" path="res://Menus/Assets/Small Indicator.png" id="5_gauu0"]
+[ext_resource type="Texture2D" uid="uid://kjlwgtc8tt00" path="res://Weapons/Icons/sonic-boom.png" id="5_yidf2"]
+[ext_resource type="Texture2D" uid="uid://vq0qijmbvy0n" path="res://Menus/Assets/Small Filled Button.png" id="7_r7ldt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_062pn"]
+font = ExtResource("2_iefpp")
+font_size = 72
+font_color = Color(1, 0.847059, 0.560784, 1)
+outline_size = 30
+outline_color = Color(0.490196, 0.419608, 0.286275, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_742n3"]
+font = ExtResource("2_iefpp")
+font_size = 32
+font_color = Color(1, 0.847059, 0.560784, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_210i1"]
+font = ExtResource("2_iefpp")
+font_size = 28
+font_color = Color(1, 0.847059, 0.560784, 1)
+
+[node name="shop" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_2we4n")
+
+[node name="shop_window" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.5
+offset_top = -236.5
+offset_right = 306.5
+offset_bottom = 236.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.117647, 0, 0.678431)
+
+[node name="shop_label" type="Label" parent="shop_window"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -185.5
+offset_right = 196.0
+offset_bottom = -118.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SHOP"
+label_settings = SubResource("LabelSettings_062pn")
+horizontal_alignment = 1
+
+[node name="main_icon" type="TextureRect" parent="shop_window"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -94.0
+offset_right = 66.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8vfly")
+
+[node name="texture" type="TextureRect" parent="shop_window/main_icon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -28.5
+offset_right = 28.5
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_lrf47")
+expand_mode = 1
+
+[node name="left_button" type="TextureButton" parent="shop_window/main_icon"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -57.0
+offset_right = -27.0
+offset_bottom = 57.0
+grow_vertical = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("5_gauu0")
+texture_hover = ExtResource("3_8vfly")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="texture" type="TextureRect" parent="shop_window/main_icon/left_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -18.5
+offset_right = 18.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_yidf2")
+expand_mode = 1
+
+[node name="right_button" type="TextureButton" parent="shop_window/main_icon"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = -57.0
+offset_right = 128.0
+offset_bottom = 57.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("5_gauu0")
+texture_hover = ExtResource("3_8vfly")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="texture" type="TextureRect" parent="shop_window/main_icon/right_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -18.5
+offset_right = 18.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_yidf2")
+expand_mode = 1
+
+[node name="title" type="Label" parent="shop_window"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.5
+offset_top = 70.0
+offset_right = 195.5
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Template Weapon"
+label_settings = SubResource("LabelSettings_742n3")
+horizontal_alignment = 1
+
+[node name="buy" type="TextureButton" parent="shop_window"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = 122.0
+offset_right = 235.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_r7ldt")
+texture_hover = ExtResource("4_56xnr")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="buy_label" type="Label" parent="shop_window/buy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "BUY"
+label_settings = SubResource("LabelSettings_210i1")
+horizontal_alignment = 1
+
+[node name="shop_buy_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/Shop Buy"
+event_guid = "{f9ad4001-a5db-4ac7-8c92-6b148b9f1db3}"
+
+[node name="shop_open_close_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/Shop OpenClose"
+event_guid = "{b971197e-0e2f-4bca-a605-cf35d4d777fc}"
+
+[node name="shop_press_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/UI Click"
+event_guid = "{d8c72776-396b-42ec-bfe0-9bfe45bb4eb9}"
+
+[node name="shop_hover_sfx" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI/UI Hover"
+event_guid = "{060e5c31-6ad0-4587-8885-44dceb6ea037}"
+
+[connection signal="mouse_entered" from="shop_window/main_icon/left_button" to="." method="_on_left_button_mouse_entered"]
+[connection signal="pressed" from="shop_window/main_icon/left_button" to="." method="_on_left_button_pressed"]
+[connection signal="mouse_entered" from="shop_window/main_icon/right_button" to="." method="_on_right_button_mouse_entered"]
+[connection signal="pressed" from="shop_window/main_icon/right_button" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="shop_window/buy" to="." method="_on_buy_button_pressed"]

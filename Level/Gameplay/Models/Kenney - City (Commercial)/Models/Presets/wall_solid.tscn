@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bshaoxeatvc60"]
+
+[ext_resource type="PackedScene" uid="uid://b1d40qr8k2xmi" path="res://Level/Gameplay/Models/Kenney - City (Commercial)/Models/FBX format/wall_solid.fbx" id="1_ak8ai"]
+
+[node name="wall_solid" instance=ExtResource("1_ak8ai")]
+
+[node name="wall_solid" parent="." index="0"]
+cast_shadow = 2

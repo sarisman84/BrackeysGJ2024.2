@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpawnSetting" load_steps=2 format=3 uid="uid://wsstv0blmulp"]
+
+[ext_resource type="Script" path="res://Level/Gameplay/Scripts/spawn_setting.gd" id="1_ih6ye"]
+
+[resource]
+script = ExtResource("1_ih6ye")
+object_to_spawn = "res://Interactables/Scenes/weapon_station.tscn"
+allocated_object_count = 200
+chance_to_spawn = 0.2
+min_objects_to_spawn = 1
+max_objects_to_spawn = 1
+object_placement_area_size = Vector3i(1, 1, 1)
+UUID = -1

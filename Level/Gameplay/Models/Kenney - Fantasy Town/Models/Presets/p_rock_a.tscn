@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3ho4bhwquwfh"]
+
+[ext_resource type="PackedScene" uid="uid://cvtsf2ge8b4cv" path="res://Level/Gameplay/Models/Kenney - Fantasy Town/Models/FBX format/rockLarge.fbx" id="1_xviv7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5fpr"]
+size = Vector3(16.0078, 12.5883, 13.8552)
+
+[node name="rock_a" type="Node3D"]
+
+[node name="rockLarge" parent="." instance=ExtResource("1_xviv7")]
+
+[node name="collider" type="StaticBody3D" parent="."]
+
+[node name="shape" type="CollisionShape3D" parent="collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.79413, 0)
+shape = SubResource("BoxShape3D_n5fpr")

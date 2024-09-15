@@ -1,0 +1,199 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpa7e838v2yva"]
+
+[ext_resource type="PackedScene" uid="uid://dhasecx8kpc7d" path="res://Level/Gameplay/Models/Kenney - City (Commercial)/Models/FBX format/wall_doorB.fbx" id="1_74jye"]
+[ext_resource type="PackedScene" uid="uid://b1d40qr8k2xmi" path="res://Level/Gameplay/Models/Kenney - City (Commercial)/Models/FBX format/wall_solid.fbx" id="2_kmrke"]
+[ext_resource type="PackedScene" uid="uid://cm1bx1lhnr6lc" path="res://Level/Gameplay/Models/Kenney - City (Commercial)/Models/FBX format/wall_windowC.fbx" id="3_kcmp6"]
+[ext_resource type="PackedScene" uid="uid://hrtyrk4waugx" path="res://Level/Gameplay/Models/Kenney - City (Commercial)/Models/FBX format/roof_side.fbx" id="4_aktks"]
+
+[node name="custom_building_center" type="Node3D"]
+
+[node name="floor" type="Node3D" parent="."]
+
+[node name="wall_doorB" parent="floor" instance=ExtResource("1_74jye")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 0)
+
+[node name="wall_doorB" parent="floor/wall_doorB" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid" parent="floor" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 4)
+
+[node name="wall_solid" parent="floor/wall_solid" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid2" parent="floor" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid" parent="floor/wall_solid2" index="0"]
+cast_shadow = 2
+
+[node name="floor2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="wall_solid" parent="floor2" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 4)
+
+[node name="wall_solid" parent="floor2/wall_solid" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid9" parent="floor2" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 0)
+
+[node name="wall_solid" parent="floor2/wall_solid9" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid10" parent="floor2" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid" parent="floor2/wall_solid10" index="0"]
+cast_shadow = 2
+
+[node name="floor3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="wall_windowC" parent="floor3" instance=ExtResource("3_kcmp6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 0)
+
+[node name="wall_windowC" parent="floor3/wall_windowC" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid2" parent="floor3" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid" parent="floor3/wall_solid2" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid3" parent="floor3" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 4)
+
+[node name="wall_solid" parent="floor3/wall_solid3" index="0"]
+cast_shadow = 2
+
+[node name="floor4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="wall_windowC" parent="floor4" instance=ExtResource("3_kcmp6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 0)
+
+[node name="wall_windowC" parent="floor4/wall_windowC" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid2" parent="floor4" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid" parent="floor4/wall_solid2" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid3" parent="floor4" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 4)
+
+[node name="wall_solid" parent="floor4/wall_solid3" index="0"]
+cast_shadow = 2
+
+[node name="floor5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="wall_windowC" parent="floor5" instance=ExtResource("3_kcmp6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 0)
+
+[node name="wall_windowC" parent="floor5/wall_windowC" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid2" parent="floor5" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid" parent="floor5/wall_solid2" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid3" parent="floor5" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 4)
+
+[node name="wall_solid" parent="floor5/wall_solid3" index="0"]
+cast_shadow = 2
+
+[node name="floor6" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+
+[node name="wall_windowC" parent="floor6" instance=ExtResource("3_kcmp6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 0)
+
+[node name="wall_windowC" parent="floor6/wall_windowC" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid2" parent="floor6" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid" parent="floor6/wall_solid2" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid3" parent="floor6" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 4)
+
+[node name="wall_solid" parent="floor6/wall_solid3" index="0"]
+cast_shadow = 2
+
+[node name="floor7" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+
+[node name="wall_windowC" parent="floor7" instance=ExtResource("3_kcmp6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 0)
+
+[node name="wall_windowC" parent="floor7/wall_windowC" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid2" parent="floor7" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid" parent="floor7/wall_solid2" index="0"]
+cast_shadow = 2
+
+[node name="wall_solid3" parent="floor7" instance=ExtResource("2_kmrke")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 4)
+
+[node name="wall_solid" parent="floor7/wall_solid3" index="0"]
+cast_shadow = 2
+
+[node name="roof" type="Node3D" parent="."]
+
+[node name="roof_side" parent="roof" instance=ExtResource("4_aktks")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 28, 0)
+
+[node name="roof_side" parent="roof/roof_side" index="0"]
+cast_shadow = 2
+
+[node name="roof_side2" parent="roof" instance=ExtResource("4_aktks")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 28, 4)
+
+[node name="roof_side" parent="roof/roof_side2" index="0"]
+cast_shadow = 2
+
+[node name="roof_side3" parent="roof" instance=ExtResource("4_aktks")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 28, -4)
+
+[node name="roof_side" parent="roof/roof_side3" index="0"]
+cast_shadow = 2
+
+[editable path="floor/wall_doorB"]
+[editable path="floor/wall_solid"]
+[editable path="floor/wall_solid2"]
+[editable path="floor2/wall_solid"]
+[editable path="floor2/wall_solid9"]
+[editable path="floor2/wall_solid10"]
+[editable path="floor3/wall_windowC"]
+[editable path="floor3/wall_solid2"]
+[editable path="floor3/wall_solid3"]
+[editable path="floor4/wall_windowC"]
+[editable path="floor4/wall_solid2"]
+[editable path="floor4/wall_solid3"]
+[editable path="floor5/wall_windowC"]
+[editable path="floor5/wall_solid2"]
+[editable path="floor5/wall_solid3"]
+[editable path="floor6/wall_windowC"]
+[editable path="floor6/wall_solid2"]
+[editable path="floor6/wall_solid3"]
+[editable path="floor7/wall_windowC"]
+[editable path="floor7/wall_solid2"]
+[editable path="floor7/wall_solid3"]
+[editable path="roof/roof_side"]
+[editable path="roof/roof_side2"]
+[editable path="roof/roof_side3"]

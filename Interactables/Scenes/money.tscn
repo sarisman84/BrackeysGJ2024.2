@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://35qa7q7figgm"]
+
+[ext_resource type="Script" path="res://Interactables/Scripts/money.gd" id="1_88620"]
+[ext_resource type="PackedScene" uid="uid://e55twe8ochng" path="res://Interactables/Money Assets/gear_mesh.tscn" id="2_2ufqg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxsbn"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omq4f"]
+albedo_color = Color(1, 0.843137, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_s4g2y"]
+material = SubResource("StandardMaterial3D_omq4f")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8mfd3"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Money" type="RigidBody3D"]
+collision_layer = 16
+gravity_scale = 0.5
+script = ExtResource("1_88620")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_oxsbn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_s4g2y")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.293488, 0)
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8mfd3")
+
+[node name="gear_mesh" parent="." instance=ExtResource("2_2ufqg")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0.266113, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=3 uid="uid://d54s30o2xav"]
+
+[ext_resource type="Script" path="res://Player/UI/Game_Over/Script/game_over.gd" id="1_5xe5v"]
+[ext_resource type="FontFile" uid="uid://snwi17k1tj6i" path="res://Menus/Assets/Roboto_Slab_Font/static/RobotoSlab-Medium.ttf" id="2_ko5y6"]
+[ext_resource type="Texture2D" uid="uid://vq0qijmbvy0n" path="res://Menus/Assets/Small Filled Button.png" id="3_s8yxv"]
+[ext_resource type="Texture2D" uid="uid://cpvwn6dnq1yuf" path="res://Menus/Assets/Filled Button.png" id="4_kw4tr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a33c8"]
+font = ExtResource("2_ko5y6")
+font_size = 72
+font_color = Color(1, 0.847059, 0.560784, 1)
+outline_size = 30
+outline_color = Color(0.490196, 0.419608, 0.286275, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6wkdp"]
+font = ExtResource("2_ko5y6")
+font_size = 40
+font_color = Color(1, 0.847059, 0.560784, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hmtwq"]
+font = ExtResource("2_ko5y6")
+font_size = 32
+font_color = Color(1, 0.847059, 0.560784, 1)
+
+[node name="game_over" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_5xe5v")
+
+[node name="background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0784314)
+
+[node name="menu_group" type="AspectRatioContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.5
+offset_top = -290.0
+offset_right = 327.5
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 0
+
+[node name="button_group" type="VBoxContainer" parent="menu_group"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="title" type="Label" parent="menu_group/button_group"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_a33c8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gear_count" type="Label" parent="menu_group/button_group"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Gears Collected:"
+label_settings = SubResource("LabelSettings_6wkdp")
+horizontal_alignment = 1
+
+[node name="time_survived" type="Label" parent="menu_group/button_group"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Gears Collected:"
+label_settings = SubResource("LabelSettings_6wkdp")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu_group/button_group"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="play" type="TextureButton" parent="menu_group/button_group/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_s8yxv")
+texture_hover = ExtResource("4_kw4tr")
+
+[node name="Label" type="Label" parent="menu_group/button_group/VBoxContainer/play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -21.5
+offset_right = 122.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY AGAIN"
+label_settings = SubResource("LabelSettings_hmtwq")
+horizontal_alignment = 1
+
+[node name="quit" type="TextureButton" parent="menu_group/button_group/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("3_s8yxv")
+texture_hover = ExtResource("4_kw4tr")
+
+[node name="Label" type="Label" parent="menu_group/button_group/VBoxContainer/quit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -21.5
+offset_right = 122.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAIN MENU"
+label_settings = SubResource("LabelSettings_hmtwq")
+horizontal_alignment = 1

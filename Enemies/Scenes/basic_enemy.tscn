@@ -1,22 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxcxm2wvtq7fp"]
+[gd_scene load_steps=7 format=3 uid="uid://dxcxm2wvtq7fp"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/basic_enemy.gd" id="1_1th7j"]
+[ext_resource type="Material" uid="uid://4u85xwfn02jy" path="res://Level/Gameplay/Resources/white_material.tres" id="2_cchnd"]
+[ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="2_ufrkp"]
+[ext_resource type="PackedScene" uid="uid://d3sqxq4mixlx0" path="res://Enemies/Scenes/meele_attack.tscn" id="3_knfvv"]
+[ext_resource type="PackedScene" uid="uid://dqs4a3lei76hj" path="res://Enemies/Models/basic_enemy.tscn" id="4_asfyy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t180b"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ea1m"]
-albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_g6tmt"]
-material = SubResource("StandardMaterial3D_7ea1m")
 
 [node name="basic_enemy" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_1th7j")
+blink_material = ExtResource("2_cchnd")
+money_amount = 3
+money_value = 10
 
-[node name="shape" type="CollisionShape3D" parent="."]
+[node name="collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_t180b")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_g6tmt")
+[node name="model" parent="." instance=ExtResource("4_asfyy")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, 0, -0.96, 0)
+
+[node name="health_manager" parent="." instance=ExtResource("2_ufrkp")]
+max_health = 10
+
+[node name="meele_attack" parent="." instance=ExtResource("3_knfvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.702058, 0, -0.011855)
+collision_layer = 0
+collision_mask = 32
+
+[node name="navigation" type="NavigationAgent3D" parent="."]
+
+[connection signal="on_death" from="health_manager" to="." method="_on_health_manager_on_death"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=12 format=3 uid="uid://bmd01lp68f7ki"]
+
+[ext_resource type="Script" path="res://Global/Scripts/item_registry.gd" id="1_kocur"]
+[ext_resource type="Resource" uid="uid://d2bh2x4uyeain" path="res://Weapons/Types/machine_gun.tres" id="2_n51hm"]
+[ext_resource type="Script" path="res://Global/Scripts/baseresource.gd" id="2_xehv7"]
+[ext_resource type="Resource" uid="uid://dk3csf75j3e2x" path="res://Weapons/Types/grenade_launcher.tres" id="4_cp7c7"]
+[ext_resource type="Script" path="res://Level/Gameplay/Scripts/spawn_setting.gd" id="5_0kj0c"]
+[ext_resource type="Resource" uid="uid://uxrjrj5o3hoj" path="res://Weapons/Types/sword.tres" id="5_ugs35"]
+[ext_resource type="Resource" uid="uid://dew8a50ncs82e" path="res://Level/Gameplay/Resources/crates.tres" id="6_0rrs1"]
+[ext_resource type="Resource" uid="uid://wsstv0blmulp" path="res://Level/Gameplay/Resources/shop.tres" id="7_kn53u"]
+[ext_resource type="Resource" uid="uid://cgbol4miol7ne" path="res://Level/Gameplay/Resources/ammo_crates.tres" id="9_va1k4"]
+[ext_resource type="Resource" uid="uid://4hsn5sg0nkxd" path="res://Level/Gameplay/Resources/powerup_crates.tres" id="10_lw564"]
+[ext_resource type="Resource" uid="uid://1qea3juoc8sv" path="res://Level/Gameplay/Resources/health_crate.tres" id="11_cwfyt"]
+
+[node name="item_registry" type="Node"]
+process_mode = 3
+script = ExtResource("1_kocur")
+item_registry = Array[ExtResource("2_xehv7")]([ExtResource("2_n51hm"), ExtResource("4_cp7c7"), ExtResource("5_ugs35")])
+spawnable_items = Array[ExtResource("5_0kj0c")]([ExtResource("6_0rrs1"), ExtResource("7_kn53u"), ExtResource("9_va1k4"), ExtResource("10_lw564"), ExtResource("11_cwfyt")])

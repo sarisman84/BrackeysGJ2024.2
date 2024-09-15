@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WaveInfo" load_steps=3 format=3 uid="uid://bxlxmrcwl32ad"]
+
+[ext_resource type="Script" path="res://Enemies/Spawner/Waves/wave_info.gd" id="1_jtyx2"]
+[ext_resource type="PackedScene" uid="uid://dxcxm2wvtq7fp" path="res://Enemies/Scenes/basic_enemy.tscn" id="1_mw3gu"]
+
+[resource]
+script = ExtResource("1_jtyx2")
+enemies = Array[PackedScene]([ExtResource("1_mw3gu")])
+spawn_distance = 25
+flying_distance = 10
+wave_start_time = 60.0
+group_amount = 10
+init_spawn_time_delay = 4.0
+spawn_time_delay_decrease = 0.2
+music_intensity = 20

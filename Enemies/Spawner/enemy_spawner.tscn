@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://db38rpsv7kars"]
+
+[ext_resource type="Script" path="res://Enemies/Spawner/enemy_spawner.gd" id="1_ye8ye"]
+
+[node name="enemy_spawner" type="Node3D"]
+script = ExtResource("1_ye8ye")
+
+[node name="group_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="downtime_timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="player_tracker" type="RemoteTransform3D" parent="."]
+
+[node name="music" type="FmodEventEmitter3D" parent="player_tracker"]
+event_name = "event:/Music"
+event_guid = "{53691559-927c-44f7-9a2f-6267bf2e6217}"
+event_parameter/Intensity/id = -5627069354138938267
+event_parameter/Intensity/value = 0.0
+event_parameter/Intensity/min_value = 0.0
+event_parameter/Intensity/max_value = 100.0
+event_parameter/Intensity/default_value = 0.0
+event_parameter/Intensity/variant_type = 3
+
+[connection signal="timeout" from="group_timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="downtime_timer" to="." method="_on_timer_timeout"]

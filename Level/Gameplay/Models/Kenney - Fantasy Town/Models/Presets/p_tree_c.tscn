@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyt1urdqq53n6"]
+
+[ext_resource type="PackedScene" uid="uid://jaaf2h1qgu" path="res://Level/Gameplay/Models/Kenney - Fantasy Town/Models/FBX format/treeHigh.fbx" id="1_osmpc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25qu6"]
+size = Vector3(3.24634, 12.7512, 2.92773)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bo1k7"]
+size = Vector3(10.8459, 19.2432, 9.78687)
+
+[node name="tree_c" type="Node3D"]
+
+[node name="treeHigh" parent="." instance=ExtResource("1_osmpc")]
+
+[node name="collider" type="StaticBody3D" parent="."]
+
+[node name="shape" type="CollisionShape3D" parent="collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.87558, 0)
+shape = SubResource("BoxShape3D_25qu6")
+
+[node name="shape2" type="CollisionShape3D" parent="collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.0937, 0)
+shape = SubResource("BoxShape3D_bo1k7")

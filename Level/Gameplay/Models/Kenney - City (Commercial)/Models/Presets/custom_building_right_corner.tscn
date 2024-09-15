@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs5rksx5kocqp"]
+
+[ext_resource type="PackedScene" uid="uid://b1d40qr8k2xmi" path="res://Level/Gameplay/Models/Kenney - City (Commercial)/Models/FBX format/wall_solid.fbx" id="1_eh46c"]
+[ext_resource type="PackedScene" uid="uid://ysqh5dalxtix" path="res://Level/Gameplay/Models/Kenney - City (Commercial)/Models/FBX format/roof_corner.fbx" id="2_qbewy"]
+
+[node name="custom_building_right_corner" type="Node3D"]
+
+[node name="floor" type="Node3D" parent="."]
+
+[node name="wall_solid2" parent="floor" instance=ExtResource("1_eh46c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid3" parent="floor" instance=ExtResource("1_eh46c")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -1, 0, -2)
+
+[node name="floor2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="wall_solid10" parent="floor2" instance=ExtResource("1_eh46c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid11" parent="floor2" instance=ExtResource("1_eh46c")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -1, 0, -2)
+
+[node name="floor3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="wall_solid2" parent="floor3" instance=ExtResource("1_eh46c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid3" parent="floor3" instance=ExtResource("1_eh46c")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -1, 0, -2)
+
+[node name="floor4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+
+[node name="wall_solid2" parent="floor4" instance=ExtResource("1_eh46c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid3" parent="floor4" instance=ExtResource("1_eh46c")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -1, 0, -2)
+
+[node name="floor5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="wall_solid2" parent="floor5" instance=ExtResource("1_eh46c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid3" parent="floor5" instance=ExtResource("1_eh46c")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -1, 0, -2)
+
+[node name="floor6" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+
+[node name="wall_solid2" parent="floor6" instance=ExtResource("1_eh46c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid3" parent="floor6" instance=ExtResource("1_eh46c")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -1, 0, -2)
+
+[node name="floor7" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+
+[node name="wall_solid2" parent="floor7" instance=ExtResource("1_eh46c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -4)
+
+[node name="wall_solid3" parent="floor7" instance=ExtResource("1_eh46c")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -1, 0, -2)
+
+[node name="roof" type="Node3D" parent="."]
+
+[node name="roof_corner" parent="roof" instance=ExtResource("2_qbewy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 28, -4)

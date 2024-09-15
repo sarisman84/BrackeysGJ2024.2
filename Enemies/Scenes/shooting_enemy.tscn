@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjhnfiv3kdyek"]
+
+[ext_resource type="Script" path="res://Enemies/Scripts/shooting_enemy.gd" id="1_2ecym"]
+[ext_resource type="Material" uid="uid://b6wtw6hlrqhvh" path="res://Level/Gameplay/Resources/white_material.tres" id="2_1rqh0"]
+[ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="2_b4uvf"]
+[ext_resource type="PackedScene" uid="uid://clda4emv0gms1" path="res://Enemies/Models/shooting_enemy.tscn" id="2_ifepm"]
+[ext_resource type="Script" path="res://Weapons/Scripts/weapon_manager.gd" id="5_344ef"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5f3dy"]
+
+[node name="shooting_enemy" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_2ecym")
+money_amount = 4
+money_value = 15
+blink_material = ExtResource("2_1rqh0")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5f3dy")
+
+[node name="model" parent="." instance=ExtResource("2_ifepm")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, 0, -0.96, 0)
+
+[node name="health_manager" parent="." instance=ExtResource("2_b4uvf")]
+max_health = 15
+
+[node name="weapon_manager" type="Node3D" parent="."]
+transform = Transform3D(0.0174524, 0, -0.999848, 0, 1, 0, 0.999848, 0, 0.0174524, 0.260592, -0.155726, 0.429894)
+script = ExtResource("5_344ef")
+
+[node name="navigation" type="NavigationAgent3D" parent="."]
+
+[connection signal="on_death" from="health_manager" to="." method="_on_health_manager_on_death"]

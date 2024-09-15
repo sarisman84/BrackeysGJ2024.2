@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmal4apan8sxg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_j7883"]
+radius = 0.25
+height = 0.5
+
+[node name="grenade_bullet" type="Node3D"]
+
+[node name="model" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_j7883")

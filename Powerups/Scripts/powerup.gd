@@ -1,8 +1,5 @@
-extends Resource
-class_name Powerup
+extends BaseResource
+class_name BasePowerup
 
-@export var name : String
+@export_enum("SpeedUp", "MaxHealthUp", "JumpLimitUp", "AttackUp") var name : String
 @export var model : Mesh
-
-func apply_powerup():
-	pass

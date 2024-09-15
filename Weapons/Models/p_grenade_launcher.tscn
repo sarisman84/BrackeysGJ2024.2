@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://b2j6fjcu0m75u"]
+
+[node name="grenade_launcher" type="Node3D"]
+
+[node name="model" type="CSGCombiner3D" parent="."]
+
+[node name="body" type="CSGCombiner3D" parent="model"]
+
+[node name="body_part2" type="CSGCylinder3D" parent="model/body"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.174366)
+radius = 0.106
+height = 0.362
+smooth_faces = false
+
+[node name="body_part3" type="CSGCylinder3D" parent="model/body"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.309799)
+radius = 0.28
+height = 0.183
+smooth_faces = false
+
+[node name="body_part" type="CSGCylinder3D" parent="model/body"]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 0, 0.0381327)
+radius = 0.245
+height = 0.513153
+sides = 10
+cone = true
+smooth_faces = false
+
+[node name="head" type="CSGCombiner3D" parent="model"]
+operation = 2
+
+[node name="body_head" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.287986, -0.319425)
+radius = 0.059
+height = 0.402
+smooth_faces = false
+
+[node name="body_head2" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.220972, 0.19772, -0.319425)
+radius = 0.059
+height = 0.402
+smooth_faces = false
+
+[node name="body_head3" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.21799, 0.19772, -0.319425)
+radius = 0.059
+height = 0.402
+smooth_faces = false
+
+[node name="body_head4" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.285015, -0.00469114, -0.319425)
+radius = 0.059
+height = 0.402
+smooth_faces = false
+
+[node name="body_head5" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.294534, -0.00469114, -0.319425)
+radius = 0.059
+height = 0.402
+smooth_faces = false
+
+[node name="body_head6" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(-0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0, 1, 0.206394, -0.212296, -0.319425)
+radius = 0.059
+height = 0.402
+smooth_faces = false
+
+[node name="body_head7" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(-0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, -0.195169, -0.212296, -0.319425)
+radius = 0.059
+height = 0.402
+smooth_faces = false
+
+[node name="body_head8" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194977, -0.305521, -0.319425)
+radius = 0.059
+height = 0.402
+smooth_faces = false
+
+[node name="body_head_main_hole" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.409502)
+radius = 0.178
+height = 0.297421
+
+[node name="body_head_main_hole2" type="CSGCylinder3D" parent="model/head"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.368381)
+radius = 0.081
+height = 0.099
+
+[node name="body_handle" type="CSGCylinder3D" parent="model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.136336, 0.21148)
+radius = 0.036
+height = 0.183
+smooth_faces = false
+
+[node name="body_handle2" type="CSGCylinder3D" parent="model"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.132742, 0.00035952, 0.209709)
+radius = 0.036
+height = 0.183
+smooth_faces = false
+
+[node name="barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.65769)

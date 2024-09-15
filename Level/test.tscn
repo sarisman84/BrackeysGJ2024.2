@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb80tiwqe8hpc"]
+[gd_scene load_steps=6 format=3 uid="uid://cb80tiwqe8hpc"]
 
 [ext_resource type="PackedScene" uid="uid://dxcxm2wvtq7fp" path="res://Enemies/Scenes/basic_enemy.tscn" id="1_p65gp"]
 [ext_resource type="PackedScene" uid="uid://dbhpk13ktqxn5" path="res://Enemies/Scenes/flying_enemy.tscn" id="2_8wkjo"]
+[ext_resource type="PackedScene" uid="uid://cjhnfiv3kdyek" path="res://Enemies/Scenes/shooting_enemy.tscn" id="3_wi7pl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdtes"]
 albedo_color = Color(1, 0.184314, 0.180392, 1)
@@ -39,6 +40,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 10, -11)
 
 [node name="flying_enemy2" parent="enemies" instance=ExtResource("2_8wkjo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 16, 22)
+
+[node name="shooting_enemy" parent="enemies" instance=ExtResource("3_wi7pl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, -26)
+
+[node name="shooting_enemy2" parent="enemies" instance=ExtResource("3_wi7pl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 4, 23)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 45, 0)
