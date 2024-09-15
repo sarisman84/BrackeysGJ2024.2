@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource("1_ih6ye")
 object_to_spawn = "res://Interactables/Scenes/weapon_station.tscn"
-chance_to_spawn = 0.5
+allocated_object_count = 200
+chance_to_spawn = 0.2
 min_objects_to_spawn = 1
 max_objects_to_spawn = 1
 object_placement_area_size = Vector3i(1, 1, 1)
+UUID = -1

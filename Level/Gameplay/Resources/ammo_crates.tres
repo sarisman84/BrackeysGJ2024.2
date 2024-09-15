@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="SpawnSetting" load_steps=2 format=3 uid="uid://ctbfpob0fbv4q"]
+[gd_resource type="Resource" script_class="SpawnSetting" load_steps=2 format=3 uid="uid://cgbol4miol7ne"]
 
 [ext_resource type="Script" path="res://Level/Gameplay/Scripts/spawn_setting.gd" id="1_g014o"]
 
 [resource]
 script = ExtResource("1_g014o")
 object_to_spawn = "res://Level/Gameplay/Elements/le_ammo_crates.tscn"
-allocated_object_count = 700
+allocated_object_count = 1200
 chance_to_spawn = 0.4
 min_objects_to_spawn = 1
 max_objects_to_spawn = 1

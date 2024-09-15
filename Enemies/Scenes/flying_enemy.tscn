@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Enemies/Scripts/flying_enemy.gd" id="1_7tov3"]
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="2_0duqf"]
-[ext_resource type="Material" uid="uid://b6wtw6hlrqhvh" path="res://Level/Gameplay/Resources/white_material.tres" id="2_lcrch"]
+[ext_resource type="Material" uid="uid://4u85xwfn02jy" path="res://Level/Gameplay/Resources/white_material.tres" id="2_lcrch"]
 [ext_resource type="PackedScene" uid="uid://bla1b8p7fhen4" path="res://Enemies/Models/flying_enemy.tscn" id="2_vjwpu"]
 [ext_resource type="PackedScene" uid="uid://d3sqxq4mixlx0" path="res://Enemies/Scenes/meele_attack.tscn" id="3_54dyb"]
 

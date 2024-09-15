@@ -34,8 +34,8 @@ explosion_detection_mask = 32
 explosion_detection_duration_in_seconds = 0.1
 hurtbox_shape = SubResource("SphereShape3D_2og7x")
 hurtbox_detection_mask = 33
-delete_bullet_on_hit = null
-UUID = null
+delete_bullet_on_hit = true
+UUID = -1
 
 [resource]
 script = ExtResource("2_2dqry")

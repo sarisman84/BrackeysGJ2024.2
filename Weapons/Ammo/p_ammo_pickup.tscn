@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://djq2jxg8ly7e1"]
+[gd_scene load_steps=5 format=3 uid="uid://djq2jxg8ly7e1"]
 
 [ext_resource type="Script" path="res://Weapons/Ammo/Scripts/ammo_pickup.gd" id="1_4tmor"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_da2ev"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ql0a7"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_6jpxd"]
+[sub_resource type="SphereMesh" id="SphereMesh_1b0vs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wam1r"]
+albedo_color = Color(0, 0.509804, 0, 1)
 
 [node name="ammo_pickup" type="Area3D"]
 collision_layer = 8
@@ -13,9 +16,10 @@ script = ExtResource("1_4tmor")
 ammo_type = "machine_gun"
 
 [node name="shape" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_da2ev")
+shape = SubResource("SphereShape3D_ql0a7")
 
 [node name="model" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_6jpxd")
+mesh = SubResource("SphereMesh_1b0vs")
+surface_material_override/0 = SubResource("StandardMaterial3D_wam1r")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

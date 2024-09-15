@@ -18,7 +18,7 @@ var original_mat
 func _ready() -> void:
 	m_health_manager.on_take_damage.connect(m_model_blink)
 	m_health_manager.health_owner = self
-	
+
 	model_meshes = model.find_children("*", "MeshInstance3D")
 	original_mat = model_meshes[0].get_surface_override_material(0)
 
