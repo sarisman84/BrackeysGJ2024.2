@@ -26,7 +26,7 @@ func apply_behaviour(args : Dictionary = {}) -> Dictionary:
 
 	var matrix = weapon.get_barrel().global_basis
 
-	var hurtbox = m_create_hurtbox(args["owner"])
+	var hurtbox = m_create_hurtbox(weapon_manager)
 	hurtbox.global_position = weapon.get_barrel().global_position
 
 	var scene_tree = weapon_manager.get_tree()

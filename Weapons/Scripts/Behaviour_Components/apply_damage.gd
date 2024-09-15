@@ -13,13 +13,16 @@ func on_bullet_hit(bullet : Node3D, weapon : BaseWeapon, weapon_manager: WeaponM
 
 	var emitter := FmodEventEmitter3D.new()
 
+	emitter.preload_event = false
 	emitter.event_name = weapon.hit_sfx_name
 	emitter.event_guid = weapon.hit_sfx_guid
-	emitter.global_position = bullet.global_position
-	emitter.preload_event = false
-	emitter.play()
 
 	weapon_manager.weapon_owner.get_tree().root.add_child(emitter)
+	emitter.global_position = bullet.global_position
+
+	emitter.play()
+
+
 	var timer := Timer.new()
 	weapon_manager.weapon_owner.get_tree().root.add_child(timer)
 
@@ -28,14 +31,15 @@ func on_bullet_hit(bullet : Node3D, weapon : BaseWeapon, weapon_manager: WeaponM
 
 
 	if incoming_body is not HealthManager:
-		if delete_bullet_on_hit:
+		if delete_bullet_on_hit and bullet:
 			bullet.queue_free()
 		return
 
 	var health_manager = incoming_body as HealthManager
 	var result = health_manager.take_damage(damage * damage_multiplier, weapon_manager.weapon_owner)
-	if delete_bullet_on_hit and result == HealthManager.DAMAGE_SUCCESS:
+	if delete_bullet_on_hit and result == HealthManager.DAMAGE_SUCCESS and bullet:
 		bullet.queue_free()
 
 func m_clear_sfx(emitter : FmodEventEmitter3D, timer : Timer) -> void:
 	emitter.queue_free()
+	timer.queue_free()

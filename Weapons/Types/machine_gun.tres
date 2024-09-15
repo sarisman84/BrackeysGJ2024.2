@@ -28,8 +28,8 @@ script = ExtResource("5_nd5dr")
 damage = 10.0
 hurtbox_shape = SubResource("SphereShape3D_m2wd3")
 hurtbox_detection_mask = 32
-delete_bullet_on_hit = null
-UUID = null
+delete_bullet_on_hit = true
+UUID = -1
 
 [resource]
 script = ExtResource("1_yg3oh")

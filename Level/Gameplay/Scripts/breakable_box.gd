@@ -27,11 +27,11 @@ func m_spawn_drop() -> void:
 	ItemRegistry.reset_cached_item(self)
 
 	var emitter := FmodEventEmitter3D.new()
-
+	emitter.preload_event = false
 	emitter.event_name = crate_break_sfx_name
 	emitter.event_guid = crate_break_sfx_guid
 	emitter.global_position = global_position
-	emitter.preload_event = false
+	get_tree().root.add_child(emitter)
 	emitter.play()
 
 	var timer := Timer.new()

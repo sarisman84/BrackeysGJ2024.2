@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxcxm2wvtq7fp"]
 
 [ext_resource type="Script" path="res://Enemies/Scripts/basic_enemy.gd" id="1_1th7j"]
-[ext_resource type="Material" uid="uid://b6wtw6hlrqhvh" path="res://Level/Gameplay/Resources/white_material.tres" id="2_cchnd"]
+[ext_resource type="Material" uid="uid://4u85xwfn02jy" path="res://Level/Gameplay/Resources/white_material.tres" id="2_cchnd"]
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="2_ufrkp"]
 [ext_resource type="PackedScene" uid="uid://d3sqxq4mixlx0" path="res://Enemies/Scenes/meele_attack.tscn" id="3_knfvv"]
 [ext_resource type="PackedScene" uid="uid://dqs4a3lei76hj" path="res://Enemies/Models/basic_enemy.tscn" id="4_asfyy"]

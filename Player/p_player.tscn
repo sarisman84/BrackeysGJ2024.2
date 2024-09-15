@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/Scripts/avatar_controller.gd" id="1_f0er1"]
 [ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
-[ext_resource type="Material" path="res://Level/Gameplay/Resources/white_material.tres" id="2_ew1h0"]
+[ext_resource type="Material" uid="uid://4u85xwfn02jy" path="res://Level/Gameplay/Resources/white_material.tres" id="2_ew1h0"]
 [ext_resource type="PackedScene" uid="uid://6klxf7f7gsbv" path="res://Weapons/p_weapon_manager.tscn" id="3_h2gkg"]
 [ext_resource type="PackedScene" path="res://Player/Model/robot.tscn" id="3_svql1"]
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="5_y2spw"]
@@ -35,7 +35,7 @@ spring_length = 5.0
 
 [node name="camera" type="Camera3D" parent="camera_anchor/pitch_pivot"]
 unique_name_in_owner = true
-near = 0.001
+fov = 90.0
 
 [node name="model" type="Node3D" parent="."]
 

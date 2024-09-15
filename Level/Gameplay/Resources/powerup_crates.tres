@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpawnSetting" load_steps=2 format=3 uid="uid://cwhs0ovmiy1hk"]
+[gd_resource type="Resource" script_class="SpawnSetting" load_steps=2 format=3 uid="uid://4hsn5sg0nkxd"]
 
 [ext_resource type="Script" path="res://Level/Gameplay/Scripts/spawn_setting.gd" id="1_45hlm"]
 

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl8c0ieg00vq0"]
+
+[ext_resource type="PackedScene" uid="uid://t536pcsvrvul" path="res://Level/Gameplay/Models/Kenney - Fantasy Town/Models/FBX format/treeHighCrooked.fbx" id="1_a3byg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_leq4g"]
+size = Vector3(2.86523, 10.9818, 2.89819)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ixkmj"]
+size = Vector3(10.1721, 19.3167, 11.665)
+
+[node name="tree_d" type="Node3D"]
+
+[node name="treeHighCrooked" parent="." instance=ExtResource("1_a3byg")]
+
+[node name="collider" type="StaticBody3D" parent="."]
+
+[node name="shape" type="CollisionShape3D" parent="collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.99091, 0)
+shape = SubResource("BoxShape3D_leq4g")
+
+[node name="shape2" type="CollisionShape3D" parent="collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.0415, 0)
+shape = SubResource("BoxShape3D_ixkmj")
