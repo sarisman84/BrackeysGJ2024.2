@@ -24,6 +24,8 @@ extends CharacterBody3D
 @onready var game_over = $game_over
 @onready var robot = $model/robot
 
+var weapon_select_just_opened = false
+
 var shop_open = false
 
 var m_jump_count : int = 0
@@ -44,6 +46,8 @@ func _ready() -> void:
 	shop.init(weapon_manager)
 	main_ui.init(health_manager, weapon_manager)
 	weapon_manager.add_weapon("sword")
+	weapon_select.on_weapon_select_start.connect(_on_weapon_select_opened)
+	weapon_select.on_weapon_selected.connect(_on_weapon_selected)
 
 	main_ui.m_update_visual_max_health(health_manager)
 	main_ui.m_update_visual_health_bar(health_manager)
@@ -93,6 +97,12 @@ func _physics_process(delta : float) -> void:
 	move_and_slide()
 	#Global.player_coords = position
 
+func _on_weapon_select_opened():
+	weapon_select_just_opened = true
+
+func _on_weapon_selected():
+	await get_tree().create_timer(0.25).timeout
+	weapon_select_just_opened = false
 
 func _process(_delta : float) -> void:
 	var cam_dir = camera.global_basis.z
@@ -101,7 +111,8 @@ func _process(_delta : float) -> void:
 	#model.rotation.y = lerp(model.rotation.y, atan2(cam_dir.x, cam_dir.z), ROTATION_SMOOTHING * delta)
 
 	#Handle Weapon Fire
-	weapon_manager.fire_input = Input.is_action_pressed("weapon_fire")
+	if !weapon_select_just_opened:
+		weapon_manager.fire_input = Input.is_action_pressed("weapon_fire")
 
 func m_calculate_input_direction() -> Vector3:
 	var local_dir = Vector3(Input.get_axis("move_left", "move_right"), 0, Input.get_axis("move_forward", "move_backward"))
