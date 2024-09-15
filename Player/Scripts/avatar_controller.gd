@@ -80,7 +80,7 @@ func _physics_process(delta : float) -> void:
 
 		if dir.length() > 0:
 			var speed = movement_speed
-			robot.anidmation_player.play("RobotArmature|Robot_Running")
+			robot.animation_player.play("RobotArmature|Robot_Running")
 
 			var y_vel = velocity.y
 			velocity = lerp(velocity, dir * speed, acceleration * delta)

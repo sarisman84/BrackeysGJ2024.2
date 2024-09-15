@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpawnSetting" load_steps=2 format=3 uid="uid://cpftu13yicxjx"]
+[gd_resource type="Resource" script_class="SpawnSetting" load_steps=2 format=3 uid="uid://1qea3juoc8sv"]
 
 [ext_resource type="Script" path="res://Level/Gameplay/Scripts/spawn_setting.gd" id="1_1r42g"]
 
@@ -6,7 +6,7 @@
 script = ExtResource("1_1r42g")
 object_to_spawn = "res://Level/Gameplay/Elements/le_health_crates.tscn"
 allocated_object_count = 500
-chance_to_spawn = 1.0
+chance_to_spawn = 0.6
 min_objects_to_spawn = 1
 max_objects_to_spawn = 1
 object_placement_area_size = Vector3i(1, 1, 1)

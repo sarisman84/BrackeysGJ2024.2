@@ -38,6 +38,8 @@ func apply_behaviour(args : Dictionary = {}) -> Dictionary:
 	args["hitbox"] = hurtbox
 	return args
 
-func on_expire(hitbox : Area3D, timer : Timer) -> void:
-	hitbox.queue_free()
-	timer.queue_free()
+func on_expire(hitbox, timer) -> void:
+	if hitbox:
+		hitbox.queue_free()
+	if timer:
+		timer.queue_free()
