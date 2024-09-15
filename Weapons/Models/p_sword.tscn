@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bsph5e101b4x5"]
+
+[node name="sword" type="Node3D"]
+
+[node name="barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.65769)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(0.0331543, 0.72095, 0.692194, -0.97101, 0.187277, -0.148549, -0.236729, -0.667202, 0.706259, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0.707107, 0.707107, 3.09086e-08, -0.707107, 0.707107, -3.09086e-08, -1.19209e-07, 0.166646, -0.123249)
+size = Vector3(1.1, 0.05, 0.1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.742783, 0.669533, 0, -0.669533, 0.742783, 0, 0, 0.0370144)
+size = Vector3(0.15, 0.1, 0.1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.69265, -0.0471287, -0.719732, -0.504482, 0.681517, -0.530125, 0.515494, 0.730283, 0.448277, -7.5208e-05, 0.554509, -0.506255)
+size = Vector3(0.065, 0.05, 0.065)

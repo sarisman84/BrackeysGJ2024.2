@@ -5,16 +5,21 @@ extends BaseBehaviour
 @export var hurtbox_shape : Shape3D
 @export_flags_3d_physics var hurtbox_detection_mask : int
 @export var delete_bullet_on_hit : bool = true
+@export var slash_vfx : PackedScene
 
 func m_create_hurtbox(owner : WeaponManager) -> Area3D:
 	var hurtbox := Area3D.new()
 	var col := CollisionShape3D.new()
-
+	var vfx = slash_vfx.instantiate()
+	
 	col.shape = hurtbox_shape
 	hurtbox.collision_mask = hurtbox_detection_mask
 
 	hurtbox.add_child(col)
-	owner.get_tree().root.add_child(hurtbox)
+
+	hurtbox.add_child(vfx)
+	owner.weapon_owner.get_parent().add_child(hurtbox)
+
 	return hurtbox
 
 func apply_behaviour(args : Dictionary = {}) -> Dictionary:

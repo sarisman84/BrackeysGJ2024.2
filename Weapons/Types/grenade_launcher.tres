@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="BaseWeapon" load_steps=11 format=3 uid="uid://dk3csf75j3e2x"]
+[gd_resource type="Resource" script_class="BaseWeapon" load_steps=12 format=3 uid="uid://dk3csf75j3e2x"]
 
 [ext_resource type="Texture2D" uid="uid://kjlwgtc8tt00" path="res://Weapons/Icons/sonic-boom.png" id="1_hnpn8"]
 [ext_resource type="Script" path="res://Weapons/Scripts/base_weapon.gd" id="2_2dqry"]
 [ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/base_behaviour.gd" id="3_8yd8p"]
 [ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/fire_projectile.gd" id="4_iktmo"]
 [ext_resource type="Script" path="res://Weapons/Scripts/Behaviour_Components/apply_explosion.gd" id="5_7mg6t"]
+[ext_resource type="PackedScene" uid="uid://w4mwnk6r187e" path="res://Weapons/Explosion/explosion_vfx.tscn" id="5_eawdq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uloda"]
 radius = 0.25
@@ -32,6 +33,7 @@ damage = 10
 explosion_shape = SubResource("SphereShape3D_6plbv")
 explosion_detection_mask = 32
 explosion_detection_duration_in_seconds = 0.1
+explosion_vfx = ExtResource("5_eawdq")
 hurtbox_shape = SubResource("SphereShape3D_2og7x")
 hurtbox_detection_mask = 33
 delete_bullet_on_hit = true
