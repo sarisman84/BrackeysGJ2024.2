@@ -6,4 +6,5 @@ albedo_color = Color(0.841606, 0.000692698, 0.86494, 1)
 [node name="spawn_node" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
 material = SubResource("StandardMaterial3D_0m20l")

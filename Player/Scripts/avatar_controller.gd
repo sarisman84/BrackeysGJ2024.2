@@ -51,9 +51,6 @@ func _ready() -> void:
 	model_meshes = robot.find_children("*", "MeshInstance3D")
 	original_mat = model_meshes[0].get_surface_override_material(0)
 
-	#DEBUG
-	Global.current_currency = 100000
-
 func _physics_process(delta : float) -> void:
 
 	if shop_open:

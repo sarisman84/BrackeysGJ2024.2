@@ -51,21 +51,25 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		Global.current_currency = Global.current_currency + value
 
 		var emitter := FmodEventEmitter3D.new()
+		emitter.preload_event = false
 		emitter.event_name = pickup_sfx_name
 		emitter.event_guid = pickup_sfx_guid
-		emitter.preload_event = false
+
 		get_tree().root.add_child(emitter)
 		emitter.global_position = global_position
 
 		emitter.play()
 
 		var timer := Timer.new()
+		get_tree().root.add_child(timer)
 		timer.timeout.connect(m_clear_sfx.bind(emitter, timer))
 		timer.start(0.5)
-		get_tree().root.add_child(timer)
+
 
 	queue_free()
 
 func m_clear_sfx(emitter : FmodEventEmitter3D, timer : Timer) -> void:
-	emitter.queue_free()
-	timer.queue_free()
+	if emitter:
+		emitter.queue_free()
+	if timer:
+		timer.queue_free()
