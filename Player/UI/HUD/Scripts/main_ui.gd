@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var weapon_icon = $ammo_tab/container/weapon_icon
 @onready var m_popup_label = $popup_label
 @onready var m_animation_player = $animation_player
+@onready var m_shop_label = $shop_label
 
 func init(health_manager : HealthManager, weapon_manager : WeaponManager) -> void:
 	#Connect health events to health ui
@@ -17,6 +18,8 @@ func init(health_manager : HealthManager, weapon_manager : WeaponManager) -> voi
 	#Connect currency events to currency ui
 	Global.on_currency_earned.connect(m_update_visual_coins)
 	Global.on_currency_lost.connect(m_update_visual_coins)
+	
+	Global.shop_label.connect(m_update_shop_label)
 
 	#Connect weapon events to weapon ui
 	weapon_manager.on_weapon_switch.connect(m_update_visual_ammo_counter.bind(weapon_manager))
@@ -30,6 +33,12 @@ func _process(_delta: float) -> void:
 	m_update_time()
 	visible = Global.current_paused_state == Global.PausedStates.NONE
 
+func m_update_shop_label() -> void:
+	if Global.player_at_shop:
+		m_shop_label.hide()
+	else:
+		m_shop_label.show()
+
 func m_update_visual_max_health(health_manager: HealthManager) -> void:
 	m_health_bar.max_value = health_manager.max_health
 
@@ -42,6 +51,8 @@ func m_update_visual_coins() -> void:
 func m_update_visual_ammo_counter(weapon_manager : WeaponManager) -> void:
 	var weapon = weapon_manager.m_weapon_inventory[weapon_manager.selected_weapon]
 	m_ammo_label.text = "%d/%d" % [weapon.m_current_clip_size, weapon.clip_size]
+	if weapon.clip_size == -1:
+		m_ammo_label.text = ""
 	weapon_icon.texture = weapon.icon
 	pass
 
