@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=4 uid="uid://cf7uhxniqioif"]
+[gd_scene load_steps=191 format=4 uid="uid://cf7uhxniqioif"]
 
 [ext_resource type="PackedScene" uid="uid://clmojr6n6jc32" path="res://Player/p_player.tscn" id="1_7d138"]
 [ext_resource type="Script" path="res://Level/Gameplay/l_core_level.gd" id="1_enfbq"]
@@ -9,13 +9,15 @@
 [ext_resource type="Script" path="res://Level/Gameplay/Scripts/spawn_setting.gd" id="6_ykiiq"]
 [ext_resource type="Resource" uid="uid://dew8a50ncs82e" path="res://Level/Gameplay/Resources/crates.tres" id="7_fh8hg"]
 [ext_resource type="Resource" uid="uid://wsstv0blmulp" path="res://Level/Gameplay/Resources/shop.tres" id="8_66gqi"]
-[ext_resource type="Resource" uid="uid://4hsn5sg0nkxd" path="res://Level/Gameplay/Resources/powerup_crates.tres" id="10_h5jgw"]
 [ext_resource type="PackedScene" uid="uid://db38rpsv7kars" path="res://Enemies/Spawner/enemy_spawner.tscn" id="10_l0yoi"]
 [ext_resource type="Script" path="res://Enemies/Spawner/Waves/wave_info.gd" id="11_8kyki"]
 [ext_resource type="Resource" uid="uid://cgbol4miol7ne" path="res://Level/Gameplay/Resources/ammo_crates.tres" id="11_isrt8"]
 [ext_resource type="Resource" uid="uid://3fjug1vja3cp" path="res://Enemies/Spawner/Waves/wave1.tres" id="12_lldtr"]
+[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/CapFlatShaper.gd" id="13_2rvy7"]
 [ext_resource type="Resource" uid="uid://bxlxmrcwl32ad" path="res://Enemies/Spawner/Waves/wave2.tres" id="13_dboht"]
+[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/BlockShaper.gd" id="14_4w5ft"]
 [ext_resource type="Resource" uid="uid://c68arqvoqpeo3" path="res://Enemies/Spawner/Waves/wave3.tres" id="14_330ga"]
+[ext_resource type="Script" path="res://addons/goshapes/MeshShaper/Shapers/WallBevelShaper.gd" id="15_onrds"]
 [ext_resource type="Script" path="res://addons/goshapes/base/GoCurve3D.gd" id="16_xuo2k"]
 [ext_resource type="Script" path="res://addons/goshapes/Goshape.gd" id="17_8vcua"]
 [ext_resource type="PackedScene" uid="uid://ce3x8kiblh7tb" path="res://Level/Gameplay/Models/Kenney - City (Commercial)/Models/FBX format/skyscraperC.fbx" id="17_jffq1"]
@@ -1339,6 +1341,64 @@ interpolate = 1
 points_on_ground = false
 offset_y = 0.0
 ground_placement_mask = 0
+
+[sub_resource type="Resource" id="Resource_g5lk1"]
+script = ExtResource("13_2rvy7")
+conform_to_wall = false
+build_collider = true
+collision_layer = 1
+enabled = true
+
+[sub_resource type="Resource" id="Resource_4lma6"]
+script = ExtResource("15_onrds")
+height = 1.0
+bevel = 0.0
+taper = 0.0
+build_collider = true
+collision_layer = 1
+enabled = true
+
+[sub_resource type="Resource" id="Resource_dm4ph"]
+resource_name = "Goshape2-BlockShaper"
+script = ExtResource("14_4w5ft")
+cap_shaper = SubResource("Resource_g5lk1")
+wall_shaper = SubResource("Resource_4lma6")
+bottom_depth = 0.0
+collider_type = 2
+collider_ridge = 0.0
+enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5e808"]
+_surfaces = [{
+"aabb": AABB(-25.8613, 0, -6, 349.779, 1e-05, 395.738),
+"attribute_data": PackedByteArray("gfWhQwAAwMAE5M7BQyW/wEJ1j8F2vrlDFw0zQuSjt0OKtzVCUPrBQ5xXnkNz3sJD/mGeQ3vevEMiZWRCWve7Q9PmYEKiR7FDVCnKwGhms0OkmFrBQyW/QIH1oUMAAMBA"),
+"format": 34359742487,
+"index_count": 30,
+"index_data": PackedByteArray("AAALAAoABwAGAAUAAQAAAAoABwAFAAQAAgABAAoACAAHAAQAAgAKAAkACAAEAAMAAwACAAkACQAIAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("gfWhQwAAAAAAAMDABOTOwQAAAABDJb/AQnWPwQAAAAB2vrlDFw0zQgAAAADko7dDirc1QgAAAABQ+sFDnFeeQwAAAABz3sJD/mGeQwAAAAB73rxDImVkQgAAAABa97tD0+ZgQgAAAACiR7FDVCnKwAAAAABoZrNDpJhawQAAAABDJb9AgfWhQwAAAAAAAMBA/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_grqff"]
+data = PackedVector3Array(323.918, 0, -6, 323.918, 0, 6, -13.6623, 0, 5.9733, 57.0988, 0, 375.932, 316.766, 0, 377.738, 316.684, 0, 389.738, -25.8613, 0, -5.9733, 323.918, 0, -6, -13.6623, 0, 5.9733, 57.0988, 0, 375.932, 316.684, 0, 389.738, 45.4292, 0, 387.956, -17.9323, 0, 371.488, -25.8613, 0, -5.9733, -13.6623, 0, 5.9733, 56.2254, 0, 354.56, 57.0988, 0, 375.932, 45.4292, 0, 387.956, -17.9323, 0, 371.488, -13.6623, 0, 5.9733, -6.3175, 0, 358.8, 56.2254, 0, 354.56, 45.4292, 0, 387.956, 44.7628, 0, 367.28, 44.7628, 0, 367.28, -17.9323, 0, 371.488, -6.3175, 0, 358.8, -6.3175, 0, 358.8, 56.2254, 0, 354.56, 44.7628, 0, 367.28)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gbkk7"]
+_surfaces = [{
+"aabb": AABB(-25.8613, -1, -6, 349.779, 1, 395.738),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABn4C5DAAAAAAAAAAAAAIA/Z+AuQwAAgD9n4C5DAAAAAD/RtUMAAAAAZ+AuQwAAgD8/0bVDAACAPz/RtUMAAAAAdIbFQwAAAAA/0bVDAACAP3SGxUMAAIA/dIbFQwAAAABAsspDAAAAAHSGxUMAAIA/QLLKQwAAgD9AsspDAAAAANVAB0QAAAAAQLLKQwAAgD/VQAdEAACAP9VAB0QAAAAAzsAIRAAAAADVQAdEAACAP87ACEQAAIA/zsAIRAAAAAC4NSlEAAAAAM7ACEQAAIA/uDUpRAAAgD+4NSlEAAAAACviK0QAAAAAuDUpRAAAgD8r4itEAACAPyviK0QAAAAA/bczRAAAAAAr4itEAACAP/23M0QAAIA//bczRAAAAAAM1F9EAAAAAP23M0QAAIA/DNRfRAAAgD8M1F9EAAAAAOcChUQAAAAADNRfRAAAgD/nAoVEAACAP+cChUQAAAAAAAAAAAAAAADnAoVEAACAPwAAAAAAAIA/"),
+"format": 34359742487,
+"index_count": 144,
+"index_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAxADMAMgAwADMANAA1ADcANgA0ADcAOAA5ADsAOgA4ADsAPAA9AD8APgA8AD8AQABBAEMAQgBAAEMARABFAEcARgBEAEcASABJAEsASgBIAEsATABNAE8ATgBMAE8AUABRAFMAUgBQAFMAVABVAFcAVgBUAFcAWABZAFsAWgBYAFsAXABdAF8AXgBcAF8A"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 96,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgfWhQwAAAAAAAMDABOTOwQAAAABDJb/AgfWhQwAAgL8AAMDABOTOwQAAgL9DJb/ABOTOwQAAAABDJb/AQnWPwQAAAAB2vrlDBOTOwQAAgL9DJb/AQnWPwQAAgL92vrlDQnWPwQAAAAB2vrlDFw0zQgAAAADko7dDQnWPwQAAgL92vrlDFw0zQgAAgL/ko7dDFw0zQgAAAADko7dDirc1QgAAAABQ+sFDFw0zQgAAgL/ko7dDirc1QgAAgL9Q+sFDirc1QgAAAABQ+sFDnFeeQwAAAABz3sJDirc1QgAAgL9Q+sFDnFeeQwAAgL9z3sJDnFeeQwAAAABz3sJD/mGeQwAAAAB73rxDnFeeQwAAgL9z3sJD/mGeQwAAgL973rxD/mGeQwAAAAB73rxDImVkQgAAAABa97tD/mGeQwAAgL973rxDImVkQgAAgL9a97tDImVkQgAAAABa97tD0+ZgQgAAAACiR7FDImVkQgAAgL9a97tD0+ZgQgAAgL+iR7FD0+ZgQgAAAACiR7FDVCnKwAAAAABoZrND0+ZgQgAAgL+iR7FDVCnKwAAAgL9oZrNDVCnKwAAAAABoZrNDpJhawQAAAABDJb9AVCnKwAAAgL9oZrNDpJhawQAAgL9DJb9ApJhawQAAAABDJb9AgfWhQwAAAAAAAMBApJhawQAAgL9DJb9AgfWhQwAAgL8AAMBAgfWhQwAAAAAAAMBAgfWhQwAAAAAAAMDAgfWhQwAAgL8AAMBAgfWhQwAAgL8AAMDA/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/////v6qqqaoAAFK/VlUcq///VdWRpGybAAAH1UNbpZsAAFK/VlUcq9FC/3+NqsKoAAB1qRtcZrfGLP9/rqXctdFC/3+NqsKoLUP/f4aqg6iMWf9/DqJWmLRZ/3/0oTmYLUP/f4aqg6jRQP9/p6odqmgt/3/+pY21YSz/f3qlDLbRQP9/p6odqpK//39VVWGqbVX/f4OkWpsxqv9/sFsUm5K//39VVWGq//+Ov6mq9Kra1P9/Kluitv//LapMpBO3//+Ov6mq9Kr//xTBparvqf//1tTWpMmb//+I1XSkRpv//xTBparvqf//ecN/qk6o///YrLel0rX//+WtO6ZPtf//ecN/qk6o///Uwo2qv6j//97Z2aEamP//ldkHok+Y///Uwo2qv6ipwP9/VlUaq///xayupdy1htb/fxlcZLepwP9/VlUaq/6//39UVamq86r/f0Vbo5uoqv9/bVtsm/6//39UVamq////v6qqqapU1f9/bVvatv//qqqRpNq2")
+}]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vydmi"]
+data = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 323.918, 0, -6, -25.8613, 0, -5.9733, -25.8613, -1, -5.9733, 323.918, -1, -6, 323.918, 0, -6, -25.8613, -1, -5.9733, -25.8613, 0, -5.9733, -17.9323, 0, 371.488, -17.9323, -1, 371.488, -25.8613, -1, -5.9733, -25.8613, 0, -5.9733, -17.9323, -1, 371.488, -17.9323, 0, 371.488, 44.7628, 0, 367.28, 44.7628, -1, 367.28, -17.9323, -1, 371.488, -17.9323, 0, 371.488, 44.7628, -1, 367.28, 44.7628, 0, 367.28, 45.4292, 0, 387.956, 45.4292, -1, 387.956, 44.7628, -1, 367.28, 44.7628, 0, 367.28, 45.4292, -1, 387.956, 45.4292, 0, 387.956, 316.684, 0, 389.738, 316.684, -1, 389.738, 45.4292, -1, 387.956, 45.4292, 0, 387.956, 316.684, -1, 389.738, 316.684, 0, 389.738, 316.766, 0, 377.738, 316.766, -1, 377.738, 316.684, -1, 389.738, 316.684, 0, 389.738, 316.766, -1, 377.738, 316.766, 0, 377.738, 57.0988, 0, 375.932, 57.0988, -1, 375.932, 316.766, -1, 377.738, 316.766, 0, 377.738, 57.0988, -1, 375.932, 57.0988, 0, 375.932, 56.2254, 0, 354.56, 56.2254, -1, 354.56, 57.0988, -1, 375.932, 57.0988, 0, 375.932, 56.2254, -1, 354.56, 56.2254, 0, 354.56, -6.3175, 0, 358.8, -6.3175, -1, 358.8, 56.2254, -1, 354.56, 56.2254, 0, 354.56, -6.3175, -1, 358.8, -6.3175, 0, 358.8, -13.6623, 0, 5.9733, -13.6623, -1, 5.9733, -6.3175, -1, 358.8, -6.3175, 0, 358.8, -13.6623, -1, 5.9733, -13.6623, 0, 5.9733, 323.918, 0, 6, 323.918, -1, 6, -13.6623, -1, 5.9733, -13.6623, 0, 5.9733, 323.918, -1, 6, 323.918, 0, 6, 323.918, 0, -6, 323.918, -1, -6, 323.918, -1, 6, 323.918, 0, 6, 323.918, -1, -6)
 
 [sub_resource type="Curve3D" id="Curve3D_d688h"]
 resource_name = "Goshape-GoCurve3D"
@@ -7767,742 +7827,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 287.049, 0, -145.868)
 curve = SubResource("Curve3D_odl8s")
 script = ExtResource("17_8vcua")
 path_options = SubResource("Resource_jbknm")
+shaper = SubResource("Resource_dm4ph")
 metadata/_edit_group_ = true
 
-[node name="1" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 4)
+[node name="Mesh0" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2"]
+mesh = SubResource("ArrayMesh_5e808")
 
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/1"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
+[node name="Collider1" type="StaticBody3D" parent="area/enviroment/building_complexes/Goshape2"]
 
-[node name="2" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 14)
+[node name="CollisionShape" type="CollisionShape3D" parent="area/enviroment/building_complexes/Goshape2/Collider1"]
+shape = SubResource("ConcavePolygonShape3D_grqff")
 
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/2"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
+[node name="Mesh2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2"]
+mesh = SubResource("ArrayMesh_gbkk7")
 
-[node name="3" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 24)
+[node name="Collider3" type="StaticBody3D" parent="area/enviroment/building_complexes/Goshape2"]
 
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/3"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="4" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 34)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/4"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="5" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 44)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/5"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="6" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 54)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/6"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="7" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 64)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/7"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="8" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 74)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/8"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="9" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 84)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/9"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="10" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 94)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/10"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="11" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 104)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/11"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="12" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 114)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/12"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="13" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 124)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/13"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="14" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 134)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/14"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="15" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 144)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/15"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="16" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 154)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/16"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="17" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 164)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/17"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="18" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 174)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/18"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="19" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 184)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/19"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="20" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 194)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/20"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="21" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 204)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/21"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="22" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 214)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/22"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="23" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 224)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/23"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="24" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 234)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/24"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="25" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 244)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/25"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="26" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 254)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/26"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="27" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 264)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/27"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="28" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 274)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/28"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="29" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 284)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/29"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="30" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 294)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/30"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="31" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 304)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/31"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="32" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 314)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/32"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="33" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 324)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/33"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="34" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500042, 334)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/34"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="35" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.49992, 344)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/35"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="36" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.49992, 354)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/36"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="37" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -15.8614, -0.500164, 364)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/37"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="38" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5.86139, -0.500042, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/38"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="39" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -5.86139, -0.49992, 364)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/39"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="40" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 4.13861, -0.500042, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/40"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="41" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 4.13861, -0.49992, 364)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/41"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="42" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 14.1386, -0.500042, 4)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/42"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="43" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 14.1386, -0.49992, 364)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/43"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="44" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 24.1386, -0.500042, 4)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/44"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="45" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 24.1386, -0.49992, 364)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/45"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="46" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 34.1386, -0.49992, 4)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/46"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="47" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 34.1386, -0.49992, 364)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/47"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="48" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 44.1386, -0.49992, 4)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/48"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="49" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 44.1386, -0.49992, 364)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/49"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="50" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 54.1386, -0.49992, 4)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/50"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="51" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 54.1386, -0.499004, 364)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/51"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="52" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 54.1386, -0.49992, 374)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/52"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="53" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 54.1386, -0.49992, 384)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/53"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="54" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 64.1386, -0.49992, 4)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/54"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="55" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 64.1386, -0.49992, 384)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/55"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="56" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 74.1386, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/56"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="57" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 74.1386, -0.49992, 384)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/57"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="58" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 84.1386, -0.49992, 4)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/58"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="59" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 84.1386, -0.49992, 384)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/59"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="60" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 94.1386, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/60"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="61" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 94.1386, -0.49992, 384)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/61"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="62" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 104.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/62"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="63" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 104.139, -0.499004, 384)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/63"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="64" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 114.139, -0.49992, 4)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/64"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="65" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 114.139, -0.499004, 384)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/65"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="66" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 124.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/66"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="67" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 124.139, -0.500042, 384)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/67"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="68" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 134.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/68"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="69" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 134.139, -0.500042, 384)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/69"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="70" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 144.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/70"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="71" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 144.139, -0.500042, 384)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/71"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="72" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 154.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/72"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="73" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 154.139, -0.500042, 384)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/73"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="74" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 164.139, -0.49992, 4)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/74"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="75" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 164.139, -0.500042, 384)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/75"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="76" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 174.139, -0.49992, 4)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/76"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="77" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 174.139, -0.500042, 384)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/77"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="78" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 184.139, -0.49992, 4)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/78"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="79" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 184.139, -0.500042, 384)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/79"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="80" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 194.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/80"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="81" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 194.139, -0.500042, 384)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/81"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="82" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 204.139, -0.49992, 4)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/82"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="83" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 204.139, -0.500042, 384)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/83"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="84" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 214.139, -0.49992, 4)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/84"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="85" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 214.139, -0.500042, 384)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/85"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="86" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 224.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/86"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="87" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 224.139, -0.500042, 384)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/87"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="88" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 234.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/88"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="89" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 234.139, -0.500042, 384)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/89"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="90" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 244.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/90"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="91" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 244.139, -0.500042, 384)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/91"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="92" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 254.139, -0.49992, 4)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/92"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="93" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 254.139, -0.500042, 384)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/93"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="94" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 264.139, -0.49992, 4)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/94"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="95" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("25_bssm0")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 264.139, -0.500042, 384)
-
-[node name="skyscraperD2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/95"]
-mesh = SubResource("ArrayMesh_674fg")
-skeleton = NodePath("")
-
-[node name="96" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("23_nf421")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 274.139, -0.49992, 4)
-
-[node name="skyscraperF2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/96"]
-mesh = SubResource("ArrayMesh_eqyej")
-skeleton = NodePath("")
-
-[node name="97" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 274.139, -0.500042, 384)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/97"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="98" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 284.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/98"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="99" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 284.139, -0.500042, 384)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/99"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
-
-[node name="100" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("29_l7y4g")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 294.139, -0.49992, 4)
-
-[node name="skyscraperB2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/100"]
-mesh = SubResource("ArrayMesh_xon52")
-skeleton = NodePath("")
-
-[node name="101" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 294.139, -0.500042, 384)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/101"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="102" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 304.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/102"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="103" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_jffq1")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 304.139, -0.500042, 384)
-
-[node name="skyscraperC2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/103"]
-mesh = SubResource("ArrayMesh_jwls2")
-skeleton = NodePath("")
-
-[node name="104" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("24_egc2s")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 314.139, -0.49992, 4)
-
-[node name="skyscraperA2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/104"]
-mesh = SubResource("ArrayMesh_0ughx")
-skeleton = NodePath("")
-
-[node name="105" parent="area/enviroment/building_complexes/Goshape2" instance=ExtResource("17_krihp")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 314.139, -0.500042, 384)
-
-[node name="skyscraperE2" type="MeshInstance3D" parent="area/enviroment/building_complexes/Goshape2/105"]
-mesh = SubResource("ArrayMesh_54hn7")
-skeleton = NodePath("")
+[node name="CollisionShape" type="CollisionShape3D" parent="area/enviroment/building_complexes/Goshape2/Collider3"]
+shape = SubResource("ConcavePolygonShape3D_vydmi")
 
 [node name="greenery" type="Node3D" parent="area/enviroment"]
 
@@ -9275,7 +8617,7 @@ environment = SubResource("Environment_bwxlc")
 [node name="spawn_nodes" type="Node3D" parent="."]
 process_mode = 3
 script = ExtResource("5_q43vw")
-spawnable_elements = Array[ExtResource("6_ykiiq")]([ExtResource("7_fh8hg"), ExtResource("8_66gqi"), ExtResource("10_h5jgw"), ExtResource("11_isrt8"), ExtResource("30_j8j61")])
+spawnable_elements = Array[ExtResource("6_ykiiq")]([ExtResource("7_fh8hg"), ExtResource("8_66gqi"), ExtResource("11_isrt8"), ExtResource("30_j8j61")])
 
 [node name="spawn_node" parent="spawn_nodes" instance=ExtResource("5_so378")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.6947, -3.62396e-05, 125.14)
