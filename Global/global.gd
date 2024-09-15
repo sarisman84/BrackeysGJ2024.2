@@ -2,9 +2,14 @@ extends Node
 
 enum PausedStates {NONE, WEAPON_SELECT, SHOP, PAUSE_MENU, GAME_OVER, MAX}
 
+signal shop_label
+
 var player_ref : Node3D
 var time_elapsed = 0.0
-var player_at_shop = false
+var player_at_shop = false:
+	set(value):
+		shop_label.emit()
+		player_at_shop = value
 var current_currency : int = 0 :
 	set(value):
 		current_currency = value

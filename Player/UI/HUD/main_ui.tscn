@@ -217,6 +217,23 @@ text = "You picked up a powerup!"
 label_settings = SubResource("LabelSettings_nwl8y")
 horizontal_alignment = 1
 
+[node name="shop_label" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -228.0
+offset_top = -222.0
+offset_right = 231.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press F to open shop!"
+label_settings = SubResource("LabelSettings_nwl8y")
+horizontal_alignment = 1
+
 [node name="animation_player" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wt8cs")
