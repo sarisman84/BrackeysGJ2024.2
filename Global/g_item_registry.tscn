@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://uxrjrj5o3hoj" path="res://Weapons/Types/sword.tres" id="5_ugs35"]
 [ext_resource type="Resource" uid="uid://dew8a50ncs82e" path="res://Level/Gameplay/Resources/crates.tres" id="6_0rrs1"]
 [ext_resource type="Resource" uid="uid://wsstv0blmulp" path="res://Level/Gameplay/Resources/shop.tres" id="7_kn53u"]
-[ext_resource type="Resource" path="res://Level/Gameplay/Resources/ammo_crates.tres" id="9_va1k4"]
+[ext_resource type="Resource" uid="uid://cgbol4miol7ne" path="res://Level/Gameplay/Resources/ammo_crates.tres" id="9_va1k4"]
 [ext_resource type="Resource" uid="uid://4hsn5sg0nkxd" path="res://Level/Gameplay/Resources/powerup_crates.tres" id="10_lw564"]
 
 [node name="item_registry" type="Node"]

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Player/Scripts/camera_controller.gd" id="2_4jt2a"]
 [ext_resource type="Material" uid="uid://4u85xwfn02jy" path="res://Level/Gameplay/Resources/white_material.tres" id="2_ew1h0"]
 [ext_resource type="PackedScene" uid="uid://6klxf7f7gsbv" path="res://Weapons/p_weapon_manager.tscn" id="3_h2gkg"]
-[ext_resource type="PackedScene" path="res://Player/Model/robot.tscn" id="3_svql1"]
+[ext_resource type="PackedScene" uid="uid://bdbextp1ugys5" path="res://Player/Model/robot.tscn" id="3_svql1"]
 [ext_resource type="PackedScene" uid="uid://3jx3xah31atk" path="res://Interactables/p_health_manager.tscn" id="5_y2spw"]
 [ext_resource type="PackedScene" uid="uid://p4s150ayvuqi" path="res://Player/UI/Weapon_Select/weapon_select.tscn" id="6_rtsif"]
 [ext_resource type="PackedScene" uid="uid://f5xwx0lb148q" path="res://Player/UI/Shop/shop.tscn" id="8_hv24j"]

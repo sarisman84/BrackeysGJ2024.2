@@ -6,6 +6,9 @@ extends OnHitBehaviour
 
 
 func on_bullet_hit(bullet : Node3D, weapon : BaseWeapon, weapon_manager: WeaponManager,damage_multiplier : float, incoming_body : Variant) -> void:
+	if not weapon_manager:
+		return
+
 	var is_itself = bullet.get_instance_id() == incoming_body.get_instance_id()
 
 	if is_itself:

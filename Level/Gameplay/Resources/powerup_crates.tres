@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_45hlm")
 object_to_spawn = "res://Level/Gameplay/Elements/le_powerup_crates.tscn"
-allocated_object_count = 500
+allocated_object_count = 1000
 chance_to_spawn = 0.3
 min_objects_to_spawn = 1
 max_objects_to_spawn = 1
