@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqo6f1s4d7vtj"]
+[gd_scene load_steps=4 format=3 uid="uid://dqo6f1s4d7vtj"]
 
 [ext_resource type="PackedScene" uid="uid://c0fscew8ib3m" path="res://Player/Model/FBX/Robot.fbx" id="1_kr6vp"]
+[ext_resource type="Script" path="res://Player/Model/robot.gd" id="2_aj8f8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb655"]
 albedo_color = Color(1, 0.615686, 0, 1)
 
 [node name="Robot" instance=ExtResource("1_kr6vp")]
+script = ExtResource("2_aj8f8")
 
 [node name="Foot_L_2" parent="RobotArmature/Skeleton3D" index="0"]
 transform = Transform3D(1, 9.58673e-08, -5.20144e-08, -9.5867e-08, 1, 9.68575e-08, 5.20144e-08, -1.11759e-07, 1, 0.00187217, -0.000573343, 0.00119299)

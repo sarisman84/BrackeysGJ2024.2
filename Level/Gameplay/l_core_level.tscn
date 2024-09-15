@@ -1,4 +1,4 @@
-[gd_scene load_steps=218 format=4 uid="uid://cf7uhxniqioif"]
+[gd_scene load_steps=219 format=4 uid="uid://cf7uhxniqioif"]
 
 [ext_resource type="PackedScene" uid="uid://clmojr6n6jc32" path="res://Player/p_player.tscn" id="1_7d138"]
 [ext_resource type="Script" path="res://Level/Gameplay/l_core_level.gd" id="1_enfbq"]
@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://4hsn5sg0nkxd" path="res://Level/Gameplay/Resources/powerup_crates.tres" id="10_h5jgw"]
 [ext_resource type="PackedScene" uid="uid://db38rpsv7kars" path="res://Enemies/Spawner/enemy_spawner.tscn" id="10_l0yoi"]
 [ext_resource type="Script" path="res://Enemies/Spawner/Waves/wave_info.gd" id="11_8kyki"]
-[ext_resource type="Resource" path="res://Level/Gameplay/Resources/ammo_crates.tres" id="11_isrt8"]
+[ext_resource type="Resource" uid="uid://ctbfpob0fbv4q" path="res://Level/Gameplay/Resources/ammo_crates.tres" id="11_isrt8"]
 [ext_resource type="Resource" uid="uid://3fjug1vja3cp" path="res://Enemies/Spawner/Waves/wave1.tres" id="12_lldtr"]
 [ext_resource type="Resource" uid="uid://bxlxmrcwl32ad" path="res://Enemies/Spawner/Waves/wave2.tres" id="13_dboht"]
 [ext_resource type="Resource" uid="uid://c68arqvoqpeo3" path="res://Enemies/Spawner/Waves/wave3.tres" id="14_330ga"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://dyt1urdqq53n6" path="res://Level/Gameplay/Models/Kenney - Fantasy Town/Models/Presets/p_tree_c.tscn" id="31_omkad"]
 [ext_resource type="PackedScene" uid="uid://t536pcsvrvul" path="res://Level/Gameplay/Models/Kenney - Fantasy Town/Models/FBX format/treeHighCrooked.fbx" id="32_oyoa6"]
 [ext_resource type="PackedScene" uid="uid://cl8c0ieg00vq0" path="res://Level/Gameplay/Models/Kenney - Fantasy Town/Models/Presets/p_tree_d.tscn" id="32_u7p5n"]
+[ext_resource type="Resource" uid="uid://cpftu13yicxjx" path="res://Level/Gameplay/Resources/health_crate.tres" id="34_1sgpl"]
 [ext_resource type="PackedScene" uid="uid://cw5dg2e2dgwch" path="res://Level/Gameplay/Models/Kenney - Fantasy Town/Models/FBX format/rockSmall.fbx" id="35_dxuw4"]
 [ext_resource type="PackedScene" uid="uid://c3ho4bhwquwfh" path="res://Level/Gameplay/Models/Kenney - Fantasy Town/Models/Presets/p_rock_a.tscn" id="40_olnb8"]
 [ext_resource type="PackedScene" uid="uid://i5kctdfxv2td" path="res://Level/Gameplay/Models/Kenney - Fantasy Town/Models/Presets/p_rock_b.tscn" id="41_vgpny"]
@@ -9668,7 +9669,7 @@ environment = SubResource("Environment_bwxlc")
 [node name="spawn_nodes" type="Node3D" parent="."]
 process_mode = 3
 script = ExtResource("5_q43vw")
-spawnable_elements = Array[ExtResource("6_ykiiq")]([ExtResource("7_fh8hg"), ExtResource("8_66gqi"), ExtResource("10_h5jgw"), ExtResource("11_isrt8")])
+spawnable_elements = Array[ExtResource("6_ykiiq")]([ExtResource("7_fh8hg"), ExtResource("8_66gqi"), ExtResource("10_h5jgw"), ExtResource("11_isrt8"), ExtResource("34_1sgpl")])
 
 [node name="spawn_node" parent="spawn_nodes" instance=ExtResource("5_so378")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.6947, -3.62396e-05, 125.14)
