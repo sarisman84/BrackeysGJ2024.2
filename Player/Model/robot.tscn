@@ -1,48 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdbextp1ugys5"]
+[gd_scene load_steps=4 format=3 uid="uid://dqo6f1s4d7vtj"]
 
 [ext_resource type="PackedScene" uid="uid://c0fscew8ib3m" path="res://Player/Model/FBX/Robot.fbx" id="1_kr6vp"]
-[ext_resource type="Script" path="res://Player/Model/robot.gd" id="2_pt2np"]
+[ext_resource type="Script" path="res://Player/Model/robot.gd" id="2_aj8f8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb655"]
 albedo_color = Color(1, 0.615686, 0, 1)
 
 [node name="Robot" instance=ExtResource("1_kr6vp")]
-script = ExtResource("2_pt2np")
+script = ExtResource("2_aj8f8")
 
 [node name="Skeleton3D" parent="RobotArmature" index="0"]
 bones/1/rotation = Quaternion(2.92124e-08, 0.69555, 0.718478, 1.57053e-07)
 bones/9/rotation = Quaternion(-0.0433809, -0.0141813, 0.0282903, 0.998557)
-bones/10/position = Vector3(4.81959e-11, 0.000929599, -2.96859e-11)
+bones/10/position = Vector3(3.31784e-12, 0.000929598, -7.33416e-12)
 bones/10/rotation = Quaternion(-0.0309211, -0.00285618, -0.00128305, 0.999517)
 bones/13/rotation = Quaternion(-0.0114497, -0.0532471, -0.9762, 0.209923)
 bones/15/rotation = Quaternion(-0.0545858, -0.689887, 0.0692138, 0.718531)
-bones/17/rotation = Quaternion(0.309992, 0.499338, -0.36494, 0.72207)
-bones/19/rotation = Quaternion(-0.00442112, 0.0238239, -0.552072, 0.833444)
-bones/20/rotation = Quaternion(-0.0381108, 0.000934115, -0.699656, 0.713462)
-bones/22/rotation = Quaternion(0.729874, 0.635342, 0.211089, 0.138081)
-bones/23/rotation = Quaternion(-0.248974, 0.627185, 0.630886, -0.382928)
+bones/17/rotation = Quaternion(0.309992, 0.499337, -0.36494, 0.72207)
+bones/19/rotation = Quaternion(-0.00442114, 0.023824, -0.552072, 0.833444)
+bones/20/rotation = Quaternion(-0.0381108, 0.000934109, -0.699656, 0.713462)
+bones/22/rotation = Quaternion(0.729874, 0.635342, 0.211089, 0.13808)
+bones/23/rotation = Quaternion(-0.248974, 0.627184, 0.630886, -0.382928)
 bones/26/rotation = Quaternion(0.0467354, -0.396111, -0.589061, 0.702794)
 bones/27/rotation = Quaternion(-0.0425872, -0.0183796, -0.699962, 0.712672)
 bones/30/rotation = Quaternion(-0.0680167, 0.483185, -0.584014, 0.648717)
 bones/31/rotation = Quaternion(-0.0425873, -0.0183795, -0.699962, 0.712672)
 bones/33/rotation = Quaternion(-0.012289, 0.0530604, 0.972768, 0.225291)
 bones/35/rotation = Quaternion(0.0435723, 0.80457, 0.0574779, 0.589462)
-bones/37/rotation = Quaternion(0.0897254, -0.705058, 0.255014, 0.6556)
+bones/37/rotation = Quaternion(0.0897255, -0.705058, 0.255014, 0.6556)
 bones/39/rotation = Quaternion(-0.0436784, -0.0103278, 0.525089, 0.849863)
 bones/40/rotation = Quaternion(0.0348681, -0.0390055, 0.504719, 0.861697)
 bones/42/rotation = Quaternion(0.669465, -0.587013, -0.279996, 0.358935)
 bones/43/rotation = Quaternion(-0.135572, 0.735133, 0.594621, -0.296016)
 bones/46/rotation = Quaternion(-0.504663, -0.573821, 0.135774, 0.630564)
 bones/47/rotation = Quaternion(-0.0418692, -0.0120427, 0.527238, 0.8486)
-bones/49/rotation = Quaternion(-0.115109, 0.858055, -0.363121, -0.344435)
+bones/49/rotation = Quaternion(-0.115108, 0.858055, -0.363121, -0.344435)
 bones/50/rotation = Quaternion(0.575218, 0.552901, 0.116743, 0.591435)
 bones/51/rotation = Quaternion(0.138603, 0.024903, 0.427063, 0.893189)
 bones/53/rotation = Quaternion(0.985518, 0.0175863, -0.0842846, 0.146085)
 bones/53/scale = Vector3(1, 1, 1.00002)
-bones/55/rotation = Quaternion(0.277154, 1.31885e-07, -7.68166e-08, 0.960825)
+bones/55/rotation = Quaternion(0.277154, 1.31885e-07, -7.68165e-08, 0.960825)
 bones/58/rotation = Quaternion(0.979527, -0.0257471, 0.137311, 0.144949)
 bones/58/scale = Vector3(1, 1, 1.00002)
-bones/60/rotation = Quaternion(0.277154, -3.05388e-07, 3.92564e-08, 0.960825)
+bones/60/rotation = Quaternion(0.277154, -3.05388e-07, 3.92564e-08, 0.960826)
 bones/65/rotation = Quaternion(5.08964e-07, 0.69555, 0.718478, 6.19279e-07)
 
 [node name="Foot_L_2" parent="RobotArmature/Skeleton3D" index="0"]
@@ -60,7 +60,7 @@ bone_idx = 5
 surface_material_override/0 = SubResource("StandardMaterial3D_wb655")
 
 [node name="Head_2" parent="RobotArmature/Skeleton3D" index="2"]
-transform = Transform3D(0.998071, 0.0405853, -0.0469698, -0.0377837, 0.997538, 0.0590701, 0.0492516, -0.0571814, 0.997148, -0.000156562, 3.40311e-06, 0.0109594)
+transform = Transform3D(0.998071, 0.0405853, -0.0469698, -0.0377837, 0.997538, 0.0590701, 0.0492516, -0.0571814, 0.997148, -0.000156562, 3.40313e-06, 0.0109594)
 bone_idx = 11
 
 [node name="Head_2" parent="RobotArmature/Skeleton3D/Head_2" index="0"]
@@ -88,7 +88,7 @@ bone_idx = 34
 surface_material_override/0 = SubResource("StandardMaterial3D_wb655")
 
 [node name="Arm_R" parent="RobotArmature/Skeleton3D" index="6"]
-transform = Transform3D(0.101816, 8.9407e-08, -0.202931, 0.0178376, 0.226162, 0.0089497, 0.202145, -0.0199569, 0.101422, -0.00247707, -0.000120731, 0.00605435)
+transform = Transform3D(0.101816, 8.56817e-08, -0.202931, 0.0178376, 0.226162, 0.0089497, 0.202145, -0.0199569, 0.101422, -0.00247707, -0.000120731, 0.00605435)
 bone_idx = 36
 
 [node name="Arm_R" parent="RobotArmature/Skeleton3D/Arm_R" index="0"]
@@ -102,7 +102,7 @@ bone_idx = 54
 surface_material_override/0 = SubResource("StandardMaterial3D_wb655")
 
 [node name="LowerLeg_L_2" parent="RobotArmature/Skeleton3D" index="8"]
-transform = Transform3D(0.984156, -0.177236, 0.00489849, 0.177099, 0.981343, -0.0749504, 0.00847662, 0.0746205, 0.997179, 0.00205311, -0.000643798, 0.0011159)
+transform = Transform3D(0.984156, -0.177236, 0.00489848, 0.177099, 0.981343, -0.0749503, 0.00847662, 0.0746204, 0.997179, 0.00205311, -0.000643798, 0.0011159)
 bone_idx = 56
 
 [node name="LowerLeg_L_2" parent="RobotArmature/Skeleton3D/LowerLeg_L_2" index="0"]
@@ -116,7 +116,7 @@ bone_idx = 59
 surface_material_override/0 = SubResource("StandardMaterial3D_wb655")
 
 [node name="LowerLeg_R_2" parent="RobotArmature/Skeleton3D" index="10"]
-transform = Transform3D(0.962589, 0.270826, -0.00860231, -0.270697, 0.959726, -0.0750237, -0.0120626, 0.0745339, 0.997149, -0.00219127, -0.000619199, 0.00111611)
+transform = Transform3D(0.962589, 0.270826, -0.00860232, -0.270697, 0.959726, -0.0750238, -0.0120626, 0.074534, 0.997149, -0.00219127, -0.000619199, 0.00111611)
 bone_idx = 61
 
 [node name="LowerLeg_R_2" parent="RobotArmature/Skeleton3D/LowerLeg_R_2" index="0"]

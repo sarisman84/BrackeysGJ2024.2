@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdko4addrwxmi"]
+
+[ext_resource type="Texture2D" uid="uid://dj1ybphtuej58" path="res://Weapons/Effects/AxeSlashEffect (5).png" id="1_odwft"]
+[ext_resource type="Script" path="res://Weapons/Effects/slash_vfx.gd" id="2_ec68y"]
+
+[node name="slash_vfx" type="Node3D"]
+script = ExtResource("2_ec68y")
+
+[node name="sprite" type="Sprite3D" parent="."]
+transform = Transform3D(-0.921448, -2.31386, 0.216766, 0.100795, 0.193173, 2.49049, -2.3218, 0.926681, 0.0220909, 0, 0, 0)
+texture = ExtResource("1_odwft")
