@@ -80,8 +80,7 @@ func _physics_process(delta : float) -> void:
 
 		if dir.length() > 0:
 			var speed = movement_speed
-			#if Input.is_action_pressed("sprint"):
-				#speed = sprint_speed
+			robot.animation_player.play("RobotArmature|Robot_Running")
 
 			var y_vel = velocity.y
 			velocity = lerp(velocity, dir * speed, acceleration * delta)
