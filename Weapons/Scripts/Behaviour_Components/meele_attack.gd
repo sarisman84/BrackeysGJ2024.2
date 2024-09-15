@@ -16,8 +16,10 @@ func m_create_hurtbox(owner : WeaponManager) -> Area3D:
 	hurtbox.collision_mask = hurtbox_detection_mask
 
 	hurtbox.add_child(col)
+
 	hurtbox.add_child(vfx)
 	owner.weapon_owner.get_parent().add_child(hurtbox)
+
 	return hurtbox
 
 func apply_behaviour(args : Dictionary = {}) -> Dictionary:
@@ -41,6 +43,8 @@ func apply_behaviour(args : Dictionary = {}) -> Dictionary:
 	args["hitbox"] = hurtbox
 	return args
 
-func on_expire(hitbox : Area3D, timer : Timer) -> void:
-	hitbox.queue_free()
-	timer.queue_free()
+func on_expire(hitbox, timer) -> void:
+	if hitbox != null:
+		hitbox.queue_free()
+	if timer != null:
+		timer.queue_free()
