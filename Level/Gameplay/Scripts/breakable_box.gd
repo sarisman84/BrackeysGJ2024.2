@@ -7,6 +7,10 @@ extends RigidBody3D
 
 @onready var hurtbox : HealthManager = $hurtbox
 
+@export_group("Heal")
+@export var heal_player : bool = false
+@export var heal_amount : int = 1
+
 func _ready() -> void:
 	hurtbox.health_owner = self
 	hurtbox.on_death.connect(m_spawn_drop)
@@ -14,7 +18,10 @@ func _ready() -> void:
 
 func m_spawn_drop() -> void:
 	#assert(drop_setting, "[Breakable Crates]: %s has no drop setting!" % name)
-
+	if heal_player:
+		Global.player_ref.health_manager.heal(heal_amount)
+		ItemRegistry.reset_cached_item(self)
+		return
 	if not drop_setting:
 		Global.spawn_money(global_position,randi_range(3, 5), 100)
 		ItemRegistry.reset_cached_item(self)
